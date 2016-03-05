@@ -1,7 +1,12 @@
 #node package
 node_modules/
 
+#bower packages
+lib/
+
 #Webstorm IDEA ignore
 .idea/
 *.iml
 
+#log files
+*.log
