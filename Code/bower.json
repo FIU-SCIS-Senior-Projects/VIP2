@@ -1,5 +1,5 @@
 {
-  "name": "vip2",
+  "name": "vip",
   "main": "server.js",
   "license": "MIT",
   "dependencies": {
