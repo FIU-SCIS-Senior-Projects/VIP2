@@ -7,10 +7,10 @@ var config		= require('./config/config');
 var app			= express();
 
 //connect to mongodb
-/*mongoose.connect(config.database);
+mongoose.connect(config.database);
 mongoose.connection.on('error', function(err){
 	console.log('Error: could not connect to MongoDB.');
-});*/
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
