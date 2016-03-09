@@ -10,3 +10,6 @@ lib/
 
 #log files
 *.log
+
+#config file
+config/
