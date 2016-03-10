@@ -1,1 +1,3 @@
-angular.module('mainApp', ['vipHeader']);
+angular.module('mainApp', [
+	'vipHeader'
+]);
