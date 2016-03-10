@@ -1,6 +1,6 @@
 (function() {
     angular.module('vipHeader', [])
-    .directive('vipHeaderBar', function () {
+    .directive('vipHeader', function () {
         var controller = function () {
             var vm = this;
         };
