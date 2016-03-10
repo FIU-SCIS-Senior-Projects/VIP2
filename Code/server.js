@@ -3,7 +3,7 @@ var express		= require('express');
 var mongoose	= require('mongoose');
 var bodyParser	= require('body-parser');
 var path		= require('path');
-var config		= require('./config/config');
+var config		= require('./api/config/config');
 var app			= express();
 
 //connect to mongodb

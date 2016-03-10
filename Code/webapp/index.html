@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="mainApp" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VIP</title>
+
+	<!-- FOR ANGULAR ROUTING -->
+	<base href="/">
+
+	<!-- load bootstrap and custom CSS -->
+	<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Javascript Libraries -->
+	<script src="lib/angular/angular.min.js"></script>
+	<script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="lib/jquery/dist/jquery.min.js"></script>
+	<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	<!-- controllers -->
+
+	<!-- services -->
+
+	<!-- directives -->
+
+	<!-- main Angular app files -->
+	<script src="app.js"></script>
+	<script src="routes.js"></script>
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse navbar-padding">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" target="_self" href="/"> VIP</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					
+				</ul>
+			</div><!-- /.navbar-collapse -->
+	</nav>
+
+	<!-- ANGULAR VIEWS -->
+	<div class="container-fluid" ui-view></div>
+
+</body>
+</html>
