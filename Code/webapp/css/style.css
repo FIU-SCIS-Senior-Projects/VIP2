@@ -1,0 +1,8 @@
+.title-box {
+	border: 1px solid #cccccc;
+	border-radius: 7px;
+	background-color: #e0ecfa;
+	padding: 17px;
+	display: table-cell;
+	font-weight: bold;
+}
