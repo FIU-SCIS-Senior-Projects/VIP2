@@ -1,5 +1,6 @@
 body {
     margin: 10px 0;
+    background: #D3A41A;
 }
 
 .header-logo {
@@ -8,7 +9,7 @@ body {
 }
 
 .fixed_footer{
-    width: 100%;
+    width: 110%;
     height: 220px;
     background:#002958;
     position: fixed; left: 0; bottom: 0;
