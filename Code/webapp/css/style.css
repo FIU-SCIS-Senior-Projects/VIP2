@@ -1,10 +1,28 @@
 body {
 	margin: 10px 0;
+	background: #D3A41A;
+	margin-bottom: 220px;
 }
 
 .header-logo {
 	max-width: 300px;
 	padding: 10px;
+}
+
+.footer{
+	width: 110%;
+	height: 180px;
+	background:#002958;
+	position: fixed; left: 0; right: 0; bottom : 0;
+	z-index: 150;
+
+}
+.footer p{
+	color: #f2f2f2;
+	column-count: 2;
+	column-gap: 50px;
+	font-size: 1em;
+	font-weight: 300;
 }
 
 .title-box {
