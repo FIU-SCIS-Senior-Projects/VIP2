@@ -1,7 +1,5 @@
 body {
-	margin: 10px 0;
-	background: #D3A41A;
-	margin-bottom: 220px;
+	margin: 10px;
 }
 
 .header-logo {
@@ -10,11 +8,9 @@ body {
 }
 
 .footer{
-	width: 110%;
-	height: 180px;
+	height: 220px;
 	background:#002958;
-	position: fixed; left: 0; right: 0; bottom : 0;
-	z-index: 150;
+	z-index: -110;
 
 }
 .footer p{
