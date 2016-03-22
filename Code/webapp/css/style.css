@@ -1,3 +1,12 @@
+body {
+	margin: 10px 0;
+}
+
+.header-logo {
+	max-width: 300px;
+	padding: 10px;
+}
+
 .title-box {
 	border: 1px solid #cccccc;
 	border-radius: 7px;
@@ -5,4 +14,22 @@
 	padding: 17px;
 	display: table-cell;
 	font-weight: bold;
+}
+
+.navbar {
+	background-color: #234264;
+}
+
+.navbar li a {
+	color: #fff;
+    font-weight: bold;
+}
+
+.navbar-nav > li > a:hover,
+.navbar-nav > li > a:focus {
+    background-color: #137cb8;
+}
+
+.navbar-collapse {
+	padding: 0;
 }
