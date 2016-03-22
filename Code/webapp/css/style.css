@@ -33,3 +33,11 @@ body {
 .navbar-collapse {
 	padding: 0;
 }
+
+.navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+
+.navbar-nav {
+	margin: 0px;
+}
