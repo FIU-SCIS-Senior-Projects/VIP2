@@ -1,4 +1,4 @@
 angular.module('mainApp', [
-
-    'vipFooter'
+	'vipHeader',
+	'routes'
 ]);
