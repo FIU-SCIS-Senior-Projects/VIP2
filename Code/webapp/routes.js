@@ -7,4 +7,8 @@ angular.module('routes', ['ui.router'])
             	url:'/',
             	templateUrl:'features/main-page/home.html'
             })
+            .state('how-vip-credits-count', {
+                url:'/how-vip-credits-count',
+                templateUrl: 'features/how-vip-credits-count/index.html'
+            })
     });
