@@ -9,10 +9,11 @@ body {
 
 .footer{
 	height: 220px;
-	background:#002958;
+	background:#081E3F;
 	z-index: -110;
-
+	border-radius: 4px;
 }
+
 .footer p{
 	color: #f2f2f2;
 	column-count: 2;
@@ -31,7 +32,7 @@ body {
 }
 
 .navbar {
-	background-color: #234264;
+	background-color: #081E3F;
 }
 
 .navbar li a {
@@ -41,7 +42,7 @@ body {
 
 .navbar-nav > li > a:hover,
 .navbar-nav > li > a:focus {
-    background-color: #137cb8;
+    background-color: #B6862C;
 }
 
 .navbar-collapse {
