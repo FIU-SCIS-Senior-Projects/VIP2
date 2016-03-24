@@ -63,6 +63,10 @@ body {
 
 }
 
+.peerTable td, th {
+	padding: 19px;
+}
+
 .fiuColor {
 	background-color: #dce9f9;
     text-align: center;
