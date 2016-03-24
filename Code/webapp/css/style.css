@@ -55,3 +55,20 @@ body {
 .navbar-nav {
 	margin: 0px;
 }
+.peerTable {
+	float: right;
+	border-radius: 6px;
+	border-style: hidden; /* hide standard table (collapsed) border */
+	box-shadow: 0 0 0 1px #666; /* this draws the table border  */
+
+}
+
+.peerTable td, th {
+	padding: 19px;
+}
+
+.fiuColor {
+	background-color: #dce9f9;
+    text-align: center;
+	vertical-align: middle;
+}
