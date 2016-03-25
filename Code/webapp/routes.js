@@ -26,5 +26,9 @@ angular.module('routes', ['ui.router'])
             .state('graduateApplication', {
                 url:'/graduate-application',
                 templateUrl: 'features/graduate-application/graduateApplication.html'
-            })
+            }),
+	   .state('projects',{ 
+	   	url:'/projects',
+		templateUrl:'features/projects/projects.html'
+	   })
     });
