@@ -35,5 +35,4 @@ angular.module('routes', ['ui.router'])
                 url:'/undergraduate-application',
                 templateUrl: 'features/undergraduate-application/undergraduateApplication.html'
             })
->>>>>>> master
     });
