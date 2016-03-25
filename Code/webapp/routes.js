@@ -21,6 +21,6 @@ angular.module('routes', ['ui.router'])
             })
             .state('graduateApplication', {
                 url:'/graduate-application',
-                templateUrl: 'features/evaluation-page/evaluation.html'
+                templateUrl: 'features/graduate-application/graduateApplication.html'
             })
     });
