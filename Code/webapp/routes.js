@@ -4,7 +4,7 @@ angular.module('routes', ['ui.router'])
             $urlRouterProvider.otherwise('/');
             $stateProvider
             .state('competitionInformation', {
-                url:'/competitionInformation',
+                url:'/competition-information',
                 templateUrl: 'features/competition/competition.html'
             })
             .state('home', {
