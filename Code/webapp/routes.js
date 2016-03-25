@@ -1,8 +1,12 @@
 angular.module('routes', ['ui.router'])
 
     .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
-            $urlRouterProvider.otherwise('/');
-            $stateProvider
+        $urlRouterProvider.otherwise('/');
+        $stateProvider
+            .state('contact', {
+                url:'/contact',
+                templateUrl: 'features/contact/contact.html'
+            })
             .state('competitionInformation', {
                 url:'/competitionInformation',
                 templateUrl: 'features/competition/competition.html'
@@ -11,8 +15,8 @@ angular.module('routes', ['ui.router'])
             	url:'/',
             	templateUrl:'features/main-page/home.html'
             })
-          .state('evaluation', {
+            .state('evaluation', {
             url:'/peer-evaluations',
             templateUrl: 'features/evaluation-page/evaluation.html'
-        })
+            })
     });
