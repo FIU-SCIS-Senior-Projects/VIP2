@@ -3,6 +3,14 @@ angular.module('routes', ['ui.router'])
     .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
         $urlRouterProvider.otherwise('/');
         $stateProvider
+            .state('contact', {
+                url:'/contact',
+                templateUrl: 'features/contact/contact.html'
+            })
+            .state('competitionInformation', {
+                url:'/competitionInformation',
+                templateUrl: 'features/competition/competition.html'
+            })
             .state('home', {
             	url:'/',
             	templateUrl:'features/main-page/home.html'
@@ -10,5 +18,10 @@ angular.module('routes', ['ui.router'])
             .state('how-vip-credits-count', {
                 url:'/how-vip-credits-count',
                 templateUrl: 'features/how-vip-credits-count/index.html'
+            })
+    });
+            .state('evaluation', {
+            url:'/peer-evaluations',
+            templateUrl: 'features/evaluation-page/evaluation.html'
             })
     });

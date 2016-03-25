@@ -1,10 +1,36 @@
+html {
+	position: relative;
+	min-height: 100%;
+}
+
 body {
-	margin: 10px 0;
+
+	margin: 10px;
+	margin-bottom: 200px;
 }
 
 .header-logo {
 	max-width: 300px;
 	padding: 10px;
+}
+
+.footer{
+	position:absolute;
+	bottom: 0;
+	left:0;
+	width: 100%;
+	height: 200px;
+	background-color: #081E3F;
+	z-index: -110;
+	border-radius: 4px;
+}
+
+.footer p{
+	color: #f2f2f2;
+	column-count: 2;
+	column-gap: 50px;
+	font-size: 1em;
+	font-weight: 300;
 }
 
 .title-box {
@@ -17,7 +43,7 @@ body {
 }
 
 .navbar {
-	background-color: #234264;
+	background-color: #081E3F;
 }
 
 .navbar li a {
@@ -27,7 +53,7 @@ body {
 
 .navbar-nav > li > a:hover,
 .navbar-nav > li > a:focus {
-    background-color: #137cb8;
+    background-color: #B6862C;
 }
 
 .navbar-collapse {
@@ -40,4 +66,82 @@ body {
 
 .navbar-nav {
 	margin: 0px;
+}
+
+.dropdown-menu,
+.dropdown-toggle:active {
+	background-color: #B6862C;
+}
+
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+	background-color: #B6862C;
+}
+
+.dropdown:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #ccc;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: #fff;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.peerTable {
+	float: right;
+	border-radius: 6px;
+	border-style: hidden; /* hide standard table (collapsed) border */
+	box-shadow: 0 0 0 1px #666; /* this draws the table border  */
+}
+
+.peerTable td, th {
+	padding: 19px;
+}
+
+.fiuColor {
+	background-color: #dce9f9;
+    text-align: center;
+	vertical-align: middle;
 }
