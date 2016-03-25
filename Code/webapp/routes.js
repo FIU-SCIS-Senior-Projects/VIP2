@@ -1,8 +1,12 @@
 angular.module('routes', ['ui.router'])
 
     .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
-            $urlRouterProvider.otherwise('/');
-            $stateProvider
+        $urlRouterProvider.otherwise('/');
+        $stateProvider
+            .state('contact', {
+                url:'/contact',
+                templateUrl: 'features/contact/contact.html'
+            })
             .state('competitionInformation', {
                 url:'/competition-information',
                 templateUrl: 'features/competition/competition.html'
