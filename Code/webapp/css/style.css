@@ -1,5 +1,12 @@
+html {
+	position: relative;
+	min-height: 100%;
+}
+
 body {
+
 	margin: 10px;
+	margin-bottom: 220px;
 }
 
 .header-logo {
@@ -8,10 +15,11 @@ body {
 }
 
 .footer{
+	position: absolute;
+	bottom: 0;
 	height: 220px;
 	background:#002958;
 	z-index: -110;
-
 }
 .footer p{
 	color: #f2f2f2;
