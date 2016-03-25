@@ -11,8 +11,12 @@ angular.module('routes', ['ui.router'])
             	url:'/',
             	templateUrl:'features/main-page/home.html'
             })
-          .state('evaluation', {
-            url:'/peer-evaluations',
-            templateUrl: 'features/evaluation-page/evaluation.html'
-        })
+            .state('evaluation', {
+                url:'/peer-evaluations',
+                templateUrl: 'features/evaluation-page/evaluation.html'
+            })
+            .state('graduateApplication', {
+                url:'/graduate-application',
+                templateUrl: 'features/evaluation-page/evaluation.html'
+            })
     });
