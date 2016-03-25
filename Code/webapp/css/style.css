@@ -145,3 +145,13 @@ body {
     text-align: center;
 	vertical-align: middle;
 }
+.fiuGoldColor {
+	background-color: #B6862C;
+}
+.buttonWrapper {
+	text-align: center;
+}
+
+.undergradLoginButton {
+	color: #fff;
+}
