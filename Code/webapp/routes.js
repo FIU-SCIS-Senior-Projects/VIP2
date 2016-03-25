@@ -8,7 +8,7 @@ angular.module('routes', ['ui.router'])
                 templateUrl: 'features/contact/contact.html'
             })
             .state('competitionInformation', {
-                url:'/competitionInformation',
+                url:'/competition-information',
                 templateUrl: 'features/competition/competition.html'
             })
             .state('home', {
@@ -20,7 +20,11 @@ angular.module('routes', ['ui.router'])
                 templateUrl: 'features/how-vip-credits-count/index.html'
             })
             .state('evaluation', {
-            url:'/peer-evaluations',
-            templateUrl: 'features/evaluation-page/evaluation.html'
+                url:'/peer-evaluations',
+                templateUrl: 'features/evaluation-page/evaluation.html'
+            })
+            .state('graduateApplication', {
+                url:'/graduate-application',
+                templateUrl: 'features/graduate-application/graduateApplication.html'
             })
     });
