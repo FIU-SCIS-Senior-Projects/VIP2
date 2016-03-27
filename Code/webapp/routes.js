@@ -31,10 +31,10 @@ angular.module('routes', ['ui.router', 'UserProfileController'])
                 url:'/undergraduate-application',
                 templateUrl: 'features/undergraduate-application/undergraduateApplication.html'
             })
-			.state('userProfile', {
+            .state('userProfile', {
                 url:'/profile',
                 templateUrl: 'features/profile-page/userProfile.html',
-				controller: 'UserCtrl',
-				controllerAs: 'user'
+		controller: 'UserCtrl',
+		controllerAs: 'user'
             });
     });
