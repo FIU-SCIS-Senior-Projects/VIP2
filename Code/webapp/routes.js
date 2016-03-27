@@ -1,4 +1,4 @@
-angular.module('routes', ['ui.router'])
+angular.module('routes', ['ui.router', 'UserProfileController'])
 
     .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
         $urlRouterProvider.otherwise('/');
@@ -31,4 +31,10 @@ angular.module('routes', ['ui.router'])
                 url:'/undergraduate-application',
                 templateUrl: 'features/undergraduate-application/undergraduateApplication.html'
             })
+            .state('userProfile', {
+                url:'/profile',
+                templateUrl: 'features/profile-page/userProfile.html',
+		controller: 'UserCtrl',
+		controllerAs: 'user'
+            });
     });
