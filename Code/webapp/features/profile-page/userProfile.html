@@ -1,21 +1,29 @@
 <div>
-	<div ng-hide="user.editorEnabled">
-		<a style="cursor:pointer" ng-click="user.enableEditor()">Edit Information</a>
-	</div>
-	<div ng-hide="user.editorEnabled">
-		<p>{{user.mockData[0].firstName}}</p>
-		<p>{{user.mockData[0].lastName}}</p>
-		<p>{{user.mockData[0].email}}</p>
-	</div>
-	<div ng-show="user.editorEnabled">
-		<input ng-model="user.firstName" ng-show="user.editorEnabled">
-		<br>
-		<input ng-model="user.lastName" ng-show="user.editorEnabled">
-		<br>
-		<input ng-model="user.email" ng-show="user.editorEnabled">
-		<br>
-		<a style="cursor:pointer" ng-click="user.save()">Save</a> or
-		<a style="cursor:pointer" ng-click="user.disableEditor()">cancel</a>.
-	</div>
-	<h1>{{user.message}}</h1>
+	<form ng-submit="user.save()">
+		<label class="col-sm-2 control-label">First Name</label>
+		<div class="col-sm-10 form-group">
+			<p ng-hide="user.editorEnabled">{{user.mockData[0].firstName}}</p>
+			<input ng-show="user.editorEnabled" type="text" ng-model="user.firstName" class="form-control" Required="True">
+		</div>
+
+		<label class="col-sm-2 control-label">Last Name</label>
+		<div class="col-sm-10 form-group">
+			<p ng-hide="user.editorEnabled">{{user.mockData[0].lastName}}</p>
+			<input ng-show="user.editorEnabled" type="text" ng-model="user.lastName" class="form-control" Required="True">
+		</div>
+
+		<label class="col-sm-2 control-label">Email</label>
+		<div class="col-sm-10 form-group">
+			<p ng-hide="user.editorEnabled">{{user.mockData[0].email}}</p>
+			<input ng-show="user.editorEnabled" type="text" ng-model="user.email" class="form-control" Required="True">
+		</div>
+
+		<div ng-hide="user.editorEnabled">
+			<button type="button" class="btn btn-default" ng-click="user.enableEditor()">Edit Information</button>
+		</div>
+		<div ng-show="user.editorEnabled">
+			<button type="submit" class="btn btn-primary">Save</button>
+			<button type="button" class="btn btn-default" ng-click="user.disableEditor()">Cancel</button>
+		</div>
+	</form>
 </div>

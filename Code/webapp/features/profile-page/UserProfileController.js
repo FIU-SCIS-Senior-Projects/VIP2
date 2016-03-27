@@ -23,7 +23,9 @@ angular.module('UserProfileController', [])
 		};
 
 		vm.save = function() {
-			vm.mockData[0].firstName = vm.editableTitle;
+			vm.mockData[0].firstName = vm.firstName;
+			vm.mockData[0].lastName = vm.lastName;
+			vm.mockData[0].email = vm.email;
 			vm.disableEditor();
 		};
 	});
