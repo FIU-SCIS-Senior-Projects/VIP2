@@ -1,14 +1,21 @@
 <div>
-	<div class=".col-xs-12 .col-sm-6 .col-md-8">
-		<div ng-hide="user.editorEnabled">
-			<p>{{user.mockData[0].firstName}}</p>
-			<a style="cursor:pointer" ng-click="user.enableEditor()">Edit Name</a>
-		</div>
-		<div ng-show="user.editorEnabled">
-			<input ng-model="user.editableTitle" ng-show="user.editorEnabled">
-			<a style="cursor:pointer" ng-click="user.save()">Save</a> or
-			<a style="cursor:pointer" ng-click="user.disableEditor()">cancel</a>.
-		</div>
+	<div ng-hide="user.editorEnabled">
+		<a style="cursor:pointer" ng-click="user.enableEditor()">Edit Information</a>
+	</div>
+	<div ng-hide="user.editorEnabled">
+		<p>{{user.mockData[0].firstName}}</p>
+		<p>{{user.mockData[0].lastName}}</p>
+		<p>{{user.mockData[0].email}}</p>
+	</div>
+	<div ng-show="user.editorEnabled">
+		<input ng-model="user.firstName" ng-show="user.editorEnabled">
+		<br>
+		<input ng-model="user.lastName" ng-show="user.editorEnabled">
+		<br>
+		<input ng-model="user.email" ng-show="user.editorEnabled">
+		<br>
+		<a style="cursor:pointer" ng-click="user.save()">Save</a> or
+		<a style="cursor:pointer" ng-click="user.disableEditor()">cancel</a>.
 	</div>
 	<h1>{{user.message}}</h1>
 </div>
