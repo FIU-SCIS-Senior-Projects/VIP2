@@ -35,4 +35,8 @@ angular.module('routes', ['ui.router'])
 				url:'/presentations-and-publications',
 				templateUrl: 'features/presentations-and-publications/presentationsAndPublications.html'
 			})
+            .state('login', {
+                url:'/login',
+                templateUrl: 'features/login/loginTemplate.html'
+            })
     });
