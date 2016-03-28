@@ -1,4 +1,4 @@
-angular.module('routes', ['ui.router', 'ProjectProposalController'])
+angular.module('routes', ['ui.router'])
 
     .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
         $urlRouterProvider.otherwise('/');
@@ -38,7 +38,7 @@ angular.module('routes', ['ui.router', 'ProjectProposalController'])
             .state('projectProposal', {
                 url:'/project-proposal',
                 templateUrl: 'features/project-proposals/projectProposal.html',
-                controller: "ProjectProposalController",
-                controllerAs: project
+                controller: 'ProjectProposalController',
+                controllerAs: 'project'
             })
     });
