@@ -35,4 +35,9 @@ angular.module('routes', ['ui.router'])
                 url:'/login',
                 templateUrl: 'features/login/loginTemplate.html'
             })
+            .state('projectProposal', {
+                url:'/project-proposal',
+                templateUrl: 'features/project-proposals/projectProposal.html',
+                controller: "ProjectProposalController"
+            })
     });
