@@ -31,4 +31,8 @@ angular.module('routes', ['ui.router'])
                 url:'/request-registration-permit',
                 templateUrl: 'features/registration-permit/registrationPermit.html'
             })
+            .state('login', {
+                url:'/login',
+                templateUrl: 'features/login/loginTemplate.html'
+            })
     });
