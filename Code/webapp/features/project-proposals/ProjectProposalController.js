@@ -11,7 +11,7 @@ angular.module('ProjectProposal', [])
             console.log(vm.title);
             console.log(vm.description);
             console.log(vm.disciplines);
-            console.log(vm.minStudents);
+            console.log(vm.firstSemester);
             console.log(vm.maxStudents);
         };
     });
