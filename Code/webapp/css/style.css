@@ -156,10 +156,6 @@ body {
 	color: #fff;
 }
 
-.right {
-    text-align: right;
-}
-
 .top-margin {
     margin-top: 0px; 
 }
@@ -259,7 +255,15 @@ body {
 	
 }
 
+.projects-top-bar {
+    border-bottom: solid 1px #d7d7d7; 
+    background: -webkit-gradient(linear, 0 93%, 0 100%, from(#fff), to(#f0f0f0));
+    font-family: "Helvetica Neue", Arial, Helvetica, "Trebuchet MS", sans-serif; 
+    font-size: 87.5%;  
+}
 
-
+.right {
+    text-align: right;
+}
 
 
