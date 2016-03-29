@@ -1,5 +1,10 @@
 angular.module('mainApp', [
 	'vipHeader',
 	'vipFooter',
-	'routes'
+	'routes',
+    
+    /*
+    * Features Modules
+    */
+    'vip-projects',
 ]);

@@ -155,3 +155,38 @@ body {
 .undergradLoginButton {
 	color: #fff;
 }
+
+.right {
+    text-align: right;
+}
+
+.top-margin {
+    margin-top: 0px; 
+}
+
+.horizontal-lin {
+    border-bottom: 1px solid #1E1E1E;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+
+.custom-span{
+    text-decoration: none; 
+    text-overflow: ellipsis; 
+    display: block; 
+    overflow: hidden; 
+    white-space: nowrap;
+    height: 200px;
+    width: 60px;
+}
+
+.custom-p{
+    text-decoration: none; 
+    text-overflow: ellipsis; 
+    display: block; 
+    overflow: hidden; 
+    height: 200px;
+    /*width: 200px;*/
+    margin-right: 10px;
+}

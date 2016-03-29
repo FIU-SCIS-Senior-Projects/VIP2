@@ -28,8 +28,10 @@ angular.module('routes', ['ui.router'])
                 templateUrl: 'features/graduate-application/graduateApplication.html'
             })
             .state('projects',{ 
-                url:'/projects',
-                templateUrl:'features/projects/projects.html'
+                url:'/vip-projects',
+                templateUrl:'features/vip-projects/vip-projects.html',
+                controller: 'VIPProjectsCtrl',
+                controllerAs: 'vm',
             })
             .state('undergraduateApplication', {
                 url:'/undergraduate-application',
