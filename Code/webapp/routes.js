@@ -1,4 +1,4 @@
-angular.module('routes', ['ui.router', 'UserProfileController'])
+angular.module('routes', ['ui.router', 'UserProfileController','projectApplicationController'])
 
     .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
         $urlRouterProvider.otherwise('/');
@@ -52,5 +52,12 @@ angular.module('routes', ['ui.router', 'UserProfileController'])
                 templateUrl: 'features/profile-page/userProfile.html',
                 controller: 'UserCtrl',
                 controllerAs: 'user'
+            })
+            .state('studentconfirminfo', {
+                url:'/studentConfirmation',
+                templateUrl: 'features/apply-to-project/studentConfirmInfo.html',
+                controller: 'projAppCtrl',
+                controllerAs: 'projApp'
             });
+
     });
