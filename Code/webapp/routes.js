@@ -31,6 +31,10 @@ angular.module('routes', ['ui.router'])
                 url:'/undergraduate-application',
                 templateUrl: 'features/undergraduate-application/undergraduateApplication.html'
             })
+            .state('registerPermit', {
+                url:'/request-registration-permit',
+                templateUrl: 'features/registration-permit/registrationPermit.html'
+            })
             .state('login', {
                 url:'/login',
                 templateUrl: 'features/login/loginTemplate.html'
