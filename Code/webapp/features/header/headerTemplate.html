@@ -1,3 +1,6 @@
+<div class = "loginIcon">
+	<a ui-sref="login"><span class = "glyphicon glyphicon-user"></span></a>
+</div>
 <div>
 	<a href="/"><img class="header-logo" src="img/FIU_VIP.jpg"></a>
 	<nav class="navbar navbar-padding">
@@ -19,7 +22,7 @@
 					<a ui-sref="#" class="dropdown-toggle">About VIP <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a ui-sref="#">About VIP </a></li>
-						<li><a ui-sref="#">Presentations and Publications</a></li>
+						<li><a ui-sref="presentationsAndPublications">Presentations and Publications</a></li>
 						<li class="dropdown-submenu"><a href="#">VIP Consortium</a>
 							<ul class="dropdown-menu">
 								<li><a href="#">2016 Consortium Meeting</a></li>
@@ -28,13 +31,14 @@
 								<li><a href="#">2014 Planning Workshop</a></li>
 							</ul>
 						</li>
+                                                <li><a ui-sref="organization">Organization</a></li>
 						<li><a ui-sref="contact">Contact</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
 					<a ui-sref="#" class="dropdown-toggle">Current VIP Students <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a ui-sref="#">Permit Request Form</a></li>
+						<li><a ui-sref="registerPermit">Permit Request Form</a></li>
                                                 <li><a ui-sref="how-vip-credits-count">How VIP Credit Counts</a></li>
 						<li class="dropdown-submenu"><a href="#">Assessments & Teams Tools</a>
 							<ul class="dropdown-menu">
