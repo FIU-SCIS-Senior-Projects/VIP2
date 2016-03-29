@@ -31,10 +31,10 @@ angular.module('routes', ['ui.router'])
                 url:'/undergraduate-application',
                 templateUrl: 'features/undergraduate-application/undergraduateApplication.html'
             })
-			.state('presentationsAndPublications', {
-				url:'/presentations-and-publications',
-				templateUrl: 'features/presentations-and-publications/presentationsAndPublications.html'
-			})
+	    .state('presentationsAndPublications', {
+	        url:'/presentations-and-publications',
+	        templateUrl: 'features/presentations-and-publications/presentationsAndPublications.html'
+	    })
             .state('login', {
                 url:'/login',
                 templateUrl: 'features/login/loginTemplate.html'
