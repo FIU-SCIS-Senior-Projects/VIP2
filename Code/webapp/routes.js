@@ -34,7 +34,7 @@ angular.module('routes', ['ui.router', 'UserProfileController'])
             .state('userProfile', {
                 url:'/profile',
                 templateUrl: 'features/profile-page/userProfile.html',
-		controller: 'UserCtrl',
-		controllerAs: 'user'
+				controller: 'UserCtrl',
+				controllerAs: 'user'
             });
     });
