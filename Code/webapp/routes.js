@@ -35,4 +35,8 @@ angular.module('routes', ['ui.router'])
                 url:'/login',
                 templateUrl: 'features/login/loginTemplate.html'
             })
+            .state('registration', {
+                url:'/registration',
+                templateUrl: 'features/registration/registrationTemplate.html'
+            })
     });

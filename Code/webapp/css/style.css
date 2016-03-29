@@ -225,7 +225,14 @@ body {
 	
 }
 
-
-
+.register {
+	background-color: rgba(172, 172, 172, 0.3);
+	width: 500px;
+	margin: 10px auto;
+	padding: 10px;
+	border-radius: 10px;
+	color: #444;
+	box-shadow: 0 0 20px 0 #000000;
+}
 
 
