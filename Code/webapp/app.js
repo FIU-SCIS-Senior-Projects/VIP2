@@ -1,5 +1,6 @@
 angular.module('mainApp', [
 	'vipHeader',
 	'vipFooter',
-	'routes'
+    	'vip-projects',		//Features Module
+    	'routes'
 ]);

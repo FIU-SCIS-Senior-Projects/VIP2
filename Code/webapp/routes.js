@@ -27,6 +27,12 @@ angular.module('routes', ['ui.router'])
                 url:'/graduate-application',
                 templateUrl: 'features/graduate-application/graduateApplication.html'
             })
+            .state('projects',{ 
+                url:'/vip-projects',
+                templateUrl:'features/vip-projects/vip-projects.html',
+                controller: 'VIPProjectsCtrl',
+                controllerAs: 'vm',
+            })
             .state('undergraduateApplication', {
                 url:'/undergraduate-application',
                 templateUrl: 'features/undergraduate-application/undergraduateApplication.html'
