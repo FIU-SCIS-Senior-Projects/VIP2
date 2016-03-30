@@ -163,27 +163,6 @@ html {
     margin-bottom: 5px;
 }
 
-
-.custom-span{
-    text-decoration: none; 
-    text-overflow: ellipsis; 
-    display: block; 
-    overflow: hidden; 
-    white-space: nowrap;
-    height: 200px;
-    width: 60px;
-}
-
-.custom-p{
-    text-decoration: none; 
-    text-overflow: ellipsis; 
-    display: block; 
-    overflow: hidden; 
-    height: 200px;
-    /*width: 200px;*/
-    margin-right: 10px;
-}
-
 .loginIcon{
 	float:right;
 	font-size:1.9em;
@@ -253,12 +232,59 @@ html {
 }
 
 .projects-top-bar {
+    margin-bottom: 1.5em;
+    padding: 3.5em;
     border-bottom: solid 1px #d7d7d7; 
     background: -webkit-gradient(linear, 0 93%, 0 100%, from(#fff), to(#f0f0f0));
     font-family: "Helvetica Neue", Arial, Helvetica, "Trebuchet MS", sans-serif; 
     font-size: 87.5%;  
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
-.right {
+.project-second-section-sidebar {
+    padding: 1em;
+    font-size: 1em;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.project-second-section-middle {
+    font-family: "Helvetica Neue", Arial, Helvetica, "Trebuchet MS", sans-serif;
+    font-size: 87.5%;
+}
+
+.project-info {
+    margin-bottom:30px;
+    padding-top: 14px;
+}
+
+.team-info {
+    padding-left: 0px;
+    font-size: 0.8em;
+}
+
+.sort-by-padding {
+    padding-right: 0px;
     text-align: right;
+}
+
+.side-bar-button:hover,
+.side-bar-button:focus {
+    background-color: #137CB8;
+}
+
+.side-bar-button {
+    font-size: 1em;
+}
+
+.custom-span{
+    text-decoration: none; 
+    text-overflow: ellipsis; 
+    display: block; 
+    overflow: hidden; 
+    height: 200px;
+}
+
+.team-info-name {
+    padding-left: 0px;
 }

@@ -1,45 +1,46 @@
-<!DOCTYPE html>
-<div class="col-sm">
-    <div class="container projects-top-bar">
-        <div>
-            <h3>VIP Teams</h3>
+<div class="projects-top-bar">
+    <div>
+        <h3>VIP Teams</h3>
+    </div>
+    <div class="col">
+        <div class="col-sm-4 team-info">
+            <h5>Showing 1-35 out of 35</h5>
         </div>
-        <div class="col">
-            <div class="col-sm-4">
-                <h5>Showing 1-35 out of 35</h5>
-            </div>
-            <div class="col-sm-8 right">
-                <label class=""><h5>Sort By:</h5></label>
-                <select class="btn btn-default dropdown-toggle top-margin">
-                    <option value="Title">Title</option>
-                    <option value="Start Year">Start Year</option>
-                </select>
-            </div>
+        <div class="col-sm-8 sort-by-padding">
+            <label class=""><h5>Sort By:</h5></label>
+            <select class="btn btn-default dropdown-toggle top-margin">
+                <option value="Title">Title</option>
+                <option value="Start Year">Start Year</option>
+            </select>
         </div>
     </div>
-    <div class="container">     
-        <div class="col-sm-3">
-            <div class="col-sm-12"><h5>My Fields</h5></div>
-            <!--<div class="horizontal-line"></div>-->
-            <div class="col-sm-12" ng-repeat="discipline in vm.disciplines">
-                <a>{{discipline.name}}</a> 
-            </div>
+</div>
+<div class="">     
+    <div class="col-sm-3">
+        <div class="col-sm-12 project-second-section-sidebar">
+            <button class="btn btn-default" ng-click="vm.filterByDiscipline(discipline)">Show All</button>
         </div>
-        <div class="col-sm-9">
-            <div class="col-sm-6" ng-repeat="project in vm.projects" style="margin-bottom:30px;">
-                <div class="row">
-                    <div class="col-sm-5">
-                        <img src="http://www.mintpressnews.com/wp-content/uploads/2015/09/robot.jpg" alt="Smiley face" height="90" width="120">
-                    </div>
-                    <div class="col-sm-7">
-                        {{project.name}}
-                    </div>
+        <div class="col-sm-12">
+            <div class="btn"><h4>My Fields</h4></div>
+        </div>
+        <div class="col-sm-12" ng-repeat="discipline in vm.disciplines">
+            <div class="btn side-bar-button" ng-click="vm.filterByDiscipline(discipline)">{{discipline.name}}</div> 
+        </div>
+    </div>
+    <div class="col-sm-9 project-second-section-middle">
+        <div class="col-sm-6 project-info" ng-repeat="project in vm.projects">
+            <div class="">
+                <div class="col-sm-5">
+                    <img ng-src="{{project.image}}" alt="Smiley face" height="120" width="120">
                 </div>
-                <div class="row">
-                    <span class="custom-p">
-                        {{project.description}}
-                    </span>
+                <div class="col-sm-7 team-info-name">
+                    <h4>{{project.name}}</h4>
                 </div>
+            </div>
+            <div class="">
+                <span >
+                    {{project.description}}
+                </span>
             </div>
         </div>
     </div>
