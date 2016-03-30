@@ -31,6 +31,14 @@ angular.module('routes', ['ui.router'])
                 url:'/undergraduate-application',
                 templateUrl: 'features/undergraduate-application/undergraduateApplication.html'
             })
+	        .state('presentationsAndPublications', {
+	            url:'/presentations-and-publications',
+	            templateUrl: 'features/presentations-and-publications/presentationsAndPublications.html'
+	        })
+            .state('registerPermit', {
+                url:'/request-registration-permit',
+                templateUrl: 'features/registration-permit/registrationPermit.html'
+            })
             .state('login', {
                 url:'/login',
                 templateUrl: 'features/login/loginTemplate.html'
@@ -40,5 +48,8 @@ angular.module('routes', ['ui.router'])
                 templateUrl: 'features/project-proposals/projectProposal.html',
                 controller: 'ProjectProposalController',
                 controllerAs: 'project'
+            .state('organization', {
+                url:'/organization',
+                templateUrl: 'features/organization/organization.html'
             })
     });
