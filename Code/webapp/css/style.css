@@ -279,12 +279,15 @@ html {
 
 .custom-span{
     text-decoration: none; 
-    text-overflow: ellipsis; 
     display: block; 
-    overflow: hidden; 
-    height: 200px;
+    width: 350px;
+    height: 175px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: pre-wrap;
 }
 
 .team-info-name {
     padding-left: 0px;
+    margin-top: 30px;
 }

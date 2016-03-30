@@ -3,15 +3,15 @@
 
     angular
         .module('vip-projects')
-        .controller('VIPProjectsCtrl', VIPProjectsCtrl);
+        .controller('VIPProjectsDetailedCtrl', VIPProjectsDetailedCtrl);
 
-    VIPProjectsCtrl.$inject = ['$state', '$scope'];
+    VIPProjectsDetailedCtrl.$inject = ['$state', '$scope', '$stateParams'];
     /* @ngInject */
-    function VIPProjectsCtrl($state, $scope) {
+    function VIPProjectsDetailedCtrl($state, $scope, $stateParams) {
         var vm = this;
-        vm.filterByDiscipline = filterByDiscipline;
-        vm.viewDetails = viewDetails;
+        vm.data = null;
         
+        //Note this data will not be here this will be in the db and the data will come from a get request
         vm.projects = [
             {id: 1, name:"Smart Buildings", image:"img/Sample_IMG.jpg", description:"Smart Building is a collaborative project between the School of Computing & Information Sciences and the OHL School of Construction at FIU. This project aims to facilitate the energy conservation in buildings by rewarding good behavior in saving energy. The extensive use of hardware sensors and mobile software applications has made this project a great candidate for our VIP program.\nBuildings are the number one energy consumers in the United States. It has been estimated around 30% of the electricity consumed is being wasted through inefficient usage. Our goal is to be able to motivate people to save energy by demonstrating their energy performance and comparing the performance of one room with the rest of the building.\nThere is no current system that provides a smart approach to compare energy consumption of building with the occupancy behavior in different zones. Our goal is to provide a solution that can teach the user about energy consumption and motive him/her to save energy.\nThe requirements of the solution are as follows:\n·      Allow the user to choose from different zones in a building.\n·      Allow the user to have access to information on occupancy in different zones.\n·      Allow the user to have access to information on lighting in different zones.\n·      Allow the user to have access to information the statistics of temperature, lighting, occupancy and plug load of different zones.\n·      Allow the user to add new zones he/she wants to have access to.\n·      Allow the user to compare his/her room energy performance with the rest of the building. ", disciplineId:1},
             
@@ -27,7 +27,7 @@
             
             {id: 7, name:"VIP Tools", image:"img/Sample_IMG.jpg", description:"After some careful study and deliberation of pros and cons of some state of the art existing tools, for managing the development of each VIP project itself, we have adopted Mingle from ThoughWorks as our scrum/agile project management tool and GitHub as our version control tool. However, as the above tools are far from complete with respect to all the aspects of tools required for managing VIP Sites, we are developing a number of VIP Tools including VIP Site Management (VSM), Collaborative Platform (CP), Mobile Judge (MJ), and Virtual Job Fair (VJF). A short description of each follows.~~ For managing VIP Sites, we are currently developing the VIP Site Management (VSM) that helps students with their applications to join our existing VIP teams and our instructors with their proposals for new VIP projects. This tool can also help the VIP program coordinator to review the applications and project proposals, notify the applicants and proposers with the outcome of the review process, and facilitate the project assignments based on the interest of the students, their skillset and qualification to work in different teams, and the history of their involvements with the other VIP projects, if any.~~ Collaborative Platform (CP) addresses the lack of a reliable source for answering students’ questions related to their VIP projects. At times students rely on Internet sources that are often unreliable, inaccurate and incomplete with respect to VIP needs. In an effort to solve this issue, we decided to develop the Collaborative Platform in order to connect students (mentees) with the right experts (mentors). To improve the interaction between mentors and mentees, a system to keep track of unavailable mentors, as well as a system that will automatically assign a ticket to a new mentor when the need arises will be implemented. The system also allow for on-demand chat, audio, and videoconference among two or more individuals with access to share white board and other communication facilities.~~ Mobile Judge (MJ) is a system that eases the grading process of VIP projects at VIP Showcases. Professionals and instructors in the field who are able to weigh in and give feedback on students’ work and accomplishments attend these events. MJ is an effort aims to provide a centralized platform that allows the VIP administrator to invite Judges to the event and expedite the process of grading students. Students, too, would be able to receive real-time updates of Judge grades and get feedback on their demo and presentation. MJ aims to make the grading process much simpler and streamlined so that the judges can focus on the projects themselves and less so on the manner of grading.~~ Virtual Job Fair is a collaborative project between the School of Computing & Information Sciences and the Career Services at FIU. This collaborative effort is going to develop a VIP tool that helps our VIP participants to find internship opportunities while participating in our VIP projects and land on best job positions possible when they graduate from our program and are ready to start their careers.~~ We intend to continue the development of our VIP tools and share them with the rest of our partners in the VIP consortium. Some of the tools are ready to be used and some are still under development. We intend to improve the tools continuously based on the feedback that we will receive from the VIP consortium and the open source community.", disciplineId:5},
         ];
-        
+        //Note this data will not be here this will be in the db and the data will come from a get request
         vm.disciplines = [
             {'id':1, 'name':"Robotics"},
             {'id':2, 'name':"Augmented Reality"},
@@ -38,32 +38,23 @@
         
         init();
         function init(){
-            vm.disciplinesBackUp = vm.disciplines;
-            vm.projectsBackUp = vm.projects;
-            console.log("Controller started");
+            console.log("Controller detailed started");
+            if($stateParams.id != null){
+                vm.id = parseInt($stateParams.id);
+                getProjectById(vm.id);
+            }
         }
         
-        function filterByDiscipline (discipline) {
-            console.log("This should be a call to the backend filtering the data");
-            if(discipline != null){
-                vm.disciplines = [];
-                vm.projects = [];
-                angular.forEach(vm.projectsBackUp, function(item){
-                    if(item.disciplineId === discipline.id)
+        function getProjectById (id){
+            //Request to the backend goes here instead of the bellow
+            angular.forEach(vm.projects, function(item){
+                    if(item.id === id)
                     {
-                        vm.projects.push(item); 
-                        vm.disciplines.push(discipline);
+                        vm.data= item; 
                     }
                 })
-            }
-            else {
-                vm.disciplines = vm.disciplinesBackUp;
-                vm.projects = vm.projectsBackUp;
-            }
-        } 
-        
-        function viewDetails (data) {
-            $state.go('projectsDetailed',{id: data.id});
         }
+        
+        
     }
 })();
