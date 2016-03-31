@@ -46,13 +46,13 @@
         function filterByDiscipline (discipline) {
             console.log("This should be a call to the backend filtering the data");
             if(discipline != null){
-                vm.disciplines = [];
+                //vm.disciplines = [];
                 vm.projects = [];
                 angular.forEach(vm.projectsBackUp, function(item){
                     if(item.disciplineId === discipline.id)
                     {
                         vm.projects.push(item); 
-                        vm.disciplines.push(discipline);
+                        //vm.disciplines.push(discipline);
                     }
                 })
             }
