@@ -1,1 +1,0 @@
-var projects = require('../models/project');

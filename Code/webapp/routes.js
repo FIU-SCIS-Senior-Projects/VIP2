@@ -48,11 +48,11 @@ angular.module('routes', ['ui.router'])
                 templateUrl: 'features/project-proposals/projectProposal.html',
                 controller: 'ProjectProposalController',
                 controllerAs: 'project'
+            })
             .state('organization', {
                 url:'/organization',
                 templateUrl: 'features/organization/organization.html'
             })
-
             .state('registration', {
                 url: '/registration',
                 templateUrl: 'features/registration/registrationTemplate.html'
