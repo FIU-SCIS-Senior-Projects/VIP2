@@ -1,5 +1,5 @@
-angular.module('ProjectProposal', [])
-    .controller('ProjectProposalController', function($scope){
+angular.module('ProjectProposalController', ['ProjectProposalService'])
+    .controller('ProjectProposalController', function($scope, ProjectService){
         $scope.list = [1,2,3];
 
         var vm = this;
@@ -13,5 +13,10 @@ angular.module('ProjectProposal', [])
             console.log(vm.disciplines);
             console.log(vm.firstSemester);
             console.log(vm.maxStudents);
+
+            ProjectService.createProject($scope.project)
+                .success(function(data){
+                    console.log('holy shit bro')
+                });
         };
     });

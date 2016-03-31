@@ -1,6 +1,6 @@
 angular.module('mainApp', [
 	'vipHeader',
 	'vipFooter',
-	'ProjectProposal',
+	'ProjectProposalController',
 	'routes'
 ]);

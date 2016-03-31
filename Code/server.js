@@ -1,7 +1,7 @@
 //base setup
 var express		= require('express');
-var mongoose	        = require('mongoose');
-var bodyParser	        = require('body-parser');
+var mongoose	= require('mongoose');
+var bodyParser	= require('body-parser');
 var path		= require('path');
 var config		= require('./api/config/config');
 var app			= express();
@@ -24,8 +24,10 @@ app.use(function(req, res, next) {
 
 // set static files location
 // used for requests that our frontend will make
-console.log(__dirname);
 app.use(express.static(__dirname + '/webapp'));
+
+var projectRoutes = require('./api/routes/projectsRoutes')(app,express);
+app.use('/project', projectRoutes);
 
 //home page
 app.get('*', function (req, res) {
