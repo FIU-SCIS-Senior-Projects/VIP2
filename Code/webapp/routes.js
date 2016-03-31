@@ -52,5 +52,9 @@ angular.module('routes', ['ui.router', 'UserProfileController'])
                 templateUrl: 'features/profile-page/userProfile.html',
                 controller: 'UserCtrl',
                 controllerAs: 'user'
-            });
-    });
+            })
+            .state('registration', {
+                url: '/registration',
+                templateUrl: 'features/registration/registrationTemplate.html'
+            })
+        });
