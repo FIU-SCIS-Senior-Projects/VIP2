@@ -1,0 +1,40 @@
+<div>
+
+    <p>
+        <strong>Confirm that your data is up-to-date</strong> <br/><br/><br/>
+
+    </p>
+    <form ng-submit= "projApp.save()" >
+
+        <label class="col-sm-2 control-label">Project Selected</label>
+        <div class="col-sm-10 form-group">
+            <select  ng-model="projApp.selectedProject" ng-options="p as p.name for p in projApp.mockProjects" class="form-control" Required="True" >
+            </select>
+        </div>
+
+        <label class="col-sm-2 control-label">First Name</label>
+        <div class="col-sm-10 form-group">
+            <input type="text" ng-model="projApp.firstName" class="form-control" Required="True">
+        </div>
+
+        <label class="col-sm-2 control-label">Last Name</label>
+        <div class="col-sm-10 form-group">
+            <input  type="text" ng-model="projApp.lastName" class="form-control" Required="True">
+        </div>
+
+        <label class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-10 form-group">
+            <input type="text" ng-model="projApp.email" class="form-control" Required="True">
+        </div>
+
+        <label class="col-sm-2 control-label">Panther ID</label>
+        <div class="col-sm-10 form-group">
+            <input type="text" ng-model="projApp.pID" class="form-control" Required="True">
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary">Save & Submit</button>
+            <button type="button" class="btn btn-default" ng-click="">Cancel</button>
+        </div>
+    </form>
+</div>
