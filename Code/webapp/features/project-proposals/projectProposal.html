@@ -26,9 +26,12 @@
             <input type="text" class="form-control" placeholder="" ng-model="project.disciplines" required="True">
         </div>
 
-            <div class="checkbox" ng-repeat="item in items">
-            <label><input type="checkbox"> Should discplines should be checkboxes?</label>
+        <div class = "collapse" ng-repeat = "item in items">
+            <p>{{item}}
+            <div class="checkbox" ng-repeat="item in item">
+            <label><input type="checkbox"> {{item}}?</label>
             </div>
+        </div>
 
         <button type="submit" class="btn btn-default">Submit</button>
         <br>
