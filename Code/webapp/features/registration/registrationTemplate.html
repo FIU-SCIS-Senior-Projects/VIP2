@@ -1,23 +1,32 @@
 <div class = register >
-<h3  align="center" > Create Account  </h3>
-    <!--  <form ng-submit="cUser.saveUser()">   -->
-    <form>
-           <div>
-           <input class="form-control" placeholder = "First Name" class = 'form-control' type="text" ng-model="cUser.userData.f_name" />
-       </div><br>
-       <div>
-           <input class="form-control"  placeholder = "Last Name" class = 'form-control' type="text" ng-model="cUser.userData.l_name" />
-       </div><br>
-        <div>
-            <input class="form-control" placeholder = "Email" class = 'form-control' type="text" ng-model="cUser.userData.email" />
-        </div><br>
-        <div>
-          <input class="form-control"  placeholder = "Password" type="password" ng-model="cUser.userData.password" />
-        </div><br>
-        <div>
-          <input  placeholder = "Confirm Password" type="password" ng-model="cUser.userData.passconf" />
-    </div><br>
-            <label>User Type:</label>
+    <h3  align="center" > Registration </h3>
+    <form ng-submit="cUser.createUser()">
+        <div class = "form-bar">
+            <div class = "icon"><span class="fa fa-lg fa-user"></span></div>
+            <div class = "input"><input class="form-control"  placeholder = "First Name" type="text" ng-model="cUser.userData.f_Name"></input></div>
+        </div>
+        <br><br><br>
+        <div class = "form-bar">
+            <div class = "icon"><span class="fa fa-lg fa-user"></span></div>
+            <div class = "input"><input class="form-control"  placeholder = "Last Name" type="text" ng-model="cUser.userData.l_Name"></input></div>
+        </div>
+        <br><br><br>
+        <div class = "form-bar">
+            <div class = "icon"><span class="fa fa-lg fa-envelope"></span></div>
+            <div class = "input"> <input class="form-control"  placeholder = "Email" type="text" ng-model="cUser.userData.email"></input></div>
+        </div>
+        <br><br><br>
+        <div class = "form-bar">
+            <div class = "icon"><span class="fa fa-lg fa-key"></span></div>
+            <div class = "input"><input class="form-control"  placeholder = "Password" type="password" ng-model="cUser.userData.password"></input></div>
+        </div>
+        <br><br><br>
+        <div class = "form-bar">
+            <div class = "icon"><span class="fa fa-lg fa-key"></span></div>
+            <div class = "input"><input class="form-control"  placeholder = "Confirm Password" type="password" ng-model="cUser.userData.passconf"></input>
+            </div></div>
+        <br> <br><br>
+        <label>User Type:</label>
         <div>
             <select class = 'form-control' ng-model="cUser.userData.userType">
                 <!--<option selected="" value="Default">(Please select a rank)</option> -->
@@ -27,9 +36,7 @@
                 <option value="PendingPI">PI/CoPI</option>
             </select>
         </div><br>
-
-
-            <label>Department:</label>
+        <label>Department:</label>
         </li>
         <div>
             <select class = 'form-control' ng-model="cUser.userData.Department">
@@ -106,16 +113,15 @@
                 <option value="Religious Studies">Religious Studies</option>
             </select>
         </div><br>
+        <div align="center">
+            <button style= "width: 150px;" type="submit" class="btn btn-primary btn-block">
+                <i class="fa fa-lg fa-user-plus" "></i> Create Account
+            </button>
+        </div><br>
         <div>
-            <button type="submit" class="btn btn-success btn-block" >Register!</button>
+            <a ui-sref ="login" class="pull-right">Already have an account?</a><br>
+            <!--  <a href="#" class="pull-left">Forgotten your password?</a> -->
         </div>
-        </form>
-    <div class="row show-hide-message" ng-show="cUser.message">
-        <div class="col-sm-6 col-sm-offset-2">
-            <div class="alert alert-info">
-                {{ cUser.message }}
-            </div>
-
-        </div>
-    </div>
+    </form>
 </div>
+
