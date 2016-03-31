@@ -9,8 +9,14 @@ var UsersSchema = new Schema({
     password: String,
     email: String,
     roles: String,
-    googleKey: String
-)};
+
+    google: {
+        id: String,
+        token: String,
+        email: String,
+        name: String
+    }
+});
 
 //Hash the password before the sure is saved
 UsersSchema.pre('save', function(next) {
@@ -35,4 +41,4 @@ UsersSchema.methods.comparePassword = function(password) {
     return bcrypt.compareSync(password, user.password);
 };
 
-module.exports = mongoose.module('Users', UsersSchema);
+module.exports = mongoose.model('users', UsersSchema);
