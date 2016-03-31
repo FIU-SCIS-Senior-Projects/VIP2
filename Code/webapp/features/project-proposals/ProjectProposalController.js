@@ -2,6 +2,19 @@ angular.module('ProjectProposalController', ['ProjectProposalService'])
     .controller('ProjectProposalController', function($scope, ProjectService){
         $scope.list = [1,2,3];
 
+        // $scope.items = {
+        //     "Schools": {
+        //         "College of Engineering": {
+        //             "majors": [
+        //                 "Computer Ccience",
+        //                 "Information Technology"
+        //             ]
+        //         }
+        //     }
+
+        // }
+
+        $scope.items = [1,2,3]
         var vm = this;
         vm.title = "";
         vm.description = "";
