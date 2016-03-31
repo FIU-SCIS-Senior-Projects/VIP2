@@ -27,7 +27,7 @@ app.use(function(req, res, next) {
 app.use(express.static(__dirname + '/webapp'));
 
 var apiRoutes = require('./api/routes/api')(app,express);
-app.use('/api', projectRoutes);
+app.use('/api', apiRoutes);
 
 //home page
 app.get('*', function (req, res) {
