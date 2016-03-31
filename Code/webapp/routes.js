@@ -47,4 +47,10 @@ angular.module('routes', ['ui.router'])
                 url:'/organization',
                 templateUrl: 'features/organization/organization.html'
             })
-    });
+
+            .state('registration', {
+                url: '/registration',
+                templateUrl: 'features/registration/registrationTemplate.html'
+            })
+
+            });
