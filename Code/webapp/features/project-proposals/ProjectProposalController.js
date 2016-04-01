@@ -1,5 +1,5 @@
 angular.module('ProjectProposalController', ['ProjectProposalService'])
-    .controller('ProjectProposalController', function($scope, ProjectService){
+    .controller('ProjectProposalController', function($scope, ProjectService, $stateParams){
         $scope.list = [1,2,3];
 
         $scope.items2 = {
@@ -24,12 +24,35 @@ angular.module('ProjectProposalController', ['ProjectProposalService'])
         vm.image = ""
         vm.description = "";
         vm.disciplines = [];
+        vm.editingMode = false;
+
+        init();
+        function init () {
+            if($stateParams.id != null){
+                vm.id = $stateParams.id;
+                vm.editingMode = true;
+                getProjectById();
+            }
+        }
+        
+        function getProjectById (){
+            ProjectService.getProject(vm.id).then(function(data){
+                $scope.project = data; 
+            })
+        }
 
         vm.save = function () {
 
-            ProjectService.createProject($scope.project)
-                .success(function(data){
-                });
+            if(!vm.editingMode){
+                ProjectService.createProject($scope.project)
+                    .success(function(data){
+                    });
+            }
+            else{
+                ProjectService.editProject($scope.project)
+                    .success(function(data){
+                    });
+            }
         };
 
         $scope.toggleCheckbox = function toggleSelection(majors) {

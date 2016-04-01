@@ -47,7 +47,8 @@ angular.module('routes', ['ui.router'])
                 url:'/project-proposal',
                 templateUrl: 'features/project-proposals/projectProposal.html',
                 controller: 'ProjectProposalController',
-                controllerAs: 'project'
+                controllerAs: 'project',
+                params: { id: null }
             })
             .state('organization', {
                 url:'/organization',
@@ -60,10 +61,11 @@ angular.module('routes', ['ui.router'])
                 controllerAs: 'vm'
             })
            .state('projectsDetailed',{ 
-                url:'/vip-projects-detailed/:id',
+                url:'/vip-projects-detailed',
                 templateUrl:'features/vip-projects/vip-projects-detailed.html',
                 controller: 'VIPProjectsDetailedCtrl',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                params: { id: null }
             })
             .state('registration', {
                 url: '/registration',

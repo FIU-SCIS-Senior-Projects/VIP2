@@ -69,7 +69,7 @@
         } 
         
         function viewDetails (data) {
-            $state.go('projectsDetailed',{id: data.id});
+            $state.go('projectsDetailed',{id: data._id});
         }
     }
 })();

@@ -10,6 +10,9 @@
     function VIPProjectsDetailedCtrl($state, $scope, $stateParams, ProjectService) {
         var vm = this;
         vm.data = null;
+        vm.applyForProject = applyForProject;
+        vm.deleteProject = deleteProject;
+        vm.editProject = editProject;
         
         //Note this data will not be here this will be in the db and the data will come from a get request
         vm.projects = [
@@ -40,19 +43,31 @@
         function init(){
             console.log("Controller detailed started");
             if($stateParams.id != null){
-                vm.id = parseInt($stateParams.id);
-                getProjectById(vm.id);
+                // vm.id = parseInt($stateParams.id);
+                vm.id = $stateParams.id;
+                getProjectById();
             }
         }
         
-        function getProjectById (id){
-            ProjectService.getProject(id).then(function(data){
-                vm.data= item; 
+        function getProjectById (){
+            ProjectService.getProject(vm.id).then(function(data){
+                vm.data= data; 
             })
         }
+        
         function applyForProject()
         {
-            $state.go('studentconfirminfo', {id: data.id});
+            $state.go('studentconfirminfo', {id: vm.id});
         }
+         
+         function deleteProject() {
+             ProjectService.delete(vm.id).then(function(data){
+                 console.log("Returned from the BackEnd");
+             })
+         }
+         
+         function editProject() {
+             $state.go('projectProposal', {id: vm.id});
+         }
     }
 })();

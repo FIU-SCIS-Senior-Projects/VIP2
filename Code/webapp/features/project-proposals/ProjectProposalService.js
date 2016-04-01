@@ -10,7 +10,7 @@ angular.module('ProjectProposalService', [])
         };
 
         projectFactory.editProject = function (projectData, id) {
-            return $http.put('/api/projects', projectData, id);
+            return $http.put('/api/projects/' + id, projectData);
         };
         
         projectFactory.getProjects = function () {
@@ -21,7 +21,7 @@ angular.module('ProjectProposalService', [])
         };
 
         projectFactory.getProject = function (id) {
-            return $http.get('/api/projects/', id).then(function(data){
+            return $http.get('/api/projects/'+ id).then(function(data){
                console.log("Got the Project");
                return data.data; 
             });
