@@ -54,10 +54,10 @@ angular.module('routes', ['ui.router', 'UserProfileController','projectApplicati
                 controllerAs: 'user'
             })
             .state('studentconfirminfo', {
-                url:'/studentConfirmation',
+                url:'/studentConfirmation/:id',
                 templateUrl: 'features/apply-to-project/studentConfirmInfo.html',
                 controller: 'projAppCtrl',
-                controllerAs: 'projApp'
+                controllerAs: 'projApp',
             });
 
     });
