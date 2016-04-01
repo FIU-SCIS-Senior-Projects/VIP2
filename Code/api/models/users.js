@@ -11,9 +11,11 @@ var UserSchema = new Schema({
     major: String,
     rank: String,
     college: String,
+    school: String,
     department: String,
     gender: String,
-    userType: String
+    userType: String,
+    pid: String
 });
 
 //Hash the password before the sure is saved
