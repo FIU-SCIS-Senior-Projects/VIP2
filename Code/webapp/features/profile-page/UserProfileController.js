@@ -1,15 +1,16 @@
-angular.module('UserProfileController', [])
-	.controller('UserCtrl', function() {
+angular.module('UserProfileController', ['ProfileService'])
+	.controller('UserCtrl', function(Profile) {
 		var vm = this;
-
-		vm.mockData = [{
-			firstName: "Steven",
-			lastName: "Rowe",
-			email: "mrowe009@fiu.edu"
-		}];
-
-		vm.message = "Test";
+        vm.profileData = {};
 		vm.editorEnabled = false;
+
+        function loadProfile() {
+            var email= 'mrowe009@fiu.edu';
+            Profile.loadProfile(email)
+                .then(function (res) {
+                    vm.profileData = res.data[0];
+                });
+        }
 
 		vm.enableEditor = function() {
 			vm.editorEnabled = true;
@@ -28,4 +29,6 @@ angular.module('UserProfileController', [])
 			vm.mockData[0].email = vm.email;
 			vm.disableEditor();
 		};
+
+        loadProfile();
 	});
