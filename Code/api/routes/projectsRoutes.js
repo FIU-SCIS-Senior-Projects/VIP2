@@ -1,4 +1,3 @@
-var epilogue        = require('epilogue');
 var bodyParser      = require('body-parser');
 var Project         = require('../models/projects');
 
@@ -28,17 +27,20 @@ module.exports = function(app, express) {
 
     apiRouter.route('/projects/:id')
         .put(function (req, res) {
-           Project.findById(req.params.id, function(err, proj){
-            if(err) res.send(err);
-            console.log(proj)
-            /*TODO: add items to edit rest of the body information*/
-            if(req.body) proj = req.body;
-            console.log(req.body);
-            proj.save(function(err){
+            Project.findById(req.params.id, function(err, proj){
                 if(err) res.send(err);
-                res.json({message: 'Updated!'});
-            })
-        });
+                if(req.body.proj!=="") proj.title = req.body.title;
+                if(req.body.description!=="") proj.description = req.body.description
+                if(req.body.disciplines!=="") proj.disciplines = req.body.disciplines;
+                if(req.body.image!=="") proj.image = req.body.image;
+                if(req.body.firstSemester!=="") proj.firstSemester = req.body.firstSemester;
+                if(req.body.maxStudents!=="") proj.maxStudents = req.body.maxStudents;
+                console.log(proj.title);
+                proj.save(function(err){
+                    if(err) res.send(err);
+                    res.json({message: 'Updated!'});
+                })
+            });
         })
         .get(function (req, res) {
             Project.findById(req.params.id, function(err, proj){

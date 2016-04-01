@@ -14,7 +14,7 @@ angular.module('ProjectProposalService', [])
         };
 
         projectFactory.getProject = function (id) {
-            return $http.get('/api/projects/', id);
+            return $http.get('/api/projects/'+ '56fd9fcc8e119ae80ee357e1');
         };
 
         projectFactory.delete = function (id) {
