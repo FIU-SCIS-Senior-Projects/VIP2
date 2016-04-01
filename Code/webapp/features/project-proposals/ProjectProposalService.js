@@ -6,13 +6,13 @@ angular.module('ProjectProposalService', [])
         var projectFactory = {};
 
         projectFactory.createProject = function (projectData) {
-            return $http.post('/api/projects', projectData);
+            return $http.post('/api/projects', projectData)
         };
 
         projectFactory.editProject = function (projectData, id) {
             return $http.put('/api/projects', projectData, id);
         };
-
+        
         projectFactory.getProjects = function () {
             return $http.get('/api/projects/').then(function(data){
                console.log("Got the Projects");
@@ -21,10 +21,10 @@ angular.module('ProjectProposalService', [])
         };
 
         projectFactory.getProject = function (id) {
-            return $http.get('/api/projects/id').then(function(data){
+            return $http.get('/api/projects/', id).then(function(data){
                console.log("Got the Project");
                return data.data; 
-            });;
+            });
         };
 
         projectFactory.delete = function (id) {

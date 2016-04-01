@@ -1,5 +1,6 @@
-var bodyParser    = require('body-parser');
-var Project        = require('../models/projects');
+var epilogue        = require('epilogue');
+var bodyParser      = require('body-parser');
+var Project         = require('../models/projects');
 
 module.exports = function(app, express) {
 
@@ -24,6 +25,29 @@ module.exports = function(app, express) {
                 return res.json(projects);
             });
         });
+
+    apiRouter.route('/projects/:id')
+        .put(function (req, res) {
+           Project.findById(req.params.id, function(err, proj){
+            if(err) res.send(err);
+            console.log(proj)
+            /*TODO: add items to edit rest of the body information*/
+            if(req.body) proj = req.body;
+            console.log(req.body);
+            proj.save(function(err){
+                if(err) res.send(err);
+                res.json({message: 'Updated!'});
+            })
+        });
+        })
+        .get(function (req, res) {
+            Project.findById(req.params.id, function(err, proj){
+                if(err)
+                    res.send(err);
+                res.json(proj);
+            });
+        });
+
 
     return apiRouter;
 };
