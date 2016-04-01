@@ -25,6 +25,7 @@ angular.module('ProjectProposalController', ['ProjectProposalService'])
         vm.description = "";
         vm.disciplines = [];
         vm.editingMode = false;
+        vm.save = save;
 
         init();
         function init () {
@@ -41,7 +42,7 @@ angular.module('ProjectProposalController', ['ProjectProposalService'])
             })
         }
 
-        vm.save = function () {
+        function save () {
 
             if(!vm.editingMode){
                 ProjectService.createProject($scope.project)
@@ -50,7 +51,7 @@ angular.module('ProjectProposalController', ['ProjectProposalService'])
             }
             else{
                 ProjectService.editProject($scope.project)
-                    .success(function(data){
+                    .then(function(data){
                     });
             }
         };
