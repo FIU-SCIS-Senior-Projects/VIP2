@@ -51,10 +51,14 @@ angular.module('routes', ['ui.router'])
                 url:'/organization',
                 templateUrl: 'features/organization/organization.html'
             })
-
+            .state('studentconfirminfo', {
+                url:'/studentConfirmation/:id',
+                templateUrl: 'features/apply-to-project/StudentConfirmInfo.html',
+                controller: 'projAppCtrl',
+                controllerAs: 'projApp'
+            })
             .state('registration', {
                 url: '/registration',
                 templateUrl: 'features/registration/registrationTemplate.html'
-            })
-
-        });
+            });
+    });
