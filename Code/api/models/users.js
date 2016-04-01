@@ -2,18 +2,22 @@ var mongoose    = require('mongoose');
 var Schema      = mongoose.Schema;
 var bcrypt      = require('bcrypt-nodejs');
 
-var UsersSchema = new Schema({
+var UserSchema = new Schema({
     firstName: String,
     lastName: String,
-    username: String,
     password: String,
     email: String,
     roles: String,
-    googleKey: String
-)};
+    major: String,
+    rank: String,
+    college: String,
+    department: String,
+    gender: String,
+    userType: String
+});
 
 //Hash the password before the sure is saved
-UsersSchema.pre('save', function(next) {
+UserSchema.pre('save', function(next) {
     var user = this;
 
     //Hash the password only if the password has been changed or user is new
@@ -29,10 +33,10 @@ UsersSchema.pre('save', function(next) {
     });
 });
 
-UsersSchema.methods.comparePassword = function(password) {
+UserSchema.methods.comparePassword = function(password) {
     var user = this;
-    
+
     return bcrypt.compareSync(password, user.password);
 };
 
-module.exports = mongoose.module('Users', UsersSchema);
+module.exports = mongoose.model('Users', UserSchema);
