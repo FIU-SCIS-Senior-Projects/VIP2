@@ -57,5 +57,4 @@ angular.module('routes', ['ui.router'])
                 url: '/registration',
                 templateUrl: 'features/registration/registrationTemplate.html'
             })
-
             });
