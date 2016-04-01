@@ -49,9 +49,9 @@ angular.module('routes', ['ui.router'])
             })
             .state('studentconfirminfo', {
                 url:'/studentConfirmation/:id',
-                templateUrl: 'features/apply-to-project/studentConfirmInfo.html',
+                templateUrl: 'features/apply-to-project/StudentConfirmInfo.html',
                 controller: 'projAppCtrl',
-                controllerAs: 'projApp',
+                controllerAs: 'projApp'
             })
             .state('registration', {
                 url: '/registration',
