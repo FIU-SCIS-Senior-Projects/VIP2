@@ -320,3 +320,7 @@ html {
 	width: 150px;
 	text-align: center;
 }
+
+.register .table th, .table td {
+	border-top: none !important;
+}
