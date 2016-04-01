@@ -6,19 +6,15 @@ angular.module('ProjectProposalService', [])
         var projectFactory = {};
 
         projectFactory.createProject = function (projectData) {
-            return $http.post('/api/projects', projectData);
+            return $http.post('/api/projects', projectData)
         };
 
         projectFactory.editProject = function (projectData, id) {
             return $http.put('/api/projects', projectData, id);
         };
 
-        projectFactory.getProjects = function (id) {
-            return $http.get('/api/projects/');
-        };
-
         projectFactory.getProject = function (id) {
-            return $http.get('/api/projects/id');
+            return $http.get('/api/projects/', id);
         };
 
         projectFactory.delete = function (id) {
