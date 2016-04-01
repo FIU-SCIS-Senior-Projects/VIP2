@@ -25,7 +25,8 @@ angular.module('ProjectProposalController', ['ProjectProposalService'])
         vm.description = "";
         vm.disciplines = [];
         vm.editingMode = false;
-        vm.save = save;
+        vm.submit = submit;
+        //$scope.project.submit = submit;
 
         init();
         function init () {
@@ -41,9 +42,7 @@ angular.module('ProjectProposalController', ['ProjectProposalService'])
                 $scope.project = data; 
             })
         }
-
-        function save () {
-
+        function submit () {
             if(!vm.editingMode){
                 ProjectService.createProject($scope.project)
                     .success(function(data){
@@ -51,10 +50,10 @@ angular.module('ProjectProposalController', ['ProjectProposalService'])
             }
             else{
                 ProjectService.editProject($scope.project)
-                    .then(function(data){
+                    .success(function(data){
                     });
             }
-        };
+        }
 
         $scope.toggleCheckbox = function toggleSelection(majors) {
             var idx = vm.disciplines.indexOf(majors);

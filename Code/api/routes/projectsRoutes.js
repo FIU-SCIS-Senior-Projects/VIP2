@@ -48,6 +48,13 @@ module.exports = function(app, express) {
                     res.send(err);
                 res.json(proj);
             });
+        })
+        .delete(function (req, res) {
+            Project.remove({_id: req.params.id}, function(err, proj){
+            if(err)
+                res.send(err);
+                res.json({message: 'successfully deleted!'});
+            });
         });
 
 
