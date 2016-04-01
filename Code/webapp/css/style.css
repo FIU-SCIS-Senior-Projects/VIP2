@@ -257,7 +257,6 @@ html {
     margin-bottom:30px;
     padding-top: 14px;
 }
-
 .team-info {
     padding-left: 0px;
     font-size: 0.8em;
@@ -290,4 +289,34 @@ html {
 .team-info-name {
     padding-left: 0px;
     margin-top: 30px;
+    }
+
+.register {
+	background-color: rgba(172, 172, 172, 0.3);
+	width: 500px;
+	margin: 10px auto;
+	padding: 10px;
+	border-radius: 10px;
+	color: #444;
+	box-shadow: 0 0 20px 0 #000000;
+}
+
+
+.register .form-bar{
+
+	width: 900px;
+}
+.register .form-bar .icon{
+	width: 4%;
+	float: left;
+}
+
+.register .form-bar .input
+{
+	width: 49%; float: left;
+}
+
+.register .submit{
+	width: 150px;
+	text-align: center;
 }

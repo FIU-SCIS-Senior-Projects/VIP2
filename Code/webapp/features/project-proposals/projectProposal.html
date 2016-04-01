@@ -1,0 +1,34 @@
+<div>
+    <h2>Team Proposal Form</h2>
+    <form role="form" ng-submit="project.save()">
+        <div class="form-group">
+            <label>*Team Title:</label>
+            <input type="text" class="form-control" placeholder="" ng-model="project.title" required="True">
+        </div>
+        <div class="form-group">
+            <label>Team Image:</label>
+            <input type="url" class="form-control" placeholder="" ng-model="project.image">
+        </div>
+        <div class="form-group">
+            <label>*Team Description:</label>
+            <textarea class="form-control" rows="5" ng-model="project.description" required="True"></textarea>
+        </div>
+        <div class="form-group">
+            <label>*Number of students for first semester:</label>
+            <input type="number" class="form-control" placeholder="" ng-model="project.firstSemester" required="True">
+        </div>
+        <div class="form-group">
+            <label>*Maximum number of students per semester:</label>
+            <input type="number" class="form-control" placeholder="" ng-model="project.maxStudents" required="True">
+        </div>
+       
+        <div ng-repeat = '(key, value) in {"First Name":"John", "Last Name":"Smith"}'>
+            <p>{{key}}</p>
+        </div>
+
+        <button type="submit" class="btn btn-default">Submit</button>
+        <br>
+        <br>
+        <p><strong>* : required fields</strong></p>
+    </form>
+</div>

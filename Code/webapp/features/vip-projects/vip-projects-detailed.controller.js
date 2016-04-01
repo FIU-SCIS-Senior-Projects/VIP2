@@ -5,9 +5,9 @@
         .module('vip-projects')
         .controller('VIPProjectsDetailedCtrl', VIPProjectsDetailedCtrl);
 
-    VIPProjectsDetailedCtrl.$inject = ['$state', '$scope', '$stateParams'];
+    VIPProjectsDetailedCtrl.$inject = ['$state', '$scope', '$stateParams', 'ProjectService'];
     /* @ngInject */
-    function VIPProjectsDetailedCtrl($state, $scope, $stateParams) {
+    function VIPProjectsDetailedCtrl($state, $scope, $stateParams, ProjectService) {
         var vm = this;
         vm.data = null;
         
@@ -46,15 +46,13 @@
         }
         
         function getProjectById (id){
-            //Request to the backend goes here instead of the bellow
-            angular.forEach(vm.projects, function(item){
-                    if(item.id === id)
-                    {
-                        vm.data= item; 
-                    }
-                })
+            ProjectService.getProject(id).then(function(data){
+                vm.data= item; 
+            })
         }
-        
-        
+        function applyForProject()
+        {
+            $state.go('studentconfirminfo', {id: data.id});
+        }
     }
 })();

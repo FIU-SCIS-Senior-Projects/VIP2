@@ -31,10 +31,10 @@ angular.module('routes', ['ui.router'])
                 url:'/undergraduate-application',
                 templateUrl: 'features/undergraduate-application/undergraduateApplication.html'
             })
-            .state('presentationsAndPublications', {
-                url:'/presentations-and-publications',
-                templateUrl: 'features/presentations-and-publications/presentationsAndPublications.html'
-            })
+	        .state('presentationsAndPublications', {
+	            url:'/presentations-and-publications',
+	            templateUrl: 'features/presentations-and-publications/presentationsAndPublications.html'
+	        })
             .state('registerPermit', {
                 url:'/request-registration-permit',
                 templateUrl: 'features/registration-permit/registrationPermit.html'
@@ -42,6 +42,12 @@ angular.module('routes', ['ui.router'])
             .state('login', {
                 url:'/login',
                 templateUrl: 'features/login/loginTemplate.html'
+            })
+            .state('projectProposal', {
+                url:'/project-proposal',
+                templateUrl: 'features/project-proposals/projectProposal.html',
+                controller: 'ProjectProposalController',
+                controllerAs: 'project'
             })
             .state('organization', {
                 url:'/organization',
@@ -51,12 +57,16 @@ angular.module('routes', ['ui.router'])
                 url:'/vip-projects',
                 templateUrl:'features/vip-projects/vip-projects.html',
                 controller: 'VIPProjectsCtrl',
-                controllerAs: 'vm',
+                controllerAs: 'vm'
             })
            .state('projectsDetailed',{ 
                 url:'/vip-projects-detailed/:id',
                 templateUrl:'features/vip-projects/vip-projects-detailed.html',
                 controller: 'VIPProjectsDetailedCtrl',
-                controllerAs: 'vm',
+                controllerAs: 'vm'
             })
-    });
+            .state('registration', {
+                url: '/registration',
+                templateUrl: 'features/registration/registrationTemplate.html'
+            })
+        });

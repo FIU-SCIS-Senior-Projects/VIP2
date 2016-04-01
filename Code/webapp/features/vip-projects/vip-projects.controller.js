@@ -5,9 +5,9 @@
         .module('vip-projects')
         .controller('VIPProjectsCtrl', VIPProjectsCtrl);
 
-    VIPProjectsCtrl.$inject = ['$state', '$scope'];
+    VIPProjectsCtrl.$inject = ['$state', '$scope', 'ProjectService'];
     /* @ngInject */
-    function VIPProjectsCtrl($state, $scope) {
+    function VIPProjectsCtrl($state, $scope, ProjectService) {
         var vm = this;
         vm.filterByDiscipline = filterByDiscipline;
         vm.viewDetails = viewDetails;
@@ -38,13 +38,19 @@
         
         init();
         function init(){
+            loadData();
             vm.disciplinesBackUp = vm.disciplines;
             vm.projectsBackUp = vm.projects;
             console.log("Controller started");
         }
         
+        function loadData(){
+            ProjectService.getProjects().then(function(data){
+                vm.projects = data;
+            });
+        }
+        
         function filterByDiscipline (discipline) {
-            console.log("This should be a call to the backend filtering the data");
             if(discipline != null){
                 //vm.disciplines = [];
                 vm.projects = [];
@@ -57,7 +63,7 @@
                 })
             }
             else {
-                vm.disciplines = vm.disciplinesBackUp;
+                //vm.disciplines = vm.disciplinesBackUp;
                 vm.projects = vm.projectsBackUp;
             }
         } 
