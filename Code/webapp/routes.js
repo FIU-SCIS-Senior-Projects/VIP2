@@ -71,8 +71,14 @@ angular.module('routes', ['ui.router'])
                 controllerAs: 'vm',
                 params: { id: null }
             })
+            .state('studentconfirminfo', {
+                url:'/studentConfirmation/:id',
+                templateUrl: 'features/apply-to-project/StudentConfirmInfo.html',
+                controller: 'projAppCtrl',
+                controllerAs: 'projApp'
+            })
             .state('registration', {
                 url: '/registration',
                 templateUrl: 'features/registration/registrationTemplate.html'
             })
-        });
+    });

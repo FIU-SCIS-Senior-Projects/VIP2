@@ -3,5 +3,6 @@ angular.module('mainApp', [
 	'vipFooter',
     'vip-projects',		//Features Module
 	'ProjectProposalController',
-	'routes'
+	'routes',
+	'projectApplicationController'
 ]);
