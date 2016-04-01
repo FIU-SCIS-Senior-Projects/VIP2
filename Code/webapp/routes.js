@@ -1,4 +1,4 @@
-angular.module('routes', ['ui.router', 'UserProfileController','projectApplicationController'])
+angular.module('routes', ['ui.router'])
 
     .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
         $urlRouterProvider.otherwise('/');
@@ -12,8 +12,8 @@ angular.module('routes', ['ui.router', 'UserProfileController','projectApplicati
                 templateUrl: 'features/competition/competition.html'
             })
             .state('home', {
-                url:'/',
-                templateUrl:'features/main-page/home.html'
+            	url:'/',
+            	templateUrl:'features/main-page/home.html'
             })
             .state('how-vip-credits-count', {
                 url:'/how-vip-credits-count',
@@ -31,10 +31,10 @@ angular.module('routes', ['ui.router', 'UserProfileController','projectApplicati
                 url:'/undergraduate-application',
                 templateUrl: 'features/undergraduate-application/undergraduateApplication.html'
             })
-            .state('presentationsAndPublications', {
-    	        url:'/presentations-and-publications',
-    	        templateUrl: 'features/presentations-and-publications/presentationsAndPublications.html'
-    	    })
+	    .state('presentationsAndPublications', {
+	        url:'/presentations-and-publications',
+	        templateUrl: 'features/presentations-and-publications/presentationsAndPublications.html'
+	    })
             .state('registerPermit', {
                 url:'/request-registration-permit',
                 templateUrl: 'features/registration-permit/registrationPermit.html'
@@ -47,17 +47,14 @@ angular.module('routes', ['ui.router', 'UserProfileController','projectApplicati
                 url:'/organization',
                 templateUrl: 'features/organization/organization.html'
             })
-            .state('userProfile', {
-                url:'/profile',
-                templateUrl: 'features/profile-page/userProfile.html',
-                controller: 'UserCtrl',
-                controllerAs: 'user'
-            })
             .state('studentconfirminfo', {
                 url:'/studentConfirmation/:id',
                 templateUrl: 'features/apply-to-project/studentConfirmInfo.html',
                 controller: 'projAppCtrl',
                 controllerAs: 'projApp',
+            })
+            .state('registration', {
+                url: '/registration',
+                templateUrl: 'features/registration/registrationTemplate.html'
             });
-
     });
