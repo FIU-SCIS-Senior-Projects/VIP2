@@ -63,6 +63,7 @@ angular.module('routes', ['ui.router'])
                 templateUrl: 'features/profile-page/userProfile.html',
                 controller: 'UserCtrl',
                 controllerAs: 'user'
+            })
             .state('projects',{
                 url:'/vip-projects',
                 templateUrl:'features/vip-projects/vip-projects.html',
@@ -87,4 +88,3 @@ angular.module('routes', ['ui.router'])
                 templateUrl: 'features/registration/registrationTemplate.html'
             })
         });
-    });
