@@ -27,7 +27,10 @@ app.use(function(req, res, next) {
 app.use(express.static(__dirname + '/webapp'));
 
 var apiRoutes = require('./api/routes/profileApi')(app,express);
-app.use('/api', apiRoutes);
+app.use('/api/profile', apiRoutes);
+
+var projectRoutes = require('./api/routes/projectsRoutes')(app,express);
+app.use('/api/projects', projectRoutes);
 
 //home page
 app.get('*', function (req, res) {
