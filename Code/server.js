@@ -26,8 +26,11 @@ app.use(function(req, res, next) {
 // used for requests that our frontend will make
 app.use(express.static(__dirname + '/webapp'));
 
+
+var userRoutes = require('./api/routes/userRoutes')(app, express);
 var projectRoutes = require('./api/routes/projectsRoutes')(app,express);
 app.use('/api', projectRoutes);
+app.use('/userapi', userRoutes);
 
 //home page
 app.get('*', function (req, res) {
