@@ -275,8 +275,9 @@ function pid_validation(pid) {
 
 //Confirms that both passwords entered are correct.
 function pass_validation(pass, passconf) {
-    console.log(pass);
-    console.log(passconf);
+
+    var message="The password must have atleast 8 chars with one uppercase letter, one lower case letter, one digit and one of !@#$%&amp;*()";
+
 
     if (pass == undefined || passconf == undefined) {
         alert("Please fill in both password fields.")
@@ -287,10 +288,16 @@ function pass_validation(pass, passconf) {
         alert("Please fill in the Password field.");
         return false;
     }
-    if (pass != passconf) {
-        alert("Your two passwords do not match.")
+
+    // check for string password
+    if(!isStrongPwd(pass)) {
+
+        alert(message);
+
         return false;
     }
+
+
 
     return true;
 }
@@ -314,6 +321,44 @@ function validRegistration(userData) {
     return false;
 }
 
+// function to cehck for a strong password .. will be called in passconf 
+function isStrongPwd(password) {
+
+    var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    var lowercase = "abcdefghijklmnopqrstuvwxyz";
+
+    var digits = "0123456789";
+
+    var splChars ="!@#$%&*()";
+
+    var ucaseFlag = contains(password, uppercase);
+
+    var lcaseFlag = contains(password, lowercase);
+
+    var digitsFlag = contains(password, digits);
+
+    var splCharsFlag = contains(password, splChars);
+
+    if(password.length>=8 && ucaseFlag && lcaseFlag && digitsFlag && splCharsFlag)
+        return true;
+    else
+        return false;
+
+}
+
+function contains(password, allowedChars) {
+
+    for (i = 0; i < password.length; i++) {
+
+        var char = password.charAt(i);
+
+        if (allowedChars.indexOf(char) >= 0) { return true; }
+
+    }
+
+    return false;
+}
 
 
 
