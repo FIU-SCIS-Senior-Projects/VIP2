@@ -1,4 +1,3 @@
-var epilogue        = require('epilogue');
 var bodyParser      = require('body-parser');
 var Project         = require('../models/projects');
 
