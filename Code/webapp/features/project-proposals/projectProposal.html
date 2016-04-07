@@ -11,7 +11,8 @@
         </div>
         <div class="form-group">
             <label>*Team Description:</label>
-            <textarea class="form-control" rows="5" ng-model="project.description" required="True"></textarea>
+            <div text-angular ng-model="project.description"></div>
+            <!-- <textarea class="form-control" rows="5" ng-model="project.description" required="True"></textarea> -->
         </div>
         <div class="form-group">
             <label>*Number of students for first semester:</label>
@@ -43,7 +44,7 @@
 
 
 
-        <button type="submit" class="btn btn-default" ng-click="project.save()">Submit</button>
+        <button type="submit" class="btn btn-default" ng-click="save()">Submit</button>
         <br>
         <br>
         <p><strong>* : required fields</strong></p>

@@ -28,8 +28,9 @@ module.exports = function(app, express) {
     apiRouter.route('/projects/:id')
         .put(function (req, res) {
             Project.findById(req.params.id, function(err, proj){
+                console.log(req.body)
                 if(err) res.send(err);
-                if(req.body.proj!=="") proj.title = req.body.title;
+                if(req.body.title!=="") proj.title = req.body.title;
                 if(req.body.description!=="") proj.description = req.body.description
                 if(req.body.disciplines!=="") proj.disciplines = req.body.disciplines;
                 if(req.body.image!=="") proj.image = req.body.image;
