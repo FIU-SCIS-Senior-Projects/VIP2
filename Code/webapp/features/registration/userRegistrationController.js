@@ -33,6 +33,18 @@ angular
                     'External Member'
                 ]
             },
+            {
+                name: 'Student',
+                ranks: [
+                    'Freshman',
+                    'Sophmore',
+                    'Junior',
+                    'Senior',
+                    'Masters',
+                    'PhD',
+                    'postDoc'
+                ]
+            }
 
         ];
 
@@ -157,45 +169,126 @@ angular
         vm.saveUser = function () {
 
             vm.processing = true;
-
             // initialize both message to be returned by API and object ID to be used in verification
             vm.message = '';
             vm.objectId = '';
 
-            //convert the input to lower case
-            var inputEmail = vm.userData.email;
-            vm.userData.email = inputEmail.toLowerCase();
 
-            // validate password
-            if(!pass_validation(vm.userData.password, vm.userData.passwordConf))
+            if(vm.userData == undefined)
             {
+                alert("Please fill out all fields.");
                 return;
             }
 
 
-            // validate form fields
-            if (!validRegistration(vm.userData)) {
-                return; // if validation fails, abort
+            //START OF FORM INPUT VALIDATION FUNCTIONS //
+            if (!first_validation(vm.userData.firstName)) {
+                return; // no first name.. go back to form
+            }
+
+            if(!last_validation(vm.userData.lastName))
+            {
+                return; // no last name.. go back to form
+            }
+
+           // check for email
+            if (vm.userData.email == undefined) {
+                alert("Please enter an email address.")
+                return;
+            }
+
+            if(vm.userData.userType == undefined)
+            {
+                alert("Please select User Type");
+                return false;
             }
 
 
+            // convert email to lower case
+            var inputEmail = vm.userData.email;
+            vm.userData.email = inputEmail.toLowerCase();
+
+            // call email validation function
+            if(!email_validation(vm.userData.email,vm.userData.userType.name))
+            {
+                return; // invalid email.. go back to form
+            }
+
+            // validate password
+            if(!pass_validation(vm.userData.password, vm.userData.passwordConf))
+            {
+                return; // password validation failed.. return to form
+            }
+
+            // validate User Type
+            if(!userType_validation(vm.userData.userType.name))
+            {
+                return;// return to form.. block a student from registering
+            }
+
+            if (!rank_validation(vm.userData.rank))
+            {
+                return;// return to form..did not enter rank
+            }
+
+           if(!pid_validation(vm.userData.pantherID))
+           {
+               return; // invalid panther id, return to form
+           }
+
+            if(!gender_validation(vm.userData.gender))
+            {
+                return; // go back to from
+            }
+
+            if(vm.userData.college == undefined)
+            {
+                alert("Please select your College.");
+                return false;
+            }
 
 
+            if(vm.userData.department == undefined)
+            {
+                alert("Please select your Department.");
+                return false;
+            }
+
+            //END OF FORM INPUT VALIDATION FUNCTIONS //
 
 
+            // solution for now to set user type.. might change when data comes from DB
+            vm.userData.userType = vm.userData.userType.name;
+
+            // solution for now to set college.. might change when data comes from DB
+            vm.userData.college = vm.userData.college.name;
+
+            // call user service which makes the post from userRoutes
+            User.create(vm.userData)
+
+                                // data contains what we got back from the service and API
+                .success(function(data){
+                vm.processing = false;
+
+                /* EMAIL VERIFICATION SECTION
+
+                //Here we have the user ID so we can send an email to user
+                vm.userData._id = data.objectId;
+                vm.userData.text = "Welcome to FIU's VIP Project, follow this link to verify this email address!\n\n vip-dev.cis.fiu.edu/verification/" + vm.objectId + "";
+                vm.userData.subject = "Welcome to FIU VIP Project!";
+                User.nodeEmail(vm.userData);
+                */
+                    console.log(data.message);
+                vm.message = data.message; // message returned by the API
+                 // clear the form
+
+            })
         };
-
-
     });
 
-// validate all fields
 
 function email_validation(uemail, userType) {
-    // check for null
-    if (uemail == undefined) {
-        alert("Email should not be empty.")
-        return false;
-    }
+
     // check for length 0
     var uemail_len = uemail.length;
     if (uemail_len == 0) {
@@ -205,9 +298,10 @@ function email_validation(uemail, userType) {
     var uemail_source = uemail.substring(uemail_len - 8, uemail_len);
     // if its not a co/copi and it snot an fiu email.. alert !
     if (uemail_source.toLowerCase() != "@fiu.edu" && userType != "Pi/CoPi") {
-        alert("Email should be an @fiu.edu account")
+        alert("Email should be an @fiu.edu account.")
         return false;
     }
+    return true;
 }
 
 //Makes sure first name is only letters
@@ -218,7 +312,7 @@ function first_validation(first) {
     }
     var first_len = first.length;
     if (first_len == 0) {
-        alert("Last Name should not be empty.");
+        alert("First Name should not be empty.");
         return false;
     }
     var letters = /^[A-Za-z]+$/;
@@ -228,6 +322,7 @@ function first_validation(first) {
         alert('First name must contain alphabet characters only.')
         return false;
     }
+    return true;
 }
 
 //Makes sure last name is only letters
@@ -289,6 +384,12 @@ function pass_validation(pass, passconf) {
         return false;
     }
 
+    if(pass != passconf)
+    {
+        alert("Passwords do not match.");
+        return false;
+    }
+
     // check for string password
     if(!isStrongPwd(pass)) {
 
@@ -298,30 +399,10 @@ function pass_validation(pass, passconf) {
     }
 
 
-
     return true;
 }
 
-
-//Runs a check if the registration form filled out was filled out correctly.
-// need to include strong passord verification
-function validRegistration(userData) {
-    var first = userData.firstName;
-    var last = userData.lastName;
-    var userType = userData.userType.name;
-    var pid = userData.pantherID;
-    var email = userData.email;
-
-    if (first_validation(first) && last_validation(last)  && pid_validation(pid) && email_validation(email,userType))
-
-                        {
-                            return true;
-                        }
-
-    return false;
-}
-
-// function to cehck for a strong password .. will be called in passconf 
+// function to cehck for a strong password .. will be called in passconf
 function isStrongPwd(password) {
 
     var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -347,6 +428,7 @@ function isStrongPwd(password) {
 
 }
 
+// checks the is trong password function
 function contains(password, allowedChars) {
 
     for (i = 0; i < password.length; i++) {
@@ -359,8 +441,48 @@ function contains(password, allowedChars) {
 
     return false;
 }
+//Verifies the user selected a user Type
+function userType_validation(userType) {
 
+    if (userType == "Student") {
+        alert("A student does not have permission to register.Please authenticate with Gmail to create your account.")
+        return false;
+    }
 
+    return true;
+}
+
+function rank_validation(rank)
+{
+
+    if(rank == undefined)
+    {
+        alert("Rank should not be empty.")
+        return false;
+    }
+    if (rank == "Default") {
+        alert("Rank is a required field.")
+        return false;
+    }
+
+    return true;
+}
+
+function gender_validation(gender) {
+    //Sex is no longer required for registration
+    return true;
+    if(gender == undefined)
+    {
+        alert("Gender should not be empty.")
+        return false;
+    }
+    if (gender != "Male" || gender != "Female") {
+        alert("Please select a Gender.")
+        return false;
+    }
+
+    return true;
+}
 
 
 

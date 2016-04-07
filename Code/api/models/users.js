@@ -5,9 +5,8 @@ var bcrypt      = require('bcrypt-nodejs');
 var UsersSchema = new Schema({
     firstName: {type: String, required: true},
     lastName: {type: String, required: true},
-    username: {type: String, required: true, index: {unique:true}},
-    password: String,
-    passwordConf:,
+    password:  {type: String, required: true},
+    passwordConf:  {type: String, required: true},
     email: {type: String, required: true, index: {unique:true}},
     googleKey: String,
     userType: {type: String, required: true},
@@ -40,6 +39,8 @@ UsersSchema.pre('save', function(next) {
         next();
     });
 });
+
+// NEED TO HASH CONFIRM PASSWORD!!!! - TMOORE
 
 UsersSchema.methods.comparePassword = function(password) {
     var user = this;
