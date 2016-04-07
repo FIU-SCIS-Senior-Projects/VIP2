@@ -79,6 +79,8 @@ angular.module('routes', ['ui.router'])
             })
             .state('registration', {
                 url: '/registration',
-                templateUrl: 'features/registration/registrationTemplate.html'
+                templateUrl: 'features/registration/registrationTemplate.html',
+                controller: 'registrationController',
+                controllerAs: 'regCtlr'
             })
     });
