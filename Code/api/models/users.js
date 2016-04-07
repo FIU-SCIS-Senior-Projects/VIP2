@@ -18,7 +18,14 @@ var UsersSchema = new Schema({
     piDenial: Boolean,
     verifiedEmail: Boolean,
     college:{type: String, required: true},
-    department:{type: String, required: true}
+    department:{type: String, required: true},
+
+    google: {
+        id: String,
+        token: String,
+        email: String,
+        name: String
+    }
 
 
 });
@@ -39,9 +46,7 @@ UsersSchema.pre('save', function(next) {
         next();
     });
 });
-
-// NEED TO HASH CONFIRM PASSWORD!!!! - TMOORE
-
+// NEED TO HASH CONFIRM PASSWORD!!!! - TMOOR
 UsersSchema.methods.comparePassword = function(password) {
     var user = this;
     
