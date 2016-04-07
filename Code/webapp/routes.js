@@ -3,6 +3,10 @@ angular.module('routes', ['ui.router'])
     .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
         $urlRouterProvider.otherwise('/');
         $stateProvider
+            .state('about', {
+                url: '/about',
+                templateUrl: 'features/about/about.html'
+            })
             .state('contact', {
                 url:'/contact',
                 templateUrl: 'features/contact/contact.html'
@@ -31,10 +35,10 @@ angular.module('routes', ['ui.router'])
                 url:'/undergraduate-application',
                 templateUrl: 'features/undergraduate-application/undergraduateApplication.html'
             })
-	    .state('presentationsAndPublications', {
-	        url:'/presentations-and-publications',
-	        templateUrl: 'features/presentations-and-publications/presentationsAndPublications.html'
-	    })
+	        .state('presentationsAndPublications', {
+	            url:'/presentations-and-publications',
+	            templateUrl: 'features/presentations-and-publications/presentationsAndPublications.html'
+	        })
             .state('registerPermit', {
                 url:'/request-registration-permit',
                 templateUrl: 'features/registration-permit/registrationPermit.html'
@@ -43,14 +47,40 @@ angular.module('routes', ['ui.router'])
                 url:'/login',
                 templateUrl: 'features/login/loginTemplate.html'
             })
+            .state('projectProposal', {
+                url:'/project-proposal',
+                templateUrl: 'features/project-proposals/projectProposal.html',
+                controller: 'ProjectProposalController',
+                controllerAs: 'project',
+                params: { id: null }
+            })
             .state('organization', {
                 url:'/organization',
                 templateUrl: 'features/organization/organization.html'
             })
-
+            .state('projects',{ 
+                url:'/vip-projects',
+                templateUrl:'features/vip-projects/vip-projects.html',
+                controller: 'VIPProjectsCtrl',
+                controllerAs: 'vm'
+            })
+           .state('projectsDetailed',{ 
+                url:'/vip-projects-detailed',
+                templateUrl:'features/vip-projects/vip-projects-detailed.html',
+                controller: 'VIPProjectsDetailedCtrl',
+                controllerAs: 'vm',
+                params: { id: null }
+            })
+            .state('studentconfirminfo', {
+                url:'/studentConfirmation/:id',
+                templateUrl: 'features/apply-to-project/StudentConfirmInfo.html',
+                controller: 'projAppCtrl',
+                controllerAs: 'projApp'
+            })
             .state('registration', {
                 url: '/registration',
-                templateUrl: 'features/registration/registrationTemplate.html'
+                templateUrl: 'features/registration/registrationTemplate.html',
+                controller: 'registrationController',
+                controllerAs: 'regCtlr'
             })
-
-            });
+    });
