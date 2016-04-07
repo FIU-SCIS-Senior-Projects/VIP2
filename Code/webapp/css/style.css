@@ -325,3 +325,21 @@ html {
 .register .table th, .table td {
 	border-top: none !important;
 }
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.divider {
+    border-top: 1px solid black;
+}
+
+.clear {
+    display: block;
+    clear: both;
+    height: 10px;
+}
