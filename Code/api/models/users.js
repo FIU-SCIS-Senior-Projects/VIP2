@@ -18,7 +18,7 @@ var UsersSchema = new Schema({
     piDenial: Boolean,
     verifiedEmail: Boolean,
     college:{type: String, required: true},
-    department:{type: String, required: true}
+    department:{type: String, required: true},
 
     google: {
         id: String,
@@ -53,4 +53,4 @@ UsersSchema.methods.comparePassword = function(password) {
     return bcrypt.compareSync(password, user.password);
 };
 
-module.exports = mongoose.module('Users', UsersSchema);
+module.exports = mongoose.model('users', UsersSchema);
