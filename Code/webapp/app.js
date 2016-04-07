@@ -5,5 +5,7 @@ angular.module('mainApp', [
     'vip-projects',		//Features Module
 	'ProjectProposalController',
 	'routes',
-	'projectApplicationController'
+	'projectApplicationController',
+	'userRegistrationController',
+	'userService'
 ]);
