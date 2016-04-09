@@ -15,9 +15,13 @@
 
 	<!-- Javascript Libraries -->
 	<script src="lib/angular/angular.min.js"></script>
+	<script src="lib/angular-sanitize/angular-sanitize.min.js"></script>
 	<script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
 	<script src="lib/jquery/dist/jquery.min.js"></script>
 	<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Modules -->
+	<script src="features/to-do/ToDoModule.js"></script>
 
 	<!-- controllers -->
     <script src="features/vip-projects/vip-projects.module.js"></script>
@@ -27,14 +31,20 @@
 	<script src="features/profile-page/UserProfileController.js"></script>
 	<script src="features/apply-to-project/projectApplicationController.js"></script>
 	<script src="features/registration/userRegistrationController.js"></script>
+	<script src="features/to-do/ToDoController.js"></script>
 
 	<!-- services -->
 	<script src = "features/project-proposals/ProjectProposalService.js"></script>
 	<script src="/features/registration/userService.js"></script>
+	<script src="features/to-do/ToDoService.js"></script>
 
 	<!-- directives -->
 	<script src="features/header/headerDirective.js"></script>
 	<script src="features/footer/footerDirective.js"></script>
+	<script src="features/to-do/ToDoDirective.js"></script>
+
+    <!-- filters -->
+	<script src="features/to-do/toDoFilter.js"></script>
 
 	<!-- main Angular app files -->
 	<script src="app.js"></script>
@@ -43,6 +53,9 @@
 
 <body>
 	<div class="container">
+
+        <!-- will not be here. will be moved -->
+        <to-do></to-do>
 
 		<!-- Directive to load the header -->
 		<vip-header></vip-header>
