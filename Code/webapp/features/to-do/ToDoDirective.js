@@ -1,5 +1,5 @@
 (function() {
-    angular.module('toDo', [])
+    angular.module('toDoModule')
     .directive('toDo', function () {
         return {
             templateUrl: 'features/to-do/toDoTemplate.html',
