@@ -343,3 +343,12 @@ html {
     clear: both;
     height: 10px;
 }
+
+.white-background {
+    background-color: #fff;
+}
+
+
+.red-text {
+    color:red;
+}
