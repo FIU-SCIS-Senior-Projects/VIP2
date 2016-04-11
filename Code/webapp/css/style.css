@@ -343,3 +343,8 @@ html {
     clear: both;
     height: 10px;
 }
+
+.team-project {
+    margin-left: 0px;
+    margin-right: 0px;
+}
