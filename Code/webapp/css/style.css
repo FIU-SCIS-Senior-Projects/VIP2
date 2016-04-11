@@ -12,6 +12,7 @@ html {
 }
 
 .footer{
+    padding: 15px;
 	background-color: #081E3F;
 }
 
@@ -154,7 +155,7 @@ html {
 }
 
 .top-margin {
-    margin-top: 0px; 
+    margin-top: 0px;
 }
 
 .horizontal-lin {
@@ -234,10 +235,10 @@ html {
 .projects-top-bar {
     margin-bottom: 1.5em;
     padding: 3.5em;
-    border-bottom: solid 1px #d7d7d7; 
+    border-bottom: solid 1px #d7d7d7;
     background: -webkit-gradient(linear, 0 93%, 0 100%, from(#fff), to(#f0f0f0));
-    font-family: "Helvetica Neue", Arial, Helvetica, "Trebuchet MS", sans-serif; 
-    font-size: 87.5%;  
+    font-family: "Helvetica Neue", Arial, Helvetica, "Trebuchet MS", sans-serif;
+    font-size: 87.5%;
     padding-left: 30px;
     padding-right: 30px;
 }
@@ -277,8 +278,8 @@ html {
 }
 
 .custom-span{
-    text-decoration: none; 
-    display: block; 
+    text-decoration: none;
+    display: block;
     width: 350px;
     height: 175px;
     text-overflow: ellipsis;
@@ -323,4 +324,27 @@ html {
 
 .register .table th, .table td {
 	border-top: none !important;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.divider {
+    border-top: 1px solid black;
+}
+
+.clear {
+    display: block;
+    clear: both;
+    height: 10px;
+}
+
+.team-project {
+    margin-left: 0px;
+    margin-right: 0px;
 }
