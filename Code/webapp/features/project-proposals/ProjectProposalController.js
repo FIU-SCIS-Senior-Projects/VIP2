@@ -44,23 +44,19 @@ angular.module('ProjectProposalController', ['ProjectProposalService'])
         
         $scope.save = function save() {
             console.log($scope.project.description)
-            console.log('testing save function')
             if(!vm.editingMode){
                 ProjectService.createProject($scope.project)
                     .then(function(data){
-                        console.log("Got here");
                     });
             }
             else{
                 ProjectService.editProject($scope.project)
                     .then(function(data){
-                        console.log("Got here");
                     });
             }
         };
 
         $scope.toggleCheckbox = function toggleSelection(majors) {
-            console.log('testing checkbox')
             var idx = vm.disciplines.indexOf(majors);
 
             // is currently selected
