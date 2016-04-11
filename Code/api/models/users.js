@@ -11,7 +11,7 @@ var UsersSchema = new Schema({
     googleKey: String,
     userType: {type: String, required: true},
     rank: {type: String, required: true},
-    pantherID: {type: String, required: true},
+    pantherID: String,
     gender: {type: String, required: true},
     project:    String,
     piApproval: Boolean,
