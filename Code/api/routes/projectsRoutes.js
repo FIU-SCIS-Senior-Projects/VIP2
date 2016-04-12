@@ -1,6 +1,6 @@
-var bodyParser      = require('body-parser');
-var Project         = require('../models/projects');
-var Term         = require('../models/terms');
+var bodyParser = require('body-parser');
+var Project = require('../models/projects');
+var Term = require('../models/terms');
 
 module.exports = function(app, express) {
     var apiRouter = express.Router();
@@ -47,6 +47,8 @@ module.exports = function(app, express) {
         currentTerm = term;
         console.log(currentTerm);
     }); 
+
+
 
     //route get or adding products to a users account
     apiRouter.route('/projects')
