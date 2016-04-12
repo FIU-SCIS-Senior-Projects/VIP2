@@ -2,24 +2,36 @@ var mongoose    = require('mongoose');
 var Schema      = mongoose.Schema;
 var bcrypt      = require('bcrypt-nodejs');
 
-var UserSchema = new Schema({
-    firstName: String,
-    lastName: String,
-    password: String,
-    email: String,
-    roles: String,
-    major: String,
-    rank: String,
-    college: String,
-    school: String,
-    department: String,
-    gender: String,
-    userType: String,
-    pid: String
+var UsersSchema = new Schema({
+    firstName: {type: String, required: true},
+    lastName: {type: String, required: true},
+    password:  {type: String, required: true},
+    passwordConf:  {type: String, required: true},
+    email: {type: String, required: true, index: {unique:true}},
+    googleKey: String,
+    userType: {type: String, required: true},
+    rank: {type: String, required: true},
+    pantherID: {type: String, required: true},
+    gender: {type: String, required: true},
+    project:    String,
+    piApproval: Boolean,
+    piDenial: Boolean,
+    verifiedEmail: Boolean,
+    college:{type: String, required: true},
+    department:{type: String, required: true},
+
+    google: {
+        id: String,
+        token: String,
+        email: String,
+        name: String
+    }
+
+
 });
 
 //Hash the password before the sure is saved
-UserSchema.pre('save', function(next) {
+UsersSchema.pre('save', function(next) {
     var user = this;
 
     //Hash the password only if the password has been changed or user is new
@@ -34,11 +46,11 @@ UserSchema.pre('save', function(next) {
         next();
     });
 });
-
-UserSchema.methods.comparePassword = function(password) {
+// NEED TO HASH CONFIRM PASSWORD!!!! - TMOOR
+UsersSchema.methods.comparePassword = function(password) {
     var user = this;
-
+    
     return bcrypt.compareSync(password, user.password);
 };
 
-module.exports = mongoose.model('Users', UserSchema);
+module.exports = mongoose.model('Users', UsersSchema);

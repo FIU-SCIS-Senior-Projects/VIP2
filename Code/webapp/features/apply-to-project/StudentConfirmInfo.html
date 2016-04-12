@@ -1,79 +1,113 @@
-<div>
+<div class=register>
+        <h3 align="center"> Confirm Information </h3>
+        <form name="ProjectApplication" ng-submit="projApp.save()">
+            <div class="form-group">
+                <table class="table">
+                    <tr>
+                        <td colspan="4">
 
-    <p>
-        <strong>Confirm that your data is up-to-date</strong> <br/><br/><br/>
+                            <label>Project:</label>
+                            <select  ng-model="projApp.sProject" ng-options="project as project.title for project in projApp.projects" class="form-control" Required="True" >
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
 
-    </p>
-    <form name="ProjectApplication" ng-submit= "projApp.save()" >
+                            <label>Semester:</label>
+                            <select  ng-model="projApp.semester" ng-options=" semester for semester in projApp.semesters" class="form-control" Required="True" >
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" ng-model="projApp.firstName" class="form-control" Required="True" ng-readonly="true">
 
-        <label class="col-sm-2 control-label">Semester</label>
-        <div class="col-sm-10 form-group">
-            <select  ng-model="projApp.semester" ng-options=" semester for semester in projApp.semesters" class="form-control" Required="True" >
-            </select>
-        </div>
+                        </td>
+                        <td>
+                            <input  type="text" ng-model="projApp.lastName" class="form-control" Required="True" ng-readonly="true">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <input type="text" ng-model="projApp.email" class="form-control" Required="True" ng-readonly="true">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>User Type:</label>
+                            <div>
+                                <input class = 'form-control'  ng-model="projApp.type" ng-readonly="true">
+                            </div><br>
 
-        <label class="col-sm-2 control-label">Project Selected</label>
-        <div class="col-sm-10 form-group">
-            <select  ng-model="projApp.selectedProject" ng-options="p as p.name for p in projApp.mockProjects" class="form-control" Required="True" >
-            </select>
-        </div>
+                        </td>
+                        <td>
+                            <label>Rank:</label>
+                            <div>
+                                <select  ng-model="projApp.rank" ng-options=" rank for rank in projApp.ranks" class="form-control" Required="True">
+                                </select>
+                            </div>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Panther ID:</label>
 
-        <label class="col-sm-2 control-label">First Name</label>
-        <div class="col-sm-10 form-group">
-            <input type="text" ng-model="projApp.firstName" class="form-control" Required="True">
-        </div>
+                            <div>
+                                <input type="text" ng-model="projApp.pID" class="form-control" Required="True" />
+                            </div>
 
-        <label class="col-sm-2 control-label">Last Name</label>
-        <div class="col-sm-10 form-group">
-            <input  type="text" ng-model="projApp.lastName" class="form-control" Required="True">
-        </div>
+                        </td>
+                        <td>
 
-        <label class="col-sm-2 control-label">Email</label>
-        <div class="col-sm-10 form-group">
-            <input type="text" ng-model="projApp.email" class="form-control" Required="True">
-        </div>
+                            <label>Gender:</label>
+                            <div>
+                                <select select  ng-model="projApp.gender" ng-options=" gender for gender in projApp.genders" class="form-control" Required="True">
+                            </div>
+                        </td>
 
-        <label class="col-sm-2 control-label">Panther ID</label>
+                    <tr>
+                        <td colspan="4">
 
-        <div class="col-sm-10 form-group">
-            <input type="text" ng-model="projApp.pID" class="form-control" Required="True">
-        </div>
+                            <label>College:</label>
+                            <select  ng-model="projApp.selectedCollege" ng-options="college as college.name for college in projApp.Colleges" class="form-control" Required="True">
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
 
-        <label class="col-sm-2 control-label">Gender</label>
-        <div class="col-sm-10 form-group">
-            <select  ng-model="projApp.gender" ng-options=" gender for gender in projApp.genders" class="form-control" Required="True" >
-            </select>
-        </div>
+                            <label>School/Department:</label>
+                            <select  ng-model="projApp.school" ng-options=" school for school in projApp.selectedCollege.schools" class="form-control" Required="True" >
+                            </select>
+
+                        </td>
+                    </tr>
+
+                </table>
+
+                <div align="center">
+                    <button style= "width: 150px;" type="submit" class="btn btn-primary btn-block" ng-disabled="ProjectApplication.$invalid" >
+                        <i class="fa fa-lg fa-user-plus" ></i> Save & Submit
+                    </button>
 
 
-        <label class="col-sm-2 control-label">Rank</label>
+                    <div style = "margin-left:53px;" class="row show-hide-message" ng-show="regCtlr.message">
+                        <div style = "margin-left:53px;"class="col-sm-6 col-sm-offset-4">
 
-        <div class="col-sm-10 form-group">
-            <select  ng-model="projApp.rank" ng-options=" rank for rank in projApp.ranks" class="form-control" Required="True" >
-            </select>
-        </div>
+                            <div style = "margin-left:53px;" class="alert alert-info">
+                                {{ regCtlr.message }}
+                            </div>
 
-        <label class="col-sm-2 control-label">College</label>
-        <div class="col-sm-10 form-group">
-            <select  ng-model="projApp.selectedCollege" ng-options="college as college.name for college in projApp.mockColleges" class="form-control" Required="True" >
-            </select>
-        </div>
+                        </div>
+                    </div>
+                </div><br>
+                <div>
+                    <a ui-sref ="home" class="pull-right">Cancel Application</a><br>
+                    <!--  <a href="#" class="pull-left">Forgotten your password?</a> -->
+                </div>
 
-        <label class="col-sm-2 control-label">School</label>
-        <div class="col-sm-10 form-group">
-            <select  ng-model="projApp.school" ng-options=" school for school in projApp.selectedCollege.schools" class="form-control" Required="True" >
-                <option>-- Select a School --</option>
-            </select>
-        </div>
 
-        <div>
-            <button type="submit" class="btn btn-primary" ng-disabled="ProjectApplication.$invalid">Save & Submit</button>
-            <button type="button" class="btn btn-default" ng-click="">Cancel</button>
-        </div>
-    </form>
+            </div>
 
-    <p>
-        <br/><br/><br/>
-
-    </p>
+        </form>
 </div>

@@ -1,7 +1,11 @@
 //base setup
 var express		= require('express');
-var mongoose	= require('mongoose');
-var bodyParser	= require('body-parser');
+var mongoose	        = require('mongoose');
+var passport			= require('passport');
+var cookieParser		= require('cookie-parser');
+var flash				= require('connect-flash');
+var session             = require('express-session');
+var bodyParser	        = require('body-parser');
 var path		= require('path');
 var config		= require('./api/config/config');
 var app			= express();
@@ -12,7 +16,11 @@ mongoose.connection.on('error', function(err){
 	console.log('Error: could not connect to MongoDB.');
 });
 
+
+require('./api/config/passport')(passport);
 app.use(bodyParser.json());
+app.use(cookieParser());
+//app.use(bodyParser());
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.use(function(req, res, next) {
@@ -22,6 +30,12 @@ app.use(function(req, res, next) {
 	next();
 });
 
+app.use(session(({ secret: 'ThisIsMyDirtyLittleSecretChocolatebunniesson'})));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+require('./api/routes/routes.js')(app, passport);
 // set static files location
 // used for requests that our frontend will make
 app.use(express.static(__dirname + '/webapp'));
@@ -29,8 +43,11 @@ app.use(express.static(__dirname + '/webapp'));
 var apiRoutes = require('./api/routes/profileApi')(app,express);
 app.use('/api/profile', apiRoutes);
 
+
+var userRoutes = require('./api/routes/userRoutes')(app, express);
 var projectRoutes = require('./api/routes/projectsRoutes')(app,express);
-app.use('/api/projects', projectRoutes);
+app.use('/api', projectRoutes);
+app.use('/userapi', userRoutes);
 
 //home page
 app.get('*', function (req, res) {

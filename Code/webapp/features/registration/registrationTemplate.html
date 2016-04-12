@@ -1,42 +1,37 @@
 <div class=register>
     <h3 align="center"> Registration </h3>
-    <form ng-submit="cUser.createUser()">
-
+    <form ng-submit="regCtlr.saveUser()">
         <div class="form-group">
             <table class="table">
                 <tr>
                     <td>
                         <input class="form-control" placeholder="First Name" type="text"
-                               ng-model="cUser.userData.f_Name"></input>
+                               ng-model="regCtlr.userData.firstName">
+
                     </td>
                     <td>
                         <input class="form-control" placeholder="Last Name" type="text"
-                               ng-model="cUser.userData.l_Name"></input>
+                               ng-model="regCtlr.userData.lastName"></input>
                     </td>
                 </tr>
               <tr>
                     <td colspan="4"><input class="form-control" placeholder="Email" type="text"
-                                           ng-model="cUser.userData.password"></input></td>
+                                           ng-model="regCtlr.userData.email"></input></td>
                 </tr>
 
                 <tr>
                     <td colspan="4"><input class="form-control" placeholder="Password" type="password"
-                                           ng-model="cUser.userData.email"></input></td>
+                                           ng-model="regCtlr.userData.password"></input></td>
                 </tr>
                 <tr>
                     <td colspan="4"><input class="form-control" placeholder="Confirm Password" type="password"
-                                           ng-model="cUser.userData.passconf"></input></td>
+                                           ng-model="regCtlr.userData.passwordConf"></input></td>
                 </tr>
                 <tr>
-
                     <td>
                         <label>User Type:</label>
                         <div>
-                            <select class = 'form-control' ng-model="cUser.userData.userType">
-                                <!--<option selected="" value="Default">(Please select a rank)</option> -->
-                                <option value="PendingFaculty">Faculty</option>
-                                <option value="PendingStaff">Staff</option>
-                                <option value="PendingPI">PI/CoPI</option>
+                            <select class = 'form-control'  ng-model="regCtlr.userData.userType" ng-options="user as user.name for user in regCtlr.Users">
                             </select>
                         </div><br>
 
@@ -44,12 +39,7 @@
                     <td>
                         <label>Rank:</label>
                         <div>
-                            <select class = "form-control" ng-model="cUser.userData.Rank">
-                                <option value="instructor">Instructor</option>
-                                <option value="assistant-professor">Assitant Professor</option>
-                                <option value="associtate-professor">Associate Professor</option>
-                                <option value="full-professor">Full Professor</option>
-
+                            <select class = "form-control" ng-model="regCtlr.userData.rank" ng-options="rank for rank in regCtlr.userData.userType.ranks">
                             </select>
                         </div>
                 </tr>
@@ -58,7 +48,7 @@
                         <label>Panther ID:</label>
 
                         <div>
-                            <input class = "form-control" placeholder = "123456" type="text" ng-model="cUser.userData.pID" />
+                            <input class = "form-control" placeholder = "123456" type="text" ng-model="regCtlr.userData.pantherID" />
                         </div>
 
                     </td>
@@ -66,9 +56,9 @@
 
                         <label>Gender:</label>
                     <div>
-                        <select  class = "form-control"ng-model="cUser.userData.Sex">
-                            <option value="female">Female</option>
-                            <option value="male">Male</option>
+                        <select  class = "form-control"ng-model="regCtlr.userData.gender">
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
                         </select>
                     </div>
                 </td>
@@ -77,24 +67,7 @@
                     <td colspan="4">
 
                             <label>College:</label>
-                            <select class = 'form-control' ng-model="cUser.userData.Department">
-                                <!--<option selected="" value="Default">(Please select a rank)</option> -->
-                                <!-- Architecture and Arts -->
-                                <option value="College of Engineering and Computing">College of Engineering and Computing</option>
-
-                                <option value="Architecture + The Arts">Architecture + The Arts</option>
-                                <option value="Arts, Sciences & Education">Arts, Sciences & Education</option>
-                                <option value="Business"> Business</option>
-                                <option value="Chaplin School of Hospitality and Tourism Management"> Chaplin School of Hospitality and Tourism Management</option>
-                                <option value="Engineering & Computing"> Engineering & Computing</option>
-                                <option value="Herbert Wertheim College of Medicine"> Herbert Wertheim College of Medicine</option>
-                                <option value="Journalism and Mass Communication">Journalism and Mass Communication</option>
-                                <option value="Law"> Law</option>
-                                <option value="Nicole Wertheim College of Nursing & Health Sciences"> Nicole Wertheim College of Nursing & Health Sciences</option>
-                                <option value="Robert Stempel College of Public Health & Social Work"> Robert Stempel College of Public Health & Social Work</option>
-                                <option value="Steven J. Green School of International and Public Affairs"> Steven J. Green School of International and Public Affairs</option>
-
-
+                            <select class = 'form-control' ng-model="regCtlr.userData.college" ng-options="college as college.name for college in regCtlr.Colleges" >
                             </select>
                     </td>
                 </tr>
@@ -102,23 +75,11 @@
                     <td colspan="4">
 
                         <label>School/Department:</label>
-                        <select class = 'form-control' ng-model="cUser.userData.school">
-                            <!--<option selected="" value="Default">(Please select a rank)</option> -->
-                            <!-- Architecture and Arts -->
-                            <!-- Engineering and Computing -->
-                            <option value="Construction">Construction</option>
-                            <option value="Computing and Information Sciences">Computing and Information Sciences</option>
-                            <option value="Biomedical Engineering">Biomedical Engineering</option>
-                            <option value="Civil and Environment Engineering">Civil and Environmental Engineering</option>
-                            <option value="Electrical and Computer Engineering">Electrical and Computer Engineering</option>
-                            <option value="Mechanical and Materials Engineering">Mechanical and Materials Engineering</option>
+                        <select class = 'form-control' ng-model="regCtlr.userData.department" ng-options=" school for school in regCtlr.userData.college.schools" >
                         </select>
 
                     </td>
-
                 </tr>
-
-
 
             </table>
 
@@ -126,7 +87,18 @@
                 <button style= "width: 150px;" type="submit" class="btn btn-primary btn-block">
                     <i class="fa fa-lg fa-user-plus" "></i> Create Account
                 </button>
-            </div><br>
+
+
+            <div style = "margin-left:53px;" class="row show-hide-message" ng-show="regCtlr.message">
+                <div style = "margin-left:53px;"class="col-sm-6 col-sm-offset-4">
+
+                    <div style = "margin-left:53px;" class="alert alert-info">
+                        {{ regCtlr.message }}
+                    </div>
+
+                </div>
+            </div>
+                  </div><br>
             <div>
                 <a ui-sref ="login" class="pull-right">Already have an account?</a><br>
                 <!--  <a href="#" class="pull-left">Forgotten your password?</a> -->
