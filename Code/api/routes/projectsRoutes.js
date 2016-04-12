@@ -1,9 +1,52 @@
 var bodyParser      = require('body-parser');
 var Project         = require('../models/projects');
+var Term         = require('../models/terms');
 
 module.exports = function(app, express) {
-
     var apiRouter = express.Router();
+    var currentTerm;
+   
+    /*
+    *Temporal Seed for the terms Starts here
+    */
+    console.log("Seed file start");
+    var termsSeed = [
+        {
+            name: "Spring",
+            start: new Date(2016, 01),
+            end: new Date(2016, 05),
+            deadline: new Date(2016, 01),
+            active: true
+        },
+        {
+            name: "Summer",
+            start: new Date(2016, 05),
+            end: new Date(2016, 08),
+            deadline: new Date(2016, 05),
+            active: false
+        }
+    ];
+    Term.count(function (err, count) {
+        if (!err && count === 0) {
+            Term.create(termsSeed, function(err){
+                console.log("Error found ", err);
+            });
+        }
+    }); 
+    /*
+    *Temporal Seed for the terms Ends here
+    */
+    
+    //Getting the current term
+    Term.find({active: true}, function(err, term){
+        if(err) 
+        {
+            console.log("Error getting the term");
+            console.log(err);
+        }
+        currentTerm = term;
+        console.log(currentTerm);
+    }); 
 
     //route get or adding products to a users account
     apiRouter.route('/projects')
@@ -16,7 +59,7 @@ module.exports = function(app, express) {
             });
         })
         .get(function (req, res) {
-            Project.find({}, function (err, projects) {
+            Project.find({ term: currentTerm[0]._id }, function (err, projects) {
                 if(err) {
                     console.log(err);
                     return res.send('error');
@@ -26,6 +69,7 @@ module.exports = function(app, express) {
         });
 
     apiRouter.route('/projects/:id')
+    
         .put(function (req, res) {
             Project.findById(req.params.id, function(err, proj){
                 if(err) res.send(err);
@@ -42,7 +86,7 @@ module.exports = function(app, express) {
             });
         })
         .get(function (req, res) {
-            Project.findById(req.params.id, function(err, proj){
+            Project.findById({ _id:req.params.id, term: currentTerm[0]._id }, function(err, proj){
                 if(err)
                     res.send(err);
                 res.json(proj);
@@ -55,7 +99,6 @@ module.exports = function(app, express) {
                 res.json({message: 'successfully deleted!'});
             });
         });
-
 
     return apiRouter;
 };
