@@ -1,6 +1,6 @@
 angular
-    .module('projectApplicationController', [])
-    .controller('projAppCtrl', function() {
+    .module('projectApplicationController', ['ProjectProposalService', 'userService'])
+    .controller('projAppCtrl', function(ProjectService,User,$stateParams) {
         var vm = this;
 
         vm.mockData = [{
@@ -10,34 +10,123 @@ angular
             pID: "1234567",
             rank: "Senior",
             gender: 'Male',
+            type: 'Student',
             college: "'Engineering & Computing",
             school: "School of Computing and Information Sciences",
             semester: "Spring 2016"
         }];
 
-        vm.mockColleges = [
+        vm.Colleges = [
+            {
+                name: 'Architecture + The Arts ',
+                schools: [
+                    'Architecture',
+                    'Interior Architecture',
+                    'Landscape Architecture and Environmental Urban Design',
+                    'Art and Art History',
+                    'Communication Arts',
+                    'School of Music',
+                    'Theatre']
+            },
+            {
+                name: 'Arts and Sciences & Education',
+                schools: [
+                    'Biological Sciences',
+                    'Chemistry and Biochemistry',
+                    'Earth and Environment',
+                    'English',
+                    'Mathematics and Statistics',
+                    'Philosophy',
+                    'Physics',
+                    'Psychology',
+                    'Teaching and Learning',
+                    'Leadership and Professional Studies',
+                    'School of Education',
+                    'School of Enviroment, Arts & Society',
+                    'School of Integrated Science & Humanity'
+
+                ]
+            },
             {
                 name: 'Business',
                 schools: [
-                    'School of Accounting',
+                    'Decision Sciences and Information Systems',
                     'Alvah H. Chapman Jr. Graduate School of Business',
-                    'R. Kirk Landon Undergraduate School of Business'
+                    'R. Kirk Landon Undergraduate School of Business',
+                    'Finance',
+                    'Management and International Business',
+                    'Marketing',
+                    'School of Accounting',
+                    'Real Estate'
+                ]
+            },
+            {
+                name: 'Chaplin School of Hospitality and Tourism Management',
+                schools: [
+                    'Hospitality and Tourism Management'
                 ]
             },
             {
                 name: 'Engineering & Computing',
                 schools: [
                     'School of Computing and Information Sciences',
-                    'OHL School of Construction'
+                    'OHL School of Construction',
+                    'Department of Biomedical Engineering',
+                    'Department of Civil and Environment Engineering',
+                    'Department of Electrical and Computer Engineering',
+                    'Department of Mechanical and Materials Engineering'
                 ]
             },
             {
-                name: 'Architecture + The Arts',
+                name: 'Herbert Wertheim College of Medicine',
                 schools: [
-                    'Architecture',
-                    'Interior',
-                    'Landscape',
-                    'School of Music'
+                    'Cellular Biology and Pharmacology',
+                    'Human and Molecular Genetics',
+                    'Immunology',
+                    'Medical and Population Health Sciences Research'
+                ]
+            },
+            {
+                name: 'Journalism and Mass Communication',
+                schools: [
+                    'Advertising and Public Relations',
+                    'Journalism Broadcasting and Digital Media'
+                ]
+            },
+            {
+                name: 'Law',
+                schools: [
+                    'College of Law'
+                ]
+            },
+            {
+                name: 'Nicole Wertheim College of Nursing & Health Sciences',
+                schools: [
+                    'Biostatistics',
+                    'Dietetics and Nutrition',
+                    'Environmental and Occupational Health',
+                    'Epidemiology',
+                    'Health Policy and Management',
+                    'Health Promotion and Disease Prevention'
+                ]
+
+            },
+            {
+                name: 'Robert Stempel College of Public Health & Social Work',
+                schools: [
+                    'School of Social Work'
+                ]
+            },
+            {
+                name: 'Steven J. Green School of International and Public Affairs',
+                schools: [
+                    'Criminal Justice',
+                    'Economics',
+                    'Global and Sociocultural Studies',
+                    'History',
+                    'Modern Languages',
+                    'Public Administration',
+                    'Religious Studies'
                 ]
             }
         ];
@@ -45,30 +134,52 @@ angular
         vm.genders = ['Male', 'Female'];
         vm.semesters = ['Spring 2016', 'Summer 2016'];
 
-        vm.mockProjects = [
-            {
-                name: 'project 1'
-            },
-            {
-                name: 'project 2'
-            },
-            {
-                name: 'project 3'
-            },
-            {
-                name: 'project 4'
-            }
+        vm.ranks =  [
+            'Freshman',
+            'Sophmore',
+            'Junior',
+            'Senior',
+            'Masters',
+            'PhD',
+            'postDoc'
         ];
 
-        vm.ranks = ['Freshman', 'Sophomore', 'Junior', 'Senior', 'Post-Grad'];
+        vm.selectedCollege = vm.Colleges[1];
 
-        vm.selectedProject = vm.mockProjects[0];
-        vm.selectedCollege = vm.mockColleges[1];
-        vm.message = "Test";
-        vm.editorEnabled = false;
+        init();
+        function init () {
+            loadData();
+        }
+
+
+        function loadData(){
+            ProjectService.getProjects().then(function(data){
+                vm.projects = data;
+                if($stateParams.id){
+                    vm.id = $stateParams.id;
+                    getProjectById(vm.projects);
+                } else {
+                    vm.sProject = null;
+                }
+            });
+        }
+        function getProjectById (projects){
+            ProjectService.getProject(vm.id).then(function(data){
+
+                projects.forEach( function (project)
+                {
+                    if(data._id === project._id)
+                    {
+                        vm.sProject = project;
+                    }
+                });
+            });
+        }
+
 
 
         vm.firstName = vm.mockData[0].firstName;
+        vm.type = vm.mockData[0].type;
         vm.lastName = vm.mockData[0].lastName;
         vm.gender = vm.mockData[0].gender;
         vm.email = vm.mockData[0].email;
