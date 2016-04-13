@@ -348,3 +348,11 @@ html {
     margin-left: 0px;
     margin-right: 0px;
 }
+
+.disciplines {
+  width: 1.5e;
+  text-align: left;
+  white-space: normal;
+  overflow: hidden;
+  word-wrap: break-word;
+}

@@ -5,13 +5,12 @@
         </div>
         <div class="col">
             <div class="col-sm-4 team-info">
-                <h5>Showing 1-35 out of 35</h5>
+                <h5>Showing 1-{{vm.projects.length}} out of {{vm.backupProjects.length}}</h5>
             </div>
             <div class="col-sm-8 sort-by-padding">
                 <label class=""><h5>Sort By:</h5></label>
                 <select class="btn btn-default dropdown-toggle top-margin">
                     <option value="Title">Title</option>
-                    <option value="Start Year">Start Year</option>
                 </select>
             </div>
         </div>
@@ -22,10 +21,10 @@
                 <button class="btn btn-default" ng-click="vm.filterByDiscipline(discipline)">Show All</button>
             </div>
             <div class="col-sm-12">
-                <div class="btn"><h4>My Fields</h4></div>
+                <div class="btn"><h4>Disciplines</h4></div>
             </div>
             <div class="col-sm-12" ng-repeat="discipline in vm.disciplines">
-                <div class="btn side-bar-button" ng-click="vm.filterByDiscipline(discipline)">{{discipline.name}}</div> 
+                <div class="btn side-bar-button disciplines" ng-click="vm.filterByDiscipline(discipline)">{{discipline}}</div> 
             </div>
         </div>
         <div class="col-sm-9 project-second-section-middle">
