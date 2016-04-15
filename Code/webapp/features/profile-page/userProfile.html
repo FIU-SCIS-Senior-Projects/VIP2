@@ -1,67 +1,110 @@
-<div>
-	<form ng-submit="user.save()">
-        <label class="col-sm-2 control-label">Panther ID</label>
-		<div class="col-sm-10 form-group">
-			<p>{{user.profileData.pid}}</p>
-		</div>
-		<label class="col-sm-2 control-label">First Name</label>
-		<div class="col-sm-10 form-group">
-			<p ng-hide="user.editorEnabled">{{user.profileData.firstName}}</p>
-			<input ng-show="user.editorEnabled" type="text" ng-model="user.profileData.firstName" class="form-control" Required="True">
+<div class=register>
+	<h3 align="center"> User Profile </h3>
+	<form name="Profile" ng-submit="profile.save()">
+		<div style = "text-align: center;">
+			<img style = " border: 1px solid black;" src= "img/user_icon.png" height="120" width="120" ></img>
 		</div>
 
-		<label class="col-sm-2 control-label">Last Name</label>
-		<div class="col-sm-10 form-group">
-			<p ng-hide="user.editorEnabled">{{user.profileData.lastName}}</p>
-			<input ng-show="user.editorEnabled" type="text" ng-model="user.profileData.lastName" class="form-control" Required="True">
+		<div class="form-group">
+			<table class="table">
+				<tr>
+					<td>
+						<input type="text" placeholder="First Name" ng-model="profile.firstName" class="form-control" >
+
+					</td>
+					<td>
+						<input  type="text"  placeholder="Last Name" ng-model="profile.lastName" class="form-control" >
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">
+						<input type="text" placeholder="Email" ng-model="profile.email" class="form-control">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>User Type:</label>
+						<div>
+							<input class = 'form-control'  ng-model="profile.UserType" >
+						</div><br>
+
+					</td>
+					<td>
+						<label>Rank:</label>
+						<div>
+							<select  ng-model="profile.rank" ng-options=" rank for rank in profile.ranks" class="form-control" >
+							</select>
+						</div>
+				</tr>
+				<tr>
+					<td>
+						<label>Panther ID:</label>
+
+						<div>
+							<input type="text" ng-model="profile.pID" class="form-control" />
+						</div>
+
+					</td>
+					<td>
+
+						<label>Gender:</label>
+						<div>
+							<select  ng-model="profile.gender" class="form-control">
+						</div>
+					</td>
+				<tr>
+					<td colspan="4">
+
+						<label>College:</label>
+						<select  ng-model="profile.College" class="form-control" >
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">
+
+						<label>School/Department:</label>
+						<select  ng-model="profile.school" class="form-control" >
+						</select>
+
+					</td>
+				</tr>
+
+				<tr>
+					<td colspan="4">
+						<label>Major:</label>
+						<div>
+							<select class = 'form-control' ng-model="profile.major" ng-options=" major for major in profile.Majors" >
+							</select>
+
+						</div>
+
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4">
+						<label>Minor:</label>
+						<div>
+							<select class = 'form-control' ng-model="profile.minor" ng-options=" minor for minor in profile.Minors" >
+							</select>
+
+						</div>
+
+					</td>
+				</tr>
+
+
+			</table>
+
+			<div align="center">
+				<button style= "width: 150px;" type="submit" class="btn btn-primary btn-block" ng-disabled="Profile.$invalid" >
+					<i></i> Update
+				</button>
+
+					</div>
+				</div>
+			</div><br>
 		</div>
 
-		<label class="col-sm-2 control-label">Email</label>
-		<div class="col-sm-10 form-group">
-			<p ng-hide="user.editorEnabled">{{user.profileData.email}}</p>
-			<input ng-show="user.editorEnabled" type="text" ng-model="user.profileData.email" class="form-control" Required="True">
-		</div>
-
-        <label class="col-sm-2 control-label">Gender</label>
-		<div class="col-sm-10 form-group">
-			<p ng-hide="user.editorEnabled">{{user.profileData.gender}}</p>
-			<input ng-show="user.editorEnabled" type="text" ng-model="user.profileData.gender" class="form-control" Required="True">
-		</div>
-
-        <label class="col-sm-2 control-label">College</label>
-		<div class="col-sm-10 form-group">
-			<p ng-hide="user.editorEnabled">{{user.profileData.college}}</p>
-			<input ng-show="user.editorEnabled" type="text" ng-model="user.profileData.college" class="form-control" Required="True">
-		</div>
-
-        <label class="col-sm-2 control-label">School</label>
-		<div class="col-sm-10 form-group">
-			<p ng-hide="user.editorEnabled">{{user.profileData.school}}</p>
-			<input ng-show="user.editorEnabled" type="text" ng-model="user.profileData.school" class="form-control" Required="True">
-		</div>
-
-        <label class="col-sm-2 control-label">Major</label>
-		<div class="col-sm-10 form-group">
-			<p ng-hide="user.editorEnabled">{{user.profileData.major}}</p>
-			<input ng-show="user.editorEnabled" type="text" ng-model="user.profileData.major" class="form-control" Required="True">
-		</div>
-
-        <label class="col-sm-2 control-label">User Type</label>
-		<div class="col-sm-10 form-group">
-			<p>{{user.profileData.userType}}</p>
-		</div>
-
-        <label class="col-sm-2 control-label">Rank</label>
-		<div class="col-sm-10 form-group">
-			<p>{{user.profileData.rank}}</p>
-		</div>
-
-		<div ng-hide="user.editorEnabled">
-			<button type="button" class="btn btn-default" ng-click="user.enableEditor()">Edit Information</button>
-		</div>
-		<div ng-show="user.editorEnabled">
-			<button type="submit" class="btn btn-primary">Save</button>
-			<button type="button" class="btn btn-default" ng-click="user.disableEditor()">Cancel</button>
-		</div>
 	</form>
 </div>

@@ -58,11 +58,11 @@ angular.module('routes', ['ui.router'])
                 url:'/organization',
                 templateUrl: 'features/organization/organization.html'
             })
-            .state('userProfile', {
+            .state('profile', {
                 url:'/profile',
                 templateUrl: 'features/profile-page/userProfile.html',
-                controller: 'UserCtrl',
-                controllerAs: 'user'
+                controller: 'profileController',
+                controllerAs: 'profile'
             })
             .state('projects',{
                 url:'/vip-projects',
