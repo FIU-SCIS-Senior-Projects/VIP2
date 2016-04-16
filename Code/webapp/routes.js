@@ -1,6 +1,8 @@
 angular.module('routes', ['ui.router'])
 
     .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
+        $locationProvider.html5Mode(true);
+        
         $urlRouterProvider.otherwise('/');
         $stateProvider
             .state('about', {
@@ -58,13 +60,13 @@ angular.module('routes', ['ui.router'])
                 url:'/organization',
                 templateUrl: 'features/organization/organization.html'
             })
-            .state('projects',{ 
+            .state('projects',{
                 url:'/vip-projects',
                 templateUrl:'features/vip-projects/vip-projects.html',
                 controller: 'VIPProjectsCtrl',
                 controllerAs: 'vm'
             })
-           .state('projectsDetailed',{ 
+           .state('projectsDetailed',{
                 url:'/vip-projects-detailed',
                 templateUrl:'features/vip-projects/vip-projects-detailed.html',
                 controller: 'VIPProjectsDetailedCtrl',
@@ -82,5 +84,12 @@ angular.module('routes', ['ui.router'])
                 templateUrl: 'features/registration/registrationTemplate.html',
                 controller: 'registrationController',
                 controllerAs: 'regCtlr'
+            })
+
+            .state('toDo', {
+                url: '/to-do',
+                templateUrl: 'features/to-do/toDo.html',
+                controller: 'toDoController',
+                controllerAs: 'todo',
             })
     });
