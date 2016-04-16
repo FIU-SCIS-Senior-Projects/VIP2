@@ -10,6 +10,7 @@
     function profileController($state, $scope, ProfileService) {
         var vm = this;
         vm.profile;
+		vm.updateProfile = updateProfile;
         
         init();
         function init(){
@@ -21,6 +22,13 @@
                 vm.profile = data;
             });
         }
+		
+		function updateProfile () {
+			ProfileService.saveProfile(vm.profile).then(function(data){
+                console.log("Profile Updated");
+            });
+		}
+		
         vm.Majors = [
 			"Accounting",
 			"Adult Education and Human Resource Development",
@@ -161,23 +169,3 @@
 		];
     }
 })();
-
-// angular.module('UserProfileController')
-// 	.controller('profileController', function(User) {
-// 		var vm = this;
-//         vm.profile;
-        
-//         init();
-//         function init() {
-//             loadUserData();
-//         }
-        
-//         function loadUserData() {
-            
-//         }
-        
-// 		vm.save = function() {
-// 			console.log(vm.se);
-// 		};
-
-// 	});
