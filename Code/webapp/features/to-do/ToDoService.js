@@ -6,11 +6,12 @@
         // create a new object
         var toDoFactory = {};
         var mockData = [
-            {todo: "fill in profile", read: false},
-            {todo: "student a applied", read: false},
-            {todo: "student b applied", read: true},
-            {todo: "student c applied", read: false},
-            {todo: "student d applied", read: true},
+            {todo: "fill in your profile", read: false, type: "personal"},
+            {todo: "student a applied", read: false, type: "student"},
+            {todo: "student b applied", read: true, type: "student"},
+            {todo: "student c applied", read: false, type: "student"},
+            {todo: "student d applied", read: true, type: "student"},
+            {todo: "faculty a registered", read: false, type: "faculty"},
         ];
 
         toDoFactory.loadAllToDo = function () {
