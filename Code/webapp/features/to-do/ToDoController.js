@@ -9,6 +9,10 @@
         vm.test = 'Message';
         vm.list = {};
 
+        function markedAsRead () {
+            
+        }
+
         function getToDo () {
             vm.list = ToDoService.loadAllToDo();
         }
