@@ -35,7 +35,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-require('./api/routes/routes.js')(app, passport);
 // set static files location
 // used for requests that our frontend will make
 app.use(express.static(__dirname + '/webapp'));
