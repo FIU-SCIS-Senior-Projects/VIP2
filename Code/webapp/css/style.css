@@ -356,3 +356,13 @@ html {
     margin-left: 0px;
     margin-right: 0px;
 }
+
+.todo-count {
+    position: relative;
+    right: 15px;
+    bottom: 15px;
+}
+
+.badge {
+    background-color: #FF0000;
+}

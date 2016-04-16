@@ -1,6 +1,6 @@
 (function() {
     'use strict';
 
-    angular.module('toDoModule', ['ngSanitize']);
+    angular.module('toDoModule', []);
 
 })();
