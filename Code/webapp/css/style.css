@@ -348,7 +348,11 @@ html {
     background-color: #fff;
 }
 
-
 .red-text {
     color:red;
+}
+
+.team-project {
+    margin-left: 0px;
+    margin-right: 0px;
 }

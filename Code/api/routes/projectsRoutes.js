@@ -29,13 +29,12 @@ module.exports = function(app, express) {
         .put(function (req, res) {
             Project.findById(req.params.id, function(err, proj){
                 if(err) res.send(err);
-                if(req.body.proj!=="") proj.title = req.body.title;
+                if(req.body.title!=="") proj.title = req.body.title;
                 if(req.body.description!=="") proj.description = req.body.description
                 if(req.body.disciplines!=="") proj.disciplines = req.body.disciplines;
                 if(req.body.image!=="") proj.image = req.body.image;
                 if(req.body.firstSemester!=="") proj.firstSemester = req.body.firstSemester;
                 if(req.body.maxStudents!=="") proj.maxStudents = req.body.maxStudents;
-                console.log(proj.title);
                 proj.save(function(err){
                     if(err) res.send(err);
                     res.json({message: 'Updated!'});
