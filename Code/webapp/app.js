@@ -8,5 +8,5 @@ angular.module('mainApp', [
 	'projectApplicationController',
 	'userRegistrationController',
 	'userService',
-	'UserProfileController'
+	'user-profile',
 ]);

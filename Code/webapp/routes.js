@@ -60,9 +60,9 @@ angular.module('routes', ['ui.router'])
             })
             .state('profile', {
                 url:'/profile',
-                templateUrl: 'features/profile-page/userProfile.html',
+                templateUrl: 'features/profile-page/user-profile.html',
                 controller: 'profileController',
-                controllerAs: 'profile'
+                controllerAs: 'vm'
             })
             .state('projects',{
                 url:'/vip-projects',
