@@ -1,7 +1,61 @@
-var bodyParser = require('body-parser');    // get body-parser
-var User = require('../models/users');
+//Includes
+var passport      = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var bodyParser    = require('body-parser');
+
+//Models
+var User          = require('../models/users');
 
 module.exports = function (app, express) {
+
+    //Google+ Authentication
+    app.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
+
+    app.get('/auth/google/callback',
+        passport.authenticate('google', {
+            successRedirect: 'http://localhost:3000/#/graduate-application',
+            failureRedirect: 'http://localhost:3000/#/how-vip-credits-count'
+        })
+    );
+
+    passport.use(new LocalStrategy({
+        usernameField : "email",
+        passwordField : "password",
+    },
+        function(username, password, done) {
+            console.log(username);
+            console.log(password);
+            User.findOne({'email': username}, function(err, user) {
+                if (err) {return done(err); }
+                if (!user) {
+                    return done(null, false, {message: 'Incorrect username/password.' });
+                }
+                //if (!user.validPassword(password)) {
+                //    return done(null, false, {message: 'Incorrect username/password.' });
+                //}
+                return done(null, user);
+            });
+        }
+    ));
+
+    passport.serializeUser(function(user, done) {
+        done(null, {
+            id: user.id,
+            email: user.email,
+            firstName: user.firstName
+        });
+    });
+
+    passport.deserializeUser(function(obj, done) {
+        done(null, obj);
+    });
+
+    app.post('/login',
+        passport.authenticate('local', {
+            successRedirect: '/#/contact',
+            failureRedirect: '/#/vip-projects',
+            failureFlash: true })
+    );
 
     var userRouter = express.Router();
 
@@ -60,11 +114,25 @@ module.exports = function (app, express) {
 
                 // return the object id for validation and message for the client
                 res.json({ objectId: user._id, message: 'User created!' });
-
             });
-
         });
-
-
+/*
+    User.findOne({'email': 'jpere268@fiu.edu'}, function(err, user){
+        console.log(user.firstName);
+        console.log(user.lastName);
+        console.log(user.password);
+        console.log(user.email);
+        console.log(user.userType);
+        console.log(user.rank);
+        console.log(user.pantherID);
+        console.log(user.project);
+        console.log(user.piApproval);
+        console.log(user.piDenial);
+        console.log(user.verifiedEmail);
+        console.log(user.college);
+        console.log(user.department);
+        console.log(user.google.name);
+    });
+*/
     return userRouter;
 };
