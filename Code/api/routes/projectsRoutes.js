@@ -45,7 +45,7 @@ module.exports = function(app, express) {
             console.log(err);
         }
         currentTerm = term;
-        console.log(currentTerm);
+        //console.log(currentTerm);
     }); 
 
 
@@ -53,6 +53,7 @@ module.exports = function(app, express) {
     //route get or adding products to a users account
     apiRouter.route('/projects')
         .post(function (req, res) {
+            req.body.term = currentTerm._id;
            Project.create(req.body, function (err) {
                 if(err) {
                     return res.send(err);

@@ -15,11 +15,14 @@
         vm.backupProjects;
         vm.backupDisciplines;
         vm.temProj = new Set();
+        vm.filteringVariables = new Set();
+        vm.showAllCheckBox = true;
+        
         
         //Function Declarations
+        vm.showAllDisciplinesToggle = showAllDisciplinesToggle; 
         vm.filterByDiscipline = filterByDiscipline;
-        vm.viewDetails = viewDetails;
-        
+        vm.viewDetails = viewDetails; 
         
         init();
         function init(){
@@ -36,27 +39,34 @@
             });
         }
         
+        function showAllDisciplinesToggle() {
+            if(vm.showAllCheckBox){
+                vm.projects = vm.backupProjects;
+                vm.disciplines = getDisciplines(vm.backupProjects);
+            }else {
+                vm.projects = [];
+                vm.disciplines = [];
+            }
+            vm.filteringVariables.clear();
+        }
+        
         function filterByDiscipline (discipline) {
             vm.temProj.clear();
             if(discipline != null){
-                angular.forEach(vm.projects, function(item){
-                    angular.forEach(item.disciplines, function(itemDiscipline){
-                        if(itemDiscipline === discipline)
-                        {
-                            vm.temProj.add(item);
-                        }    
-                    })
-                })
-                vm.projects = [];
-                vm.temProj.forEach(function (proj) {
-                    vm.projects.push(proj);
-                });
-                bubbleSort(vm.projects, 'title');
-                vm.disciplines = getDisciplines(vm.projects);
-            }
-            else {
-                vm.projects = vm.backupProjects;
-                vm.disciplines = getDisciplines(vm.backupProjects);
+                /*
+                * Find if discipline already being displayed, in which case it will be discarded as a filtering option.
+                * and the remaining filters have to be reapplied to all the projects. NEEDS REVISION for IMPROVEMENT
+                */
+                if(vm.filteringVariables.has(discipline)){
+                    vm.filteringVariables.delete(discipline);
+                    filterProjects(vm.filteringVariables, vm.backupProjects);
+                }
+                else{
+                    var disciplineSet = new Set();
+                    disciplineSet.add(discipline);
+                    vm.filteringVariables.add(discipline);
+                    filterProjects(disciplineSet, vm.projects);
+                }
             }
         } 
         
@@ -107,5 +117,33 @@
             bubbleSort(tempArray,null);
             return tempArray;
         }
+        
+        function filterProjects(discipline, projects){
+            var tempArray = [];
+            discipline.forEach(function (obj){
+                tempArray.push(obj);
+            })
+            angular.forEach(tempArray, function(obj) {
+                angular.forEach(projects, function(item){
+                    angular.forEach(item.disciplines, function(itemDiscipline){
+                        if(itemDiscipline === obj)
+                        {
+                            vm.temProj.add(item);
+                        }    
+                    })
+                })
+                projects = [];
+                vm.temProj.forEach(function (proj) {
+                    projects.push(proj);
+                });    
+                vm.temProj.clear();
+            })
+            
+            vm.projects = [];
+            angular.copy(projects, vm.projects);
+            bubbleSort(vm.projects, 'title');
+            vm.disciplines = getDisciplines(vm.projects);
+        }
     }
 })();
+

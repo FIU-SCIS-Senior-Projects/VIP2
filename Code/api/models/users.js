@@ -19,6 +19,7 @@ var UsersSchema = new Schema({
     verifiedEmail: Boolean,
     college:{type: String, required: true, default: "test"},
     department:{type: String, required: true, default: "test"},
+    major:String,
 
     google: {
         id: String,
