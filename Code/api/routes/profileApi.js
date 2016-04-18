@@ -7,8 +7,6 @@ module.exports = function(app, express) {
         
     apiRouter.route('/profile')
         .put(function (req, res) {
-            console.log("This is the body");
-            console.log(req.body);
             /*
             * This update takes TOO LONG to complete therefore im using the not so short approach but the fastest of the two
             */
@@ -17,9 +15,16 @@ module.exports = function(app, express) {
             //     return res.json(profile);
             // });
             Profile.findById(req.body._id, function(err, profile){
-                profile.email = req.body.email;
                 profile.firstName = req.body.firstName;
                 profile.lastName = req.body.lastName;
+                profile.rank       = req.body.rank;    // set the users Rank within the program
+                profile.college      = req.body.college;   // sets the users college
+                profile.department      = req.body.department;   // sets the users college
+                profile.userType = req.body.userType;
+                profile.gender = req.body.gender;
+                profile.minor = req.body.minor;
+                profile.pantherID        = req.body.pantherID;
+                profile.major        = req.body.major;
                 //Missing fields go here
                 
                 profile.save(function(err){

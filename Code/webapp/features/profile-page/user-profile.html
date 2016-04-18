@@ -25,14 +25,15 @@
 					<td>
 						<label>User Type:</label>
 						<div>
-							<input class = 'form-control'  ng-model="vm.profile.UserType" >
+							<select class = 'form-control' ng-model="vm.profile.userType" ng-options="user as user for user in vm.users">
+							</select>
 						</div><br>
 
 					</td>
 					<td>
 						<label>Rank:</label>
 						<div>
-							<select  ng-model="vm.profile.rank" ng-options=" rank for rank in vm.profile.ranks" class="form-control" >
+							<select class = "form-control" ng-model="vm.profile.rank" ng-options="rank for rank in vm.ranks">
 							</select>
 						</div>
 				</tr>
@@ -41,7 +42,7 @@
 						<label>Panther ID:</label>
 
 						<div>
-							<input type="text" ng-model="vm.profile.pID" class="form-control" />
+							<input type="text" ng-model="vm.profile.pantherID" class="form-control" />
 						</div>
 
 					</td>
@@ -49,14 +50,14 @@
 
 						<label>Gender:</label>
 						<div>
-							<select  ng-model="vm.profile.gender" class="form-control">
+							<select  ng-model="vm.profile.gender" class="form-control" ng-options=" sex for sex in vm.genders">
 						</div>
 					</td>
 				<tr>
 					<td colspan="4">
 
 						<label>College:</label>
-						<select  ng-model="vm.profile.College" class="form-control" >
+						<select  ng-model="vm.profile.college" class="form-control"  ng-options=" sex for sex in vm.schools" >
 						</select>
 					</td>
 				</tr>
@@ -64,8 +65,8 @@
 					<td colspan="4">
 
 						<label>School/Department:</label>
-						<select  ng-model="vm.profile.school" class="form-control" >
-						</select>
+						<input  ng-model="vm.profile.department" class="form-control" >
+						</input>
 
 					</td>
 				</tr>
@@ -73,9 +74,8 @@
 					<td colspan="4">
 						<label>Major:</label>
 						<div>
-							<select class = 'form-control' ng-model="vm.profile.major" ng-options=" major for major in vm.profile.Majors" >
+							<select class = 'form-control' ng-model="vm.profile.major" ng-options=" major for major in vm.majors" >
 							</select>
-
 						</div>
 
 					</td>
@@ -84,9 +84,8 @@
 					<td colspan="4">
 						<label>Minor:</label>
 						<div>
-							<select class = 'form-control' ng-model="vm.profile.minor" ng-options=" minor for minor in vm.profile.Minors" >
-							</select>
-
+							<input class = 'form-control' ng-model="vm.profile.minor" >
+							</input>
 						</div>
 
 					</td>

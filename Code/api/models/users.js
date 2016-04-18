@@ -20,6 +20,7 @@ var UsersSchema = new Schema({
     college:{type: String, required: false},
     department:{type: String, required: false},
     major:String,
+    minor:String,
     image: String,
 
     google: {

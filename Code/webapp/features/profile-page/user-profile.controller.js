@@ -28,8 +28,36 @@
                 console.log("Profile Updated");
             });
 		}
-		
-        vm.Majors = [
+
+
+		vm.users = ["Student",
+			"Staff",
+			"Pi/CoPi",
+			"Student"
+		];
+
+		vm.ranks = [
+			'Freshman',
+			'Sophmore',
+			'Junior',
+			'Senior',
+			'Masters',
+			'PhD',
+			'postDoc',
+			'PI',
+			'CoPI',
+			'Coordinator',
+			'External Member',
+			'Administrator',
+			'Director',
+			'Instructor',
+			'Assitant Professor',
+			'Associate Professor',
+			'Full Professor'
+		];
+
+
+        vm.majors = [
 			"Accounting",
 			"Adult Education and Human Resource Development",
 			"Advertising (Communication)",
@@ -158,14 +186,23 @@
 			"Women's Studies"
 		];
 
-		vm.ranks =  [
-			'Freshman',
-			'Sophmore',
-			'Junior',
-			'Senior',
-			'Masters',
-			'PhD',
-			'postDoc'
+		vm.schools = ['Architecture + The Arts ',
+			'Business',
+			'Chaplin School of Hospitality and Tourism Management',
+			'Engineering & Computing',
+			'Herbert Wertheim College of Medicine',
+			'Journalism and Mass Communication',
+			'Law',
+			'Nicole Wertheim College of Nursing & Health Sciences',
+			'Robert Stempel College of Public Health & Social Work',
+			'Steven J. Green School of International and Public Affairs'
+
 		];
+
+		vm.genders = ['Male', 'Female'];
+
+
+
+
     }
 })();
