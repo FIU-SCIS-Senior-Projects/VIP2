@@ -5,20 +5,29 @@ var bcrypt      = require('bcrypt-nodejs');
 var UsersSchema = new Schema({
     firstName: {type: String, required: true},
     lastName: {type: String, required: true},
-    password:  {type: String, required: true},
-    passwordConf:  {type: String, required: true},
+    password:  {type: String, required: false},
+    passwordConf:  {type: String, required: false},
     email: {type: String, required: true, index: {unique:true}},
     googleKey: String,
-    userType: {type: String, required: true},
-    rank: {type: String, required: true},
-    pantherID: String,
-    gender: {type: String, required: true},
+    userType: {type: String, required: false},
+    rank: {type: String, required: false},
+    pantherID: {type: String, required: false},
+    gender: {type: String, required: false},
     project:    String,
     piApproval: Boolean,
     piDenial: Boolean,
     verifiedEmail: Boolean,
-    college:{type: String, required: true},
-    department:{type: String, required: true}
+    college:{type: String, required: false},
+    department:{type: String, required: false},
+    major:String,
+    image: String,
+
+    google: {
+        id: String,
+        token: String,
+        email: String,
+        name: String
+    }
 
 
 });
@@ -39,9 +48,7 @@ UsersSchema.pre('save', function(next) {
         next();
     });
 });
-
-// NEED TO HASH CONFIRM PASSWORD!!!! - TMOORE
-
+// NEED TO HASH CONFIRM PASSWORD!!!! - TMOOR
 UsersSchema.methods.comparePassword = function(password) {
     var user = this;
     

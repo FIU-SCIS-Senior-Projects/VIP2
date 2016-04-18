@@ -1,4 +1,5 @@
 angular.module('mainApp', [
+	'textAngular',
 	'vipHeader',
 	'vipFooter',
     'vip-projects',		//Features Module
@@ -6,5 +7,6 @@ angular.module('mainApp', [
 	'routes',
 	'projectApplicationController',
 	'userRegistrationController',
-	'userService'
+	'userService',
+	'user-profile',
 ]);

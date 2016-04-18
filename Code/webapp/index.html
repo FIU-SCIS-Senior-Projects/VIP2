@@ -13,24 +13,37 @@
 	<link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
 
+	<link rel='stylesheet' href='lib/textAngular/dist/textAngular.css'>
+
+
 	<!-- Javascript Libraries -->
 	<script src="lib/angular/angular.min.js"></script>
 	<script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
 	<script src="lib/jquery/dist/jquery.min.js"></script>
 	<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
 
-	<!-- controllers -->
+	<script src='lib/textAngular/dist/textAngular-rangy.min.js'></script>
+	<script src='lib/textAngular/dist/textAngular-sanitize.min.js'></script>
+	<script src='lib/textAngular/dist/textAngular.min.js'></script>
+    
+    <!-- modules -->
+    <!--These files need to be loaded first in order for the controller and directives and factories to be able to use them-->
     <script src="features/vip-projects/vip-projects.module.js"></script>
+    <script src="features/profile-page/user-profile.module.js"></script>
+ 
+	<!-- controllers -->
     <script src="features/vip-projects/vip-projects.controller.js"></script>
     <script src="features/vip-projects/vip-projects-detailed.controller.js"></script>
 	<script src = "features/project-proposals/ProjectProposalController.js"></script>
-	<script src="features/profile-page/UserProfileController.js"></script>
+	<script src="features/profile-page/user-profile.controller.js"></script>
 	<script src="features/apply-to-project/projectApplicationController.js"></script>
 	<script src="features/registration/userRegistrationController.js"></script>
+
 
 	<!-- services -->
 	<script src = "features/project-proposals/ProjectProposalService.js"></script>
 	<script src="/features/registration/userService.js"></script>
+    <script src="features/profile-page/user-profile.service.js"></script>
 
 	<!-- directives -->
 	<script src="features/header/headerDirective.js"></script>
@@ -42,13 +55,13 @@
 </head>
 
 <body>
-	<div class="container-fluid">
+	<div class="container">
 
 		<!-- Directive to load the header -->
 		<vip-header></vip-header>
 
         <!-- ANGULAR VIEWS -->
-        <div class="container" ui-view></div>
+        <div ui-view></div>
 
         <!-- Directive to load the footer -->
 		<vip-footer></vip-footer>

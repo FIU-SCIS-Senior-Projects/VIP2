@@ -451,7 +451,7 @@ function contains(password, allowedChars) {
 function userType_validation(userType) {
 
     if (userType == "Student") {
-        alert("A student does not have permission to register.Please authenticate with Gmail to create your account.")
+        alert("A student does need to register.You may simply login with your .fiu.edu account.")
         return false;
     }
 
