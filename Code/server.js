@@ -16,7 +16,6 @@ mongoose.connection.on('error', function(err){
 	console.log('Error: could not connect to MongoDB.');
 });
 
-
 require('./api/config/passport')(passport);
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -35,16 +34,16 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-require('./api/routes/routes.js')(app, passport);
 // set static files location
 // used for requests that our frontend will make
 app.use(express.static(__dirname + '/webapp'));
 
-
 var userRoutes = require('./api/routes/userRoutes')(app, express);
 var projectRoutes = require('./api/routes/projectsRoutes')(app,express);
+var profileRoutes = require('./api/routes/profileApi')(app,express);
 app.use('/api', projectRoutes);
 app.use('/userapi', userRoutes);
+app.use('/api', profileRoutes);
 
 //home page
 app.get('*', function (req, res) {

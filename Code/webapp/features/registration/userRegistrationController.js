@@ -231,7 +231,7 @@ angular
                 return;// return to form..did not enter rank
             }
 
-           if(!pid_validation(vm.userData.pantherID))
+           if(!pid_validation(vm.userData.pantherID,vm.userData.userType.name))
            {
                return; // invalid panther id, return to form
            }
@@ -265,7 +265,6 @@ angular
 
             // call user service which makes the post from userRoutes
             User.create(vm.userData)
-
                                 // data contains what we got back from the service and API
                 .success(function(data){
                 vm.processing = false;
@@ -278,9 +277,10 @@ angular
                 vm.userData.subject = "Welcome to FIU VIP Project!";
                 User.nodeEmail(vm.userData);
                 */
-                    console.log(data.message);
+
                 vm.message = data.message; // message returned by the API
-                 // clear the form
+                     // clear the form
+                    vm.userData = {};
 
             })
         };
@@ -348,7 +348,13 @@ function last_validation(last) {
 
 //Makes sure panther ID is only numbers and of correct length
 //NEED TO FIX PID BEING ENTERED AS A LETTER
-function pid_validation(pid) {
+function pid_validation(pid,userType) {
+
+    if(userType == "Pi/CoPi" )
+    {
+        return true;
+    }
+
 
     if (pid == undefined) {
         alert("Panther ID should not be empty.")
@@ -445,7 +451,7 @@ function contains(password, allowedChars) {
 function userType_validation(userType) {
 
     if (userType == "Student") {
-        alert("A student does not have permission to register.Please authenticate with Gmail to create your account.")
+        alert("A student does need to register.You may simply login with your .fiu.edu account.")
         return false;
     }
 

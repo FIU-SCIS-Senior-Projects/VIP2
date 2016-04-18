@@ -58,13 +58,19 @@ angular.module('routes', ['ui.router'])
                 url:'/organization',
                 templateUrl: 'features/organization/organization.html'
             })
-            .state('projects',{ 
+            .state('profile', {
+                url:'/profile',
+                templateUrl: 'features/profile-page/user-profile.html',
+                controller: 'profileController',
+                controllerAs: 'vm'
+            })
+            .state('projects',{
                 url:'/vip-projects',
                 templateUrl:'features/vip-projects/vip-projects.html',
                 controller: 'VIPProjectsCtrl',
                 controllerAs: 'vm'
             })
-           .state('projectsDetailed',{ 
+           .state('projectsDetailed',{
                 url:'/vip-projects-detailed',
                 templateUrl:'features/vip-projects/vip-projects-detailed.html',
                 controller: 'VIPProjectsDetailedCtrl',
@@ -83,4 +89,4 @@ angular.module('routes', ['ui.router'])
                 controller: 'registrationController',
                 controllerAs: 'regCtlr'
             })
-    });
+        });
