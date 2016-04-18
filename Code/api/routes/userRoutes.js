@@ -13,8 +13,8 @@ module.exports = function (app, express) {
 
     app.get('/auth/google/callback',
         passport.authenticate('google', {
-            successRedirect: 'http://localhost:3000/#/graduate-application',
-            failureRedirect: 'http://localhost:3000/#/how-vip-credits-count'
+            successRedirect: 'http://localhost:3000/#/profile',
+            failureRedirect: 'http://localhost:3000/#/login'
         })
     );
 
@@ -33,12 +33,11 @@ module.exports = function (app, express) {
 
     app.post('/login',
         passport.authenticate('local', {
-            successRedirect: '/#/contact',
-            failureRedirect: '/#/vip-projects',
+            successRedirect: '/#/profile',
+            failureRedirect: '/#/login',
             failureFlash: true })
     );
 
-    
     var userRouter = express.Router();
 
     userRouter.route('/users')

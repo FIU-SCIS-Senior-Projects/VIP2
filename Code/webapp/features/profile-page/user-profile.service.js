@@ -13,14 +13,12 @@ angular.module('user-profile')
         // };
         profileFactory.loadProfile = function () {
             return $http.get('/api/profile/').then(function(data){
-               console.log("Got the Profile");
                return data.data[0]; 
             });
         };
 
         profileFactory.saveProfile = function (profileData) {
             return $http.put('/api/profile/',profileData).then(function(data){
-               console.log("Got the Profile");
                return data.data; 
             });
         };
