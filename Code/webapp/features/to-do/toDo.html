@@ -3,7 +3,7 @@
         <div class="panel-heading">
             <h4><b>Personal</b></h4>
         </div>
-        <ul class="list-group" ng-repeat="personal in todo.list | filter: personal.type='personal' | filter: personal.read='false'">
+        <ul class="list-group" ng-repeat="personal in todo.list | filter: personal.type='personal' | filter: personal.read='false' | orderBy: todo.time">
             <li class="list-group-item">
                 <a href="#" ng-click="todo.markedAsRead(personal)">
                     <i class="fa fa-exclamation-circle red-text"></i> <strong>{{personal.todo}}</strong>
@@ -12,11 +12,11 @@
         </ul>
     </div>
 
-    <div ng-hide="todo.facultyCount < 1" class="panel panel-default">
+    <div ng-hide="todo.accountCount < 1" class="panel panel-default">
         <div class="panel-heading">
-            <h4><b>Faculty Registered</b></h4>
+            <h4><b>User Account Registration Review</b></h4>
         </div>
-        <ul class="list-group" ng-repeat="fac in todo.list | filter: fac.type='faculty' | filter: fac.read='false'">
+        <ul class="list-group" ng-repeat="fac in todo.list | filter: fac.type='account' | filter: fac.read='false' | orderBy: todo.time">
             <li class="list-group-item">
                 <a href="#" ng-click="todo.markedAsRead(fac)">
                     <i class="fa fa-exclamation-circle red-text"></i> <strong>{{fac.todo}}</strong>
@@ -25,11 +25,11 @@
         </ul>
     </div>
 
-    <div ng-hide="todo.studentCount < 1" class="panel panel-default">
+    <div ng-hide="todo.projectCount < 1" class="panel panel-default">
         <div class="panel-heading">
-            <h4><b>Student Applications</b></h4>
+            <h4><b>Project Proposal Review</b></h4>
         </div>
-        <ul class="list-group" ng-repeat="app in todo.list | filter: app.type='student' | filter: app.read='false'">
+        <ul class="list-group" ng-repeat="app in todo.list | filter: app.type='project' | filter: app.read='false' | orderBy: todo.time">
             <li class="list-group-item">
                 <a href="#" ng-click="todo.markedAsRead(app)">
                     <i class="fa fa-exclamation-circle red-text"></i> <strong>{{app.todo}}</strong>
@@ -38,12 +38,25 @@
         </ul>
     </div>
 
-    <div class="panel panel-default">
+    <div ng-hide="todo.studentCount < 1" class="panel panel-default">
+        <div class="panel-heading">
+            <h4><b>Student Application Review</b></h4>
+        </div>
+        <ul class="list-group" ng-repeat="app in todo.list | filter: app.type='student' | filter: app.read='false' | orderBy: todo.time">
+            <li class="list-group-item">
+                <a href="#" ng-click="todo.markedAsRead(app)">
+                    <i class="fa fa-exclamation-circle red-text"></i> <strong>{{app.todo}}</strong>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- <div class="panel panel-default">
         <div class="panel-heading"><b>Read</b></div>
-        <ul class="list-group" ng-repeat="read in todo.list | filter: app.read='true'">
+        <ul class="list-group" ng-repeat="read in todo.list | filter: read.read='true' | orderBy: todo.time">
             <li class="list-group-item">
                 <p style="margin-bottom:0">{{read.todo}}</p>
             </li>
         </ul>
-    </div>
+    </div> -->
 </div>
