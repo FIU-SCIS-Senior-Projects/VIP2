@@ -10,13 +10,16 @@
             controllerAs: 'header',
             controller: function () {
                 this.count = 0;
-                //console.log(ToDoService.loadAllToDo());
-                var list = ToDoService.loadAllToDo();
-                for(i = 0; i < list.length; i++) {
-                    if(list[i].read)
-                        continue;
-                    this.count++;
-                }
+                ToDoService.loadAllToDo()
+                    .then(function (data) {
+                        for(i = 0; i < data.data.length; i++) {
+                            if(data.data[i].read) {
+                                continue;
+                            } else {
+                                this.count++;
+                            }
+                        }
+                    });
             }
         };
 });
