@@ -31,7 +31,7 @@
 
 
 		vm.users = ["Student",
-			"Staff",
+			"Staff/Faculty",
 			"Pi/CoPi",
 			"Student"
 		];
