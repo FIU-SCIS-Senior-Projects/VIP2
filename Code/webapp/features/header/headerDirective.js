@@ -9,14 +9,15 @@
             },
             controllerAs: 'header',
             controller: function () {
-                this.count = 0;
+                var vm = this;
+                vm.count = 0;
                 ToDoService.loadAllToDo()
                     .then(function (data) {
                         for(i = 0; i < data.data.length; i++) {
                             if(data.data[i].read) {
                                 continue;
                             } else {
-                                this.count++;
+                                vm.count++;
                             }
                         }
                     });
