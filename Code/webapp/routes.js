@@ -1,8 +1,6 @@
 angular.module('routes', ['ui.router'])
 
-    .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
-        $locationProvider.html5Mode(true);
-        
+    .config(function($urlRouterProvider, $stateProvider) {
         $urlRouterProvider.otherwise('/');
         $stateProvider
             .state('about', {
