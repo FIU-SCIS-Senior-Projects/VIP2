@@ -43,5 +43,19 @@ module.exports = function(app, express) {
             });
         });
 
+
+    apiRouter.route('/verifyuser/:user_id')
+        .get(function (req, res) {
+            Profile.findById(req.params.user_id, function(err, profile) {
+                if (profile == null) {
+                    res.json('Invalid link. User cannot be verified.');
+                    return;
+                }
+                else {
+                    return res.json(profile);
+                }
+            });
+        });
+
     return apiRouter;
 };

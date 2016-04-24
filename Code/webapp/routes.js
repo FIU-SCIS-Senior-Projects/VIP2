@@ -89,4 +89,25 @@ angular.module('routes', ['ui.router'])
                 controller: 'registrationController',
                 controllerAs: 'regCtlr'
             })
+
+
+
+
+
+
+
+
+
+
+
+            .state('verifyuser', {
+                url: '/verifyuser',
+                templateUrl: 'features/reviewRegistration/reviewRegistration.html',
+                controller: 'reviewController',
+                controllerAs: 'vm'
+            })
+
+
+
+
         });
