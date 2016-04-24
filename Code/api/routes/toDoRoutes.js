@@ -1,10 +1,28 @@
+/* var ToDo	= require('../models/todo'); <--this line goes on top
+
+    var todo = new ToDo();
+    todo.todo = the title of the app;
+    todo.type = type of todo, needs to be hard coded based upon tasks
+        acceptable values - CASE SENSITIVE!:
+             personal   ---- profile needs
+             user       ---- for account registration
+             project    ---- proposal review
+             student    ---- for application review
+    todo.link = your unique link;
+    ToDo.create(todo, function(err) {
+        if(err) {
+            return res.send('error');
+        } else {
+            res.send('to do added');
+        }
+    });
+*/
+
 var mongoose	= require('mongoose');
 var ToDo	    = require('../models/todo');
 
 module.exports = function(app, express) {
     var apiRouter = express.Router();
-
-    //insert interceptor for auth token/session
 
     apiRouter.route('/todo')
         .get(function (req, res) {
