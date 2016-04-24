@@ -58,6 +58,12 @@ angular.module('routes', ['ui.router'])
                 url:'/organization',
                 templateUrl: 'features/organization/organization.html'
             })
+            .state('profile', {
+                url:'/profile',
+                templateUrl: 'features/profile-page/user-profile.html',
+                controller: 'profileController',
+                controllerAs: 'vm'
+            })
             .state('projects',{
                 url:'/vip-projects',
                 templateUrl:'features/vip-projects/vip-projects.html',
@@ -83,7 +89,6 @@ angular.module('routes', ['ui.router'])
                 controller: 'registrationController',
                 controllerAs: 'regCtlr'
             })
-
             .state('toDo', {
                 url: '/to-do',
                 templateUrl: 'features/to-do/toDo.html',
