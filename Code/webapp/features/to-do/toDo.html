@@ -5,21 +5,21 @@
         </div>
         <ul class="list-group" ng-repeat="personal in todo.list | filter: personal.type='personal' | filter: personal.read='false' | orderBy: todo.time">
             <li class="list-group-item">
-                <a href="#" ng-click="todo.markedAsRead(personal)">
+                <a ng-href="{{personal.link}}" ng-click="todo.markedAsRead(personal)">
                     <i class="fa fa-exclamation-circle red-text"></i> <strong>{{personal.todo}}</strong>
                 </a>
             </li>
         </ul>
     </div>
 
-    <div ng-hide="todo.accountCount < 1" class="panel panel-default">
+    <div ng-hide="todo.userCount < 1" class="panel panel-default">
         <div class="panel-heading">
             <h4><b>User Account Registration Review</b></h4>
         </div>
-        <ul class="list-group" ng-repeat="fac in todo.list | filter: fac.type='account' | filter: fac.read='false' | orderBy: todo.time">
+        <ul class="list-group" ng-repeat="user in todo.list | filter: user.type='account' | filter: user.read='false' | orderBy: todo.time">
             <li class="list-group-item">
-                <a href="#" ng-click="todo.markedAsRead(fac)">
-                    <i class="fa fa-exclamation-circle red-text"></i> <strong>{{fac.todo}}</strong>
+                <a ng-href="{{user.link}}" ng-click="todo.markedAsRead(user)">
+                    <i class="fa fa-exclamation-circle red-text"></i> <strong>{{user.todo}}</strong>
                 </a>
             </li>
         </ul>
@@ -29,10 +29,10 @@
         <div class="panel-heading">
             <h4><b>Project Proposal Review</b></h4>
         </div>
-        <ul class="list-group" ng-repeat="app in todo.list | filter: app.type='project' | filter: app.read='false' | orderBy: todo.time">
+        <ul class="list-group" ng-repeat="project in todo.list | filter: project.type='project' | filter: project.read='false' | orderBy: todo.time">
             <li class="list-group-item">
-                <a href="#" ng-click="todo.markedAsRead(app)">
-                    <i class="fa fa-exclamation-circle red-text"></i> <strong>{{app.todo}}</strong>
+                <a ng-href="{{project.link}}" ng-click="todo.markedAsRead(project)">
+                    <i class="fa fa-exclamation-circle red-text"></i> <strong>{{project.todo}}</strong>
                 </a>
             </li>
         </ul>
@@ -42,21 +42,17 @@
         <div class="panel-heading">
             <h4><b>Student Application Review</b></h4>
         </div>
-        <ul class="list-group" ng-repeat="app in todo.list | filter: app.type='student' | filter: app.read='false' | orderBy: todo.time">
+        <ul class="list-group" ng-repeat="student in todo.list | filter: student.type='student' | filter: student.read='false' | orderBy: todo.time">
             <li class="list-group-item">
-                <a href="#" ng-click="todo.markedAsRead(app)">
-                    <i class="fa fa-exclamation-circle red-text"></i> <strong>{{app.todo}}</strong>
+                <a ng-href="{{student.link}}" ng-click="todo.markedAsRead(student)">
+                    <i class="fa fa-exclamation-circle red-text"></i> <strong>{{student.todo}}</strong>
                 </a>
             </li>
         </ul>
     </div>
 
-    <!-- <div class="panel panel-default">
-        <div class="panel-heading"><b>Read</b></div>
-        <ul class="list-group" ng-repeat="read in todo.list | filter: read.read='true' | orderBy: todo.time">
-            <li class="list-group-item">
-                <p style="margin-bottom:0">{{read.todo}}</p>
-            </li>
-        </ul>
-    </div> -->
+    <div ng-if="todo.personalCount < 1 && todo.userCount < 1 && todo.projectCount < 1 && todo.studentCount < 1" class="jumbotron">
+        <h1 class="text-center">All clear here!</h1>
+        <p class="text-center">You have no more tasks to do.</p>
+    </div>
 </div>

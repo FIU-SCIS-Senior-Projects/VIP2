@@ -8,7 +8,8 @@
         var vm = this;
         vm.list = [];
         vm.personalCount = 0;
-        vm.facultyCount = 0;
+        vm.userCount = 0;
+        vm.projectCount = 0;
         vm.studentCount = 0;
 
         vm.markedAsRead = function(todo) {
@@ -19,7 +20,9 @@
                 });
             if(todo.type == 'personal') vm.personalCount--;
 
-            else if(todo.type == 'faculty') vm.facultyCount--;
+            else if(todo.type == 'user') vm.userCount--;
+
+            else if(todo.type == 'project') vm.projectCount--;
 
             else if(todo.type == 'student') vm.studentCount--;
         };
@@ -33,7 +36,9 @@
 
                         if(vm.list[i].type == 'personal') vm.personalCount++;
 
-                        else if(vm.list[i].type == 'faculty') vm.facultyCount++;
+                        else if(vm.list[i].type == 'user') vm.userCount++;
+
+                        else if(vm.list[i].type == 'project') vm.projectCount++;
 
                         else if(vm.list[i].type == 'student') vm.studentCount++;
                     }
