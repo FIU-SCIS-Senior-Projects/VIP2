@@ -281,12 +281,12 @@ angular
                     // send email to PI for approval
                     vm.userData.recipient2 = "sadjadi@cs.fiu.edu"; // NEED TO PUT MAIN PI EMAIL HERE FOR NOW
                     vm.userData.text2 = "Dear PI/CoPI,"+
-                        " A new user is attempting to register, please accept or reject using the following link:\n\ http://vip-dev.cis.fiu.edu//#/verifyuser/" + vm.objectId +"";
+                        " A new user is attempting to register, please accept or reject using the following link:\n\ http://vip-dev.cis.fiu.edu/#/verifyuser/" + vm.objectId +"";
                     vm.userData.subject2 = "User Registration Request";
                     User.nodeEmail(vm.userData);
 
                     //TODO LINK IS THIS ONE//
-                    var todoLink = "http://vip-dev.cis.fiu.edu//#/verifyuser/"+ vm.objectId ;
+                    var todoLink = "http://vip-dev.cis.fiu.edu/#/verifyuser/"+ vm.objectId ;
 
             })
         };
