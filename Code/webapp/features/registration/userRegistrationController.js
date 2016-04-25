@@ -269,23 +269,19 @@ angular
                 .success(function(data){
                 vm.processing = false;
 
-                /* EMAIL VERIFICATION SECTION
-
-                //Here we have the user ID so we can send an email to user
-                vm.userData._id = data.objectId;
-                vm.userData.text = "Welcome to FIU's VIP Project, follow this link to verify this email address!\n\n vip-dev.cis.fiu.edu/verification/" + vm.objectId + "";
-                vm.userData.subject = "Welcome to FIU VIP Project!";
-                User.nodeEmail(vm.userData);
-                */
-
-                vm.message = data.message; // message returned by the API
+                    //Here we have the user ID so we can send an email to user
+                    vm.objectId = data.objectId;
+                    vm.userData.recipient = vm.userData.email;
+                    vm.userData.text = "Dear "+vm.userData.firstName +",\n\nWelcome to FIU's VIP Project!"+
+                       " Please verify your email with the link below and standby for your account to be verified by the PI.\n\:http://vip-dev.cis.fiu.edu/vip/verifyEmail/" + vm.objectId +"";
+                    vm.userData.subject = "Welcome to FIU VIP Project!";
+                    User.nodeEmail(vm.userData);
+                    vm.message = data.message; // message returned by the API
                      // clear the form
                     vm.userData = {};
-
             })
         };
     });
-
 
 function email_validation(uemail, userType) {
 
