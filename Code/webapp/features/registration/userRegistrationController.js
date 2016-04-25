@@ -8,17 +8,12 @@ angular
 
         vm.Users = [
             {
-                name: 'Faculty',
+                name: 'Faculty/Staff',
                 ranks: [
                     'Instructor',
                     'Assitant Professor',
                     'Associate Professor',
-                    'Full Professor'
-                ]
-            },
-            {
-                name: 'Staff',
-                ranks: [
+                    'Full Professor',
                     'Administrator',
                     'Director'
 
@@ -165,7 +160,10 @@ angular
         vm.userType = vm.Users[1];
         vm.college = vm.Colleges[1];
 
-
+        vm.onchange = function(value) { 
+            if(value==="Student") { 
+            alert("A student does need to register.You may simply login with your .fiu.edu account."); 
+        } }
         vm.saveUser = function () {
 
             vm.processing = true;
