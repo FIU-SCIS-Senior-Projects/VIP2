@@ -31,6 +31,7 @@ module.exports = function(app, express) {
                     if(err) res.send(err);
                     res.json(profile);
                 })
+
             });
         })
         .get(function (req, res) {
@@ -52,7 +53,7 @@ module.exports = function(app, express) {
                     return;
                 }
                 else {
-                    return res.json(profile);
+                    res.json(profile);
                 }
             });
         });

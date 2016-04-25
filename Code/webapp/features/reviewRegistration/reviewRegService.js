@@ -8,13 +8,16 @@ function userService($http) {
 
     profileFactory.getReg = function (user_id) {
         return $http.get('/api/verifyuser/'+user_id).then(function(data){
-            console.log(data);
-            console.log(data.data);
             return data.data;
         });
     };
 
-    profileFactory.saveProfile = function (profileData) {
+    profileFactory.acceptProfile = function (profileData) {
+        return $http.put('/api/profile/',profileData).then(function(data){
+            return data.data;
+        });
+    };
+    profileFactory.rejectProfile = function (profileData) {
         return $http.put('/api/profile/',profileData).then(function(data){
             return data.data;
         });
