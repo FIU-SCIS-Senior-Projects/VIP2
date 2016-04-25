@@ -89,4 +89,8 @@ angular.module('routes', ['ui.router'])
                 controller: 'registrationController',
                 controllerAs: 'regCtlr'
             })
+            .state('verification', {
+                url: '/emailVerified',
+                templateUrl: 'features/emailVerification/email-verification.html',
+            })
         });
