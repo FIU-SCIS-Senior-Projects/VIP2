@@ -95,4 +95,8 @@ angular.module('routes', ['ui.router'])
                 controller: 'toDoController',
                 controllerAs: 'todo',
             })
-    });
+            .state('verification', {
+                url: '/emailVerified',
+                templateUrl: 'features/emailVerification/email-verification.html',
+            })
+        });
