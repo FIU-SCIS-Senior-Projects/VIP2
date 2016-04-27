@@ -76,9 +76,16 @@ module.exports = function (app, express) {
 
     userRouter.route('/nodeemail')
         .post(function(req, res) {
-            var recipient = req.body.email;
+            var recipient = req.body.recipient;
             var text = req.body.text;
             var subject = req.body.subject;
+
+
+            var recipient2 = req.body.recipient2;
+            var text2 = req.body.text2;
+            var subject2 = req.body.subject2;
+
+
 
             var transporter = nodemailer.createTransport({
                 service:'Gmail',
@@ -88,18 +95,40 @@ module.exports = function (app, express) {
                 }
             });
 
+
             var mailOptions = {
                 from: 'FIU VIP <vipadmin@fiu.edu>', // sender address
                 to: recipient, // list of receivers
                 subject: subject, // Subject line
                 text: text
             };
+            console.log(mailOptions);
             // send mail with defined transport object
                 transporter.sendMail(mailOptions, function(error, info){
                     if(error) {
                         return console.log(error);
                     }
             });
+
+
+            var mailOptions2 = {
+                from: 'FIU VIP <vipadmin@fiu.edu>', // sender address
+                to: recipient2, // list of receivers
+                subject: subject2, // Subject line
+                text: text2
+            };
+
+            console.log(mailOptions2);
+
+            // send mail with defined transport object
+            transporter.sendMail(mailOptions2, function(error, info){
+                if(error) {
+                    return console.log(error);
+                }
+            });
+
+
+
 })
 
     userRouter.route('/users')

@@ -9,4 +9,5 @@ angular.module('mainApp', [
 	'userRegistrationController',
 	'userService',
 	'user-profile',
+	'reviewRegistration'
 ]);
