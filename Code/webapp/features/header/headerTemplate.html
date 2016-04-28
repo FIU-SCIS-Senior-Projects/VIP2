@@ -1,5 +1,6 @@
 <div class = "loginIcon">
-	<a ui-sref="login"><span class = "glyphicon glyphicon-user"></span></a>
+    <a ui-sref="toDo" ng-click="header.count = 0"><span class = "glyphicon glyphicon-bell"></span><span ng-hide="header.count < 1" class="badge todo-count">{{header.count}}</span></a>
+	<a ui-sref="login"><span class="glyphicon glyphicon-user"></span></a>
 </div>
 <div>
 	<a href="/"><img class="header-logo" src="img/FIU_VIP.jpg"></a>

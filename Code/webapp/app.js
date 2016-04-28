@@ -7,5 +7,8 @@ angular.module('mainApp', [
 	'routes',
 	'projectApplicationController',
 	'userRegistrationController',
-	'userService'
+	'userService',
+    'toDoModule',
+	'user-profile',
+	'reviewRegistration'
 ]);

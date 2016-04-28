@@ -8,17 +8,12 @@ angular
 
         vm.Users = [
             {
-                name: 'Faculty',
+                name: 'Faculty/Staff',
                 ranks: [
                     'Instructor',
                     'Assitant Professor',
                     'Associate Professor',
-                    'Full Professor'
-                ]
-            },
-            {
-                name: 'Staff',
-                ranks: [
+                    'Full Professor',
                     'Administrator',
                     'Director'
 
@@ -165,7 +160,10 @@ angular
         vm.userType = vm.Users[1];
         vm.college = vm.Colleges[1];
 
-
+        vm.onchange = function(value) { 
+            if(value==="Student") { 
+            alert("A student does need to register.You may simply login with your .fiu.edu account."); 
+        } }
         vm.saveUser = function () {
 
             vm.processing = true;
@@ -231,7 +229,7 @@ angular
                 return;// return to form..did not enter rank
             }
 
-           if(!pid_validation(vm.userData.pantherID))
+           if(!pid_validation(vm.userData.pantherID,vm.userData.userType.name))
            {
                return; // invalid panther id, return to form
            }
@@ -265,27 +263,34 @@ angular
 
             // call user service which makes the post from userRoutes
             User.create(vm.userData)
-
                                 // data contains what we got back from the service and API
                 .success(function(data){
                 vm.processing = false;
 
-                /* EMAIL VERIFICATION SECTION
+                    //Here we have the user ID so we can send an email to user
+                    vm.objectId = data.objectId;
+                    vm.userData.recipient = vm.userData.email;
+                    vm.userData.text = "Dear "+vm.userData.firstName +",\n\nWelcome to FIU's VIP Project!"+
+                       " Please verify your email with the link below and standby for your account to be verified by the PI.\n\n http://vip-dev.cis.fiu.edu/vip/verifyEmail/" + vm.objectId +"";
+                    vm.userData.subject = "Welcome to FIU VIP Project!";
+                    User.nodeEmail(vm.userData);
+                    vm.message = data.message; // message returned by the API
+                     // clear the form
+                    vm.userData = {};
 
-                //Here we have the user ID so we can send an email to user
-                vm.userData._id = data.objectId;
-                vm.userData.text = "Welcome to FIU's VIP Project, follow this link to verify this email address!\n\n vip-dev.cis.fiu.edu/verification/" + vm.objectId + "";
-                vm.userData.subject = "Welcome to FIU VIP Project!";
-                User.nodeEmail(vm.userData);
-                */
-                    console.log(data.message);
-                vm.message = data.message; // message returned by the API
-                 // clear the form
+                    // send email to PI for approval
+                    vm.userData.recipient2 = "sadjadi@cs.fiu.edu"; // NEED TO PUT MAIN PI EMAIL HERE FOR NOW
+                    vm.userData.text2 = "Dear PI/CoPI,"+
+                        " A new user is attempting to register, please accept or reject using the following link:\n\ http://vip-dev.cis.fiu.edu/#/verifyuser/" + vm.objectId +"";
+                    vm.userData.subject2 = "User Registration Request";
+                    User.nodeEmail(vm.userData);
+
+                    //TODO LINK IS THIS ONE//
+                    var todoLink = "http://vip-dev.cis.fiu.edu/#/verifyuser/"+ vm.objectId ;
 
             })
         };
     });
-
 
 function email_validation(uemail, userType) {
 
@@ -348,7 +353,13 @@ function last_validation(last) {
 
 //Makes sure panther ID is only numbers and of correct length
 //NEED TO FIX PID BEING ENTERED AS A LETTER
-function pid_validation(pid) {
+function pid_validation(pid,userType) {
+
+    if(userType == "Pi/CoPi" )
+    {
+        return true;
+    }
+
 
     if (pid == undefined) {
         alert("Panther ID should not be empty.")
@@ -445,7 +456,7 @@ function contains(password, allowedChars) {
 function userType_validation(userType) {
 
     if (userType == "Student") {
-        alert("A student does not have permission to register.Please authenticate with Gmail to create your account.")
+        alert("A student does need to register.You may simply login with your .fiu.edu account.")
         return false;
     }
 
