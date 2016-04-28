@@ -17,6 +17,7 @@
             ToDoService.markAsRead(todo._id)
                 .then(function(data) {
                     todo.read = true;
+                    console.log('read')
                 });
             if(todo.type == 'personal') vm.personalCount--;
 

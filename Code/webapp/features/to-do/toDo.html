@@ -16,7 +16,7 @@
         <div class="panel-heading">
             <h4><b>User Account Registration Review</b></h4>
         </div>
-        <ul class="list-group" ng-repeat="user in todo.list | filter: user.type='account' | filter: user.read='false' | orderBy: todo.time">
+        <ul class="list-group" ng-repeat="user in todo.list | filter: user.type='user' | filter: user.read='false' | orderBy: todo.time">
             <li class="list-group-item">
                 <a ng-href="{{user.link}}" ng-click="todo.markedAsRead(user)">
                     <i class="fa fa-exclamation-circle red-text"></i> <strong>{{user.todo}}</strong>

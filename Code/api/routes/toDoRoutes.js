@@ -46,12 +46,11 @@ module.exports = function(app, express) {
 
     apiRouter.route('/todo/:id')
         .post(function (req, res) {
-            console.log(req.params.id);
             ToDo.findOne({_id:req.params.id}, function(err, todo) {
                 if(err) {
                     res.send('There was an error processing the tasks');
                 } else {
-                    todo.read = false;
+                    todo.read = true;
                     todo.save();
                     res.send('read');
                 }
