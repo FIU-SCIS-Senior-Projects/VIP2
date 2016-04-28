@@ -42,10 +42,12 @@ app.use(express.static(__dirname + '/webapp'));
 
 var userRoutes = require('./api/routes/userRoutes')(app, express);
 var projectRoutes = require('./api/routes/projectsRoutes')(app,express);
+var toDoRoutes = require('./api/routes/toDoRoutes')(app,express);
 var profileRoutes = require('./api/routes/profileApi')(app,express);
 app.use('/api', projectRoutes);
 app.use('/vip', userRoutes);
 app.use('/api', profileRoutes);
+app.use('/todo', toDoRoutes);
 
 //home page
 app.get('*', function (req, res) {

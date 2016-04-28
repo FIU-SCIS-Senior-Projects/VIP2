@@ -344,9 +344,27 @@ html {
     height: 10px;
 }
 
+.white-background {
+    background-color: #fff;
+}
+
+.red-text {
+    color:red;
+}
+
 .team-project {
     margin-left: 0px;
     margin-right: 0px;
+}
+
+.todo-count {
+    position: relative;
+    right: 15px;
+    bottom: 15px;
+}
+
+.badge {
+    background-color: #FF0000;
 }
 
 .disciplines {
