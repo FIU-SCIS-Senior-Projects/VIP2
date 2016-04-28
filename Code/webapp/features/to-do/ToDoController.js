@@ -13,7 +13,6 @@
         vm.studentCount = 0;
 
         vm.markedAsRead = function(todo) {
-            console.log(todo);
             ToDoService.markAsRead(todo._id)
                 .then(function(data) {
                     todo.read = true;
