@@ -31,6 +31,7 @@ module.exports = function(app, express) {
                     if(err) res.send(err);
                     res.json(profile);
                 })
+
             });
         })
         .get(function (req, res) {
@@ -40,6 +41,20 @@ module.exports = function(app, express) {
                     return res.send('error');
                 }
                 return res.json(profile);
+            });
+        });
+
+
+    apiRouter.route('/verifyuser/:user_id')
+        .get(function (req, res) {
+            Profile.findById(req.params.user_id, function(err, profile) {
+                if (profile == null) {
+                    res.json('Invalid link. User cannot be verified.');
+                    return;
+                }
+                else {
+                    res.json(profile);
+                }
             });
         });
 
