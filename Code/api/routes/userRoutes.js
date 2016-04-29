@@ -6,7 +6,6 @@ module.exports = function (app, express) {
     var userRouter = express.Router();
 
     userRouter.route('/users')
-
         .post(function (req, res) {
 
             var user = new User();

@@ -25,7 +25,7 @@ angular.module('ProjectProposalController', ['ProjectProposalService'])
         vm.description = "";
         vm.disciplines = [];
         vm.editingMode = false;
-        vm.submit = submit;
+      //  vm.submit = submit;
         //$scope.project.submit = submit;
 
         init();
@@ -70,6 +70,13 @@ angular.module('ProjectProposalController', ['ProjectProposalService'])
                         console.log(vm.disciplines);
 
         };
+	
+		$scope.sendEmail = function() {
+				ProjectService.sendEmail($scope.project)
+                    .success(function(data){
+                    });
+			
+		};
 
         $scope.majorList = [
             "Accounting",

@@ -1,6 +1,6 @@
 <div>
     <h2>Team Proposal Form</h2>
-    <form role="form" ng-submit="project.submit()">
+        <form role="form" ng-controller="ProjectProposalController" ng-submit="sendEmail()">
         <div class="form-group">
             <label>*Team Title:</label>
             <input type="text" class="form-control" placeholder="" ng-model="project.title" required="True">
