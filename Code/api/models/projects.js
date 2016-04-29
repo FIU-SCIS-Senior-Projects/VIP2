@@ -18,7 +18,8 @@ var ProjectSchema = new Schema({
     members: [String],
     contact: [{name: String, phone: String, email: String, office: String}],
     status: String,
-    image: String
+    image: String,
+    term: { type: String, default: 1 }
 });
 
 module.exports = mongoose.model('Projects', ProjectSchema);

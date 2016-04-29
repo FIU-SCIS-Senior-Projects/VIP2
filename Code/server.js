@@ -8,6 +8,8 @@ var cookieParser		= require('cookie-parser');
 var flash				= require('connect-flash');
 var session             = require('express-session');
 var bodyParser	        = require('body-parser');
+
+
 var path		= require('path');
 var config		= require('./api/config/config');
 var app			= express();
@@ -17,7 +19,6 @@ mongoose.connect(config.database);
 mongoose.connection.on('error', function(err){
 	console.log('Error: could not connect to MongoDB.');
 });
-
 
 require('./api/config/passport')(passport);
 app.use(bodyParser.json());
@@ -37,17 +38,21 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-require('./api/routes/routes.js')(app, passport);
 // set static files location
 // used for requests that our frontend will make
 app.use(express.static(__dirname + '/webapp'));
 
-
 var userRoutes = require('./api/routes/userRoutes')(app, express);
 var projectRoutes = require('./api/routes/projectsRoutes')(app,express);
+var toDoRoutes = require('./api/routes/toDoRoutes')(app,express);
+var profileRoutes = require('./api/routes/profileApi')(app,express);
 var supportRoutes = require('./api/routes/support')(app,express);
-
 app.use('/api', projectRoutes);
+app.use('/vip', userRoutes);
+app.use('/api', profileRoutes);
+app.use('/todo', toDoRoutes);
+
+//TODO: Make sure userRoutes works... Come back to change this.
 app.use('/userapi', userRoutes);
 app.use('/support', supportRoutes);
 
@@ -80,7 +85,6 @@ app.post('/register-project-proposals',function(req,res){
 	    console.log('Message sent: ' + info.response);
 	});                                           
 });
-
 
 //home page
 app.get('*', function (req, res) {

@@ -31,7 +31,7 @@
                     <td>
                         <label>User Type:</label>
                         <div>
-                            <select class = 'form-control'  ng-model="regCtlr.userData.userType" ng-options="user as user.name for user in regCtlr.Users">
+                            <select ng-change="regCtlr.onchange(regCtlr.userData.userType.name)"  class = 'form-control'  ng-model="regCtlr.userData.userType" ng-options="user as user.name for user in regCtlr.Users">
                             </select>
                         </div><br>
 
@@ -48,7 +48,7 @@
                         <label>Panther ID:</label>
 
                         <div>
-                            <input class = "form-control" placeholder = "123456" type="text" ng-model="regCtlr.userData.pantherID" />
+                            <input  type="number"  class = "form-control" placeholder = "123456" type="text" ng-model="regCtlr.userData.pantherID" />
                         </div>
 
                     </td>
