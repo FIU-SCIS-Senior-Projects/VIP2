@@ -1,6 +1,6 @@
 angular.module('routes', ['ui.router'])
 
-    .config(function($urlRouterProvider, $stateProvider, $locationProvider) {
+    .config(function($urlRouterProvider, $stateProvider) {
         $urlRouterProvider.otherwise('/');
         $stateProvider
             .state('about', {
@@ -89,4 +89,23 @@ angular.module('routes', ['ui.router'])
                 controller: 'registrationController',
                 controllerAs: 'regCtlr'
             })
+            .state('toDo', {
+                url: '/to-do',
+                templateUrl: 'features/to-do/toDo.html',
+                controller: 'toDoController',
+                controllerAs: 'todo',
+            })
+            .state('verification', {
+                url: '/emailVerified',
+                templateUrl: 'features/emailVerification/email-verification.html',
+            })
+
+            .state('verifyuser', {
+                url: '/verifyuser/:user_id',
+                templateUrl: 'features/reviewRegistration/reviewRegistration.html',
+                controller: 'reviewController',
+                controllerAs: 'vm'
+            })
+
+
         });

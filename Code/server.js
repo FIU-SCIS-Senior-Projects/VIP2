@@ -6,6 +6,8 @@ var cookieParser		= require('cookie-parser');
 var flash				= require('connect-flash');
 var session             = require('express-session');
 var bodyParser	        = require('body-parser');
+
+
 var path		= require('path');
 var config		= require('./api/config/config');
 var app			= express();
@@ -40,10 +42,12 @@ app.use(express.static(__dirname + '/webapp'));
 
 var userRoutes = require('./api/routes/userRoutes')(app, express);
 var projectRoutes = require('./api/routes/projectsRoutes')(app,express);
+var toDoRoutes = require('./api/routes/toDoRoutes')(app,express);
 var profileRoutes = require('./api/routes/profileApi')(app,express);
 app.use('/api', projectRoutes);
-app.use('/userapi', userRoutes);
+app.use('/vip', userRoutes);
 app.use('/api', profileRoutes);
+app.use('/todo', toDoRoutes);
 
 //home page
 app.get('*', function (req, res) {
