@@ -73,7 +73,10 @@ module.exports = function(app, express) {
     
     
         .put(function (req, res) {
+            console.log(req.params.id);
+            console.log(req.body.id);
             Project.findById(req.params.id, function(err, proj){
+                console.log(proj);
                 if(err) res.send(err);
                 if(req.body.title!=="") proj.title = req.body.title;
                 if(req.body.description!=="") proj.description = req.body.description
