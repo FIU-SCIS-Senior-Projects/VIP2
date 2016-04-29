@@ -18,10 +18,9 @@
     <div class="">     
         <div class="col-sm-3">
             <div class="col-sm-12 project-second-section-sidebar">
-                <!--<button class="btn btn-default" ng-click="vm.filterByDiscipline(discipline)">Show All</button>-->
                 <div class="input-group">
                     <span class="input-group-addon disciplines">
-                        <input type="checkbox" class="btn btn-default disciplines" aria-label="..." ng-click="vm.showAllDisciplinesToggle()" ng-model="vm.showAllCheckBox">
+                        <input id="showAll" type="checkbox" class="btn btn-default disciplines" aria-label="..." ng-click="vm.showAllDisciplinesToggle()" ng-model="vm.showAllCheckBox">
                     </span>
                     <input type="text" class="form-control disciplines" aria-label="..." value="Show All" readonly>
                 </div>
@@ -30,7 +29,6 @@
                 <div class="btn"><h4>Disciplines</h4></div>
             </div>
             <div class="col-sm-12" ng-repeat="discipline in vm.disciplines">
-                <!--<div class="btn side-bar-button disciplines" ng-click="vm.filterByDiscipline(discipline)">{{discipline}}</div> -->
                 <div class="input-group">
                     <span class="input-group-addon disciplines">
                         <input type="checkbox" class="btn btn-default disciplines" aria-label="..." ng-click="vm.filterByDiscipline(discipline)">
@@ -48,11 +46,6 @@
                     <div class="col-sm-7 team-info-name">
                         <h4>{{project.title}}</h4>
                     </div>
-                </div>
-                <div class="custom-span">
-                    <span >
-                        {{project.description}}
-                    </span>
                 </div>
             </div>
         </div>

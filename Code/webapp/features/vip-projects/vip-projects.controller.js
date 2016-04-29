@@ -17,8 +17,7 @@
         vm.temProj = new Set();
         vm.filteringVariables = new Set();
         vm.showAllCheckBox = true;
-        
-        
+
         //Function Declarations
         vm.showAllDisciplinesToggle = showAllDisciplinesToggle; 
         vm.filterByDiscipline = filterByDiscipline;
@@ -27,6 +26,13 @@
         init();
         function init(){
             loadData();
+        }
+        
+        function checkBoxChange () {
+            if(vm.filteringVariables.size > 0)
+                document.getElementById("showAll").indeterminate = true;
+            else
+                document.getElementById("showAll").indeterminate = false;
         }
         
         function loadData(){
@@ -52,7 +58,7 @@
         
         function filterByDiscipline (discipline) {
             vm.temProj.clear();
-            if(discipline != null){
+            if(discipline != null) {
                 /*
                 * Find if discipline already being displayed, in which case it will be discarded as a filtering option.
                 * and the remaining filters have to be reapplied to all the projects. NEEDS REVISION for IMPROVEMENT
@@ -67,6 +73,7 @@
                     vm.filteringVariables.add(discipline);
                     filterProjects(disciplineSet, vm.projects);
                 }
+                checkBoxChange();
             }
         } 
         
