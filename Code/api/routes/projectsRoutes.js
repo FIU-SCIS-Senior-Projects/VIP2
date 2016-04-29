@@ -48,8 +48,6 @@ module.exports = function(app, express) {
         //console.log(currentTerm);
     }); 
 
-
-
     //route get or adding products to a users account
     apiRouter.route('/projects')
         .post(function (req, res) {
@@ -62,7 +60,7 @@ module.exports = function(app, express) {
             });
         })
         .get(function (req, res) {
-            Project.find({ term: currentTerm[0]._id }, function (err, projects) {
+            Project.find({ term: currentTerm[0]._id, status: "Active" }, function (err, projects) {
                 if(err) {
                     console.log(err);
                     return res.send('error');
@@ -72,6 +70,7 @@ module.exports = function(app, express) {
         });
 
     apiRouter.route('/projects/:id')
+    
     
         .put(function (req, res) {
             Project.findById(req.params.id, function(err, proj){
