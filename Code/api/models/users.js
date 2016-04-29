@@ -9,7 +9,6 @@ var UsersSchema = new Schema({
     passwordConf:  {type: String, required: false},
     email: {type: String, required: true, index: {unique:true}},
     googleKey: String,
-    userType: {type: String, required: false},
     rank: {type: String, required: false},
     pantherID: {type: String, required: false},
     gender: {type: String, required: false},
@@ -22,6 +21,10 @@ var UsersSchema = new Schema({
     major:String,
     minor:String,
     image: String,
+    userType: {
+        name: String,
+        ranks: []
+    },
 
     google: {
         id: String,
