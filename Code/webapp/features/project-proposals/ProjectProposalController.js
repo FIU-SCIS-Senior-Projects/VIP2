@@ -177,7 +177,6 @@ angular.module('ProjectProposalController', ['ProjectProposalService'])
               vm.disciplines.push(majors);
             }
         };
-<<<<<<< HEAD
 	
 		$scope.sendEmail = function() {
 				ProjectService.sendEmail($scope.project)
