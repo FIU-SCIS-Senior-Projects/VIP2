@@ -47,6 +47,18 @@ angular.module('routes', ['ui.router'])
                 url:'/login',
                 templateUrl: 'features/login/loginTemplate.html'
             })
+            .state('resetpassword', {
+                url:'/resetpassword',
+                templateUrl: 'features/forgot-password/forgotPasswordTemplate.html',
+                controller: 'forgotPasswordController',
+                controllerAs: 'resetPwd',
+            })
+            .state('password_request', {
+                url:'/password_request?auth_id',
+                templateUrl: 'features/forgot-password/forgotPasswordTemplate.publish.html',
+                controller: 'forgotPasswordPublishController',
+                controllerAs: 'resetPwd',
+            })
             .state('projectProposal', {
                 url:'/project-proposal',
                 templateUrl: 'features/project-proposals/projectProposal.html',

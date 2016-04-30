@@ -32,5 +32,10 @@ angular.module('ProjectProposalService', [])
                console.log("Deleting response just arrived");
             });;
         };
+
+	projectFactory.sendEmail = function (projectData) {
+            return $http.post('/register-project-proposals', projectData)
+        };
+
         return projectFactory;
     });

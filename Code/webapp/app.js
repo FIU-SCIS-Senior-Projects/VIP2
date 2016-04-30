@@ -2,13 +2,15 @@ angular.module('mainApp', [
 	'textAngular',
 	'vipHeader',
 	'vipFooter',
-    'vip-projects',		//Features Module
+	'vip-projects',		//Features Module
 	'ProjectProposalController',
 	'routes',
 	'projectApplicationController',
 	'userRegistrationController',
+	'forgotPasswordController',
+	'forgotPasswordService',
 	'userService',
-    'toDoModule',
+    	'toDoModule',
 	'user-profile',
 	'reviewRegistration'
 ]);

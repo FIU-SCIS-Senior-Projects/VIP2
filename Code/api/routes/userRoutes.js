@@ -132,7 +132,6 @@ module.exports = function (app, express) {
 })
 
     userRouter.route('/users')
-
         .post(function (req, res) {
 
             var user = new User();
