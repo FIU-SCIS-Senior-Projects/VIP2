@@ -4,9 +4,9 @@ angular
         var vm = this;
 
         vm.mockData = [{
-            firstName: "Miguel",
-            lastName: "Conde",
-            email: "mcond005@fiu.edu",
+            firstName: "Marlon",
+            lastName: "Rowe",
+            email: "mrowe009@fiu.edu",
             pID: "1234567",
             rank: "Senior",
             gender: 'Male',
