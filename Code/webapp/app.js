@@ -7,6 +7,8 @@ angular.module('mainApp', [
 	'routes',
 	'projectApplicationController',
 	'userRegistrationController',
+	'forgotPasswordController',
+	'forgotPasswordService',
 	'userService',
     'toDoModule',
 	'user-profile',
